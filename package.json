@@ -1,7 +1,7 @@
 {
-  "name": "hackathon-boilerplate",
+  "name": "webrtc-hack",
   "version": "1.0.0",
-  "description": "Some boilerplate to get us off to a quick start at hackathons",
+  "description": "App for appropriately matching volunteer mentors with mentees",
   "main": "index.js",
   "scripts": {
     "nodemon": "nodemon backend/lib/server.js --exec babel-node --presets es2015,stage-1",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewMacmurray/hackathon-boilerplate.git"
+    "url": "git+https://github.com/FAC7/webrtc"
   },
   "author": "FAC7",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/andrewMacmurray/hackathon-boilerplate/issues"
+    "url": "https://github.com/FAC7/webrtc/issues"
   },
-  "homepage": "https://github.com/andrewMacmurray/hackathon-boilerplate#readme",
+  "homepage": "https://github.com/FAC7/webrtc#readme",
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",

@@ -1,4 +1,46 @@
-### A secure platform for connecting volunteer mentors and mentees
+# A secure platform for connecting volunteer mentors and mentees
+
+## Mentees user stories
+
+#### As a mentee I want to...
+
+log in quickly and anonymously
+
+view each mentor profile with the following information:
+* Age/gender
+* Qualifications/skills
+* Specialities
+
+be able to chat:
+* securely with my mentor
+* anonymously and have my camera disabled
+
+be able to choose my mentor
+
+be able to give feedback to my mentor
+
+be able to choose the same mentor so that I can build up a relationship with them
+
+#### As a mentor I want to...
+
+be able to see my mentees needs
+
+be able to see if they are online
+
+have my mentoring time logged and displayed on my profile
+
+be able to take notes on my mentee
+
+be able to recieve feedback from my mentee
+
+see information about my mentee
+
+#### Stretch goals
+
+* Panic button
+* Shedule
+
+----
 
 Broad requirements:
 + Matching: Some way of matching potential mentors and mentees.
@@ -15,7 +57,7 @@ The client has indicated that if they like the prototype, then funding will be m
 
 Comments from the client:
 
-*I really like the idea of having an online resource for people to use and I think it will suit the age demographic of who we're likely going to be extending this too. I'm not sure how much you are aware, but if we go ahead with a mentoring project of sorts we will need a separate space for mentors, mentees and others accessing the online tool.* 
+*I really like the idea of having an online resource for people to use and I think it will suit the age demographic of who we're likely going to be extending this too. I'm not sure how much you are aware, but if we go ahead with a mentoring project of sorts we will need a separate space for mentors, mentees and others accessing the online tool.*
 
 *Would it be possible to set-up a kind of one-way system and teaching module (should only be brief) to those who wish to become mentors? The idea being that they sign in, learn they training, practice with one another, and then open it up to mentees? It would also be helpful to have a permanent link to some ground rules, or reminders about what each other's role is, and possible suggestions about what to talk about.*
 

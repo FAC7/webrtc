@@ -2,6 +2,6 @@ export default {
   path: '/img/{imageUrl*}',
   method: 'GET',
   handler: {
-    directory: { path: './public/img' }
+    directory: {path: './public/img'}
   }
 }

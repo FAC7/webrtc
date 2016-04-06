@@ -1,9 +1,10 @@
 import React from 'react'
 import { Jumbotron } from 'react-bootstrap'
-import ProfileForm from '../MentorSignup/EditProfileForm.js'
 
 export default (props) => {
   return (
-    <ProfileForm />
+    <Jumbotron className='home'>
+      <h1>Hello Home!</h1>
+    </Jumbotron>
   )
 }

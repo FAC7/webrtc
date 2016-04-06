@@ -40,8 +40,55 @@ see information about my mentee
 * Panic button
 * Shedule
 
-----
+## FEATURES & ROLES
+#### MENTOR PROFILE
+Each mentor should have a profile, including:
+**!!*TBD which ones to keep*!!**
+* Availability Status
+* Resources Button
+* Report Conversation Button
+* Notes Modal
+* Notes History
+* Chat History / logs
+* Modal for feedback
+* Pre-chat Modal
 
+**Team**:
+* Owen
+* Andrew
+* Ellie
+* Tasnim
+
+#### VIDEO-CHAT
+Implementing IPCortex's web-rtc API to provide:
+* video-calls, audio-calls & chats between mentors and mentees
+* security info message
+* toggle chat feature
+* get help now button
+* create profile / login buttons
+
+**Team**:
+* Mireia
+* Jack M
+* Francesco
+* Jack T
+
+##### DATA(BASE & STRUCTURE)
+This should include uploading fake user activity (profiles in db)
+**Team**:
+* Sam
+* Rob
+* Katherine
+* Virginie
+
+#### CODE REVIEWERS
+**Team**:
+* Elias
+* Ivan
+
+--------------------------
+-------------------------
+## ORIGINAL REQUIREMENTS
 Broad requirements:
 + Matching: Some way of matching potential mentors and mentees.
 + Scheduling: some way of scheduling meeting times.

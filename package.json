@@ -8,7 +8,9 @@
     "server-build": "babel backend/lib -d backend/dist --presets es2015,stage-1",
     "production-serve": "node backend/dist/server.js",
     "dev": "webpack-dev-server --hot --inline --content-base public/",
-    "watch": "webpack --watch --progress"
+    "watch": "webpack --watch --progress",
+    "prestart": "webpack --progress --config webpack.config.js",
+    "start": "node backend/lib/server.js"
   },
   "repository": {
     "type": "git",

@@ -86,3 +86,9 @@ We'll be aiming to implement the following features in the near future.
 #### Code Reviewers
 * @ivanmauricio
 * @eliascodes
+
+## Style Guide
+Coming soon?
+
+## Development
+Details about contributing, conventions, etc live in the wiki.

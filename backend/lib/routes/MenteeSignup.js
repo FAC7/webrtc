@@ -1,8 +1,8 @@
 export default {
-  path: '/getmentordeets',
+  path: '/mentee-signup',
   method: 'GET',
   handler: (request, reply) => {
     console.log(request.url)
-    reply('getmentordeets')
+    reply('mentee-signup')
   }
 }

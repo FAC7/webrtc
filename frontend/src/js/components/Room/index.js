@@ -23,7 +23,7 @@ const initialisePBX = (username, password) => {
   var media = {}
   var accepted = {}
   var host = 'https://fac1.ipcortex.net'
-  onAPILoadReady()
+
   function onAPILoadReady () {
     console.log("I'M READYYYY")
     /* Display a login prompt */
@@ -48,5 +48,6 @@ const initialisePBX = (username, password) => {
       }
     )
   }
+  onAPILoadReady()
 
 }

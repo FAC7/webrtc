@@ -12,7 +12,7 @@
     "prestart": "webpack --progress --config webpack.config.js",
     "start": "node backend/lib/server.js",
     "lint": "./node_modules/.bin/eslint .",
-    "lintfix": "./node_modules/.bin/eslint . --fix"
+    "lint-fix": "./node_modules/.bin/eslint . --fix"
   },
   "repository": {
     "type": "git",

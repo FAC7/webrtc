@@ -73,7 +73,7 @@ export default class Home extends React.Component {
             </Col>
           </Row>
           <div>
-            <Room/>
+            // <Room/>
           </div>
         </Grid>
       </div>

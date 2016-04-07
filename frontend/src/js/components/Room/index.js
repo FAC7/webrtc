@@ -54,27 +54,10 @@ const initialisePBX = (username, password) => {
 }
 
 const runApp = () => {
-  /* prepare a list of icon names for the states: idle, busy, ringing, busy+ringing */
-console.log('AAAAAAAAA', IPCortex.PBX.contacts)
-// var states = ["call_end", "phone", "ring_volume", "phone"];
-//
-// /* Inject the list of contacts into the page */
-// var listElem = document.getElementById('list');
-// IPCortex.PBX.contacts.forEach(function (contact) {
-//     var contElem = document.createElement('li');
-//     contElem.innerHTML = '<a href="#">' +
-//                 '<i class="material-icons">' + states[0] + '</i>&nbsp;' +
-//                 contact.uname + '(' + contact.cID + '), ' + contact.name +
-//                 '</a>';
-//     listElem.appendChild(contElem);
-//     var icon = contElem.getElementsByTagName('i')[0];
-//     contact.addListener('update', function (cntct) {
-//         /* Each time this contact is updated, this method will be called.
-//          * the contElem variable is scoped locally, so will remain in scope
-//          * meaning that this callback will have access to the right icon to
-//          * update.
-//          */
-//         icon.innerHTML = states[cntct.blf];
-//     });
-// });
+  // AJAX call to our api
+  const mentors = [{
+    
+  }]
+  console.log('AAAAAAAAA', IPCortex.PBX.contacts)
+
 }

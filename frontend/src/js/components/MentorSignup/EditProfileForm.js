@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Grid, Row, Col, ButtonInput } from 'react-bootstrap'
+import {Input, Grid, Row, Col, ButtonInput} from 'react-bootstrap'
 
 export default (props) => {
   return (

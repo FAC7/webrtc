@@ -36,9 +36,7 @@ export default class MenteeDashboard extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col md={8}>
-
-          </Col>
+          <Col md={8}>Video team's component goes herre</Col>
           <Col md={4}>
             <ProfileButtons
               status={this.state.status}
@@ -81,13 +79,13 @@ MenteeDashboard.defaultProps = {
   status: 'Offline',
   mentors: [{mentorName: 'Andrew'}, {mentorName: 'Sam'}, {mentorName: 'Ellie'}],
   editProfile: {
-    username: 'theSmellyAndrew',
-    firstname: 'Smelly',
-    lastname: 'Andrew',
-    age: 5,
-    gender: 'female',
-    profession: 'beingAndrew',
-    topics: ['Andrew', 'Andrews greatness', 'my glossy soft head of hair'],
+    username: 'Ivan',
+    firstname: 'Ivan',
+    lastname: 'King of Puns',
+    age: 10,
+    gender: 'male',
+    profession: 'King of Puns',
+    topics: ['Ivan', 'Ivan greatness', 'my glossy soft head of hair'],
     aboutme: 'I am da Bomb'
   }
 }

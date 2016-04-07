@@ -16,13 +16,13 @@ export default (props) => {
         id='password'
         type='password'
         placeholder='password'
-        required={props.editing ? false : true}
+        required={props.editing}
       />
       <Input
         id='confirm-password'
         type='password'
         placeholder='confirm-password'
-        required={props.editing ? false : true}
+        required={props.editing}
       />
       <Input
         id='firstname'

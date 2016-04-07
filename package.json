@@ -9,6 +9,8 @@
     "production-serve": "node backend/dist/server.js",
     "dev": "webpack-dev-server --hot --inline --content-base public/",
     "watch": "webpack --watch --progress",
+    "prestart": "webpack --progress --config webpack.config.js",
+    "start": "node backend/lib/server.js",
     "lint": "./node_modules/.bin/eslint ."
   },
   "repository": {

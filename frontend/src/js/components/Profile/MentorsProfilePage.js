@@ -2,7 +2,7 @@ import React from 'react'
 import {Grid, Row, Col, Button} from 'react-bootstrap'
 
 
-class ProfilePage extends React.Component {
+class MentorsProfilePage extends React.Component {
   render () {
     return (
       <Grid>
@@ -27,7 +27,7 @@ class ProfilePage extends React.Component {
   }
 }
 
-ProfilePage.propTypes = {
+MentorsProfilePage.propTypes = {
   username: React.PropTypes.string.isRequired,
   age: React.PropTypes.number.isRequired,
   gender: React.PropTypes.string.isRequired,
@@ -36,7 +36,7 @@ ProfilePage.propTypes = {
   aboutme: React.PropTypes.string.isRequired
 }
 
-ProfilePage.defaultProps = {
+MentorsProfilePage.defaultProps = {
   username: 'smellyAndrew',
   age: 5,
   gender: 'female',

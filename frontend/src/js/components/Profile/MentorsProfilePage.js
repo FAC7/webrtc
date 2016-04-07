@@ -1,33 +1,29 @@
 import React from 'react'
-import {Grid, Row, Col, Button} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 
 class MentorsProfilePage extends React.Component {
   render () {
     return (
-      <Grid>
-        <Row>
-          <Col xs={1}/>
-          <Col xs={3}>
-            <h3> {this.props.firstname} {this.props.lastname}</h3>
-            <p>gender: {this.props.gender}</p>
-            <p>age: {this.props.age}</p>
-            <p>profession: {this.props.profession}</p>
-            <p>topics: </p>
-            <ul> {this.props.topics.map((topic, i) => {
-              return <li key={i}>{topic}</li>
-            })}</ul>
-            <p>some things about me: </p>
-            <p> {this.props.aboutme}</p>
-            <Button> Request a chat </Button>
-          </Col>
-        </Row>
-      </Grid>
+      <div style={{'padding': '0 2em'}}>
+        <h3> {this.props.firstname} {this.props.lastname}</h3>
+        <p>gender: {this.props.gender}</p>
+        <p>age: {this.props.age}</p>
+        <p>profession: {this.props.profession}</p>
+        <p>topics: </p>
+        <ul> {this.props.topics.map((topic, i) => {
+          return <li key={i}>{topic}</li>
+        })}</ul>
+        <p>some things about me: </p>
+        <p> {this.props.aboutme}</p>
+        <Button> Request a chat </Button>
+      </div>
     )
   }
 }
 
 MentorsProfilePage.propTypes = {
   firstname: React.PropTypes.string.isRequired,
+  lastname: React.PropTypes.string.isRequired,
   age: React.PropTypes.number.isRequired,
   gender: React.PropTypes.string.isRequired,
   profession: React.PropTypes.string.isRequired,
@@ -36,7 +32,8 @@ MentorsProfilePage.propTypes = {
 }
 
 MentorsProfilePage.defaultProps = {
-  firstname: 'smellyAndrew',
+  firstname: 'Smelly',
+  lastname: 'Andrew',
   age: 5,
   gender: 'female',
   profession: 'beingAndrew',

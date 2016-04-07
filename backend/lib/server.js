@@ -9,19 +9,33 @@ import {handlePlugins, handleStart} from './helpers/server-helpers.js'
 
 // server plugins
 import Inert from 'inert'
+import Bell from 'bell'
+import AuthCookie from 'hapi-auth-cookie'
 
 // server routes
-import Hello from './routes/Hello.js'
 import Images from './routes/Images.js'
-import ReactUrls from './routes/ReactUrls.js'
 import Scripts from './routes/Scripts.js'
+import MenteeHomepage from './routes/MenteeHomepage.js.js'
+import Feedback from './routes/Feedback.js'
+import Login from './routes/Login.js'
+import MenteeLogin from './routes/MenteeLogin.js'
+import MenteeSignup from './routes/MenteeSignup.js'
+import MentorLogin from './routes/MentorLogin.js'
+import MentorSignup from './routes/MentorSignup.js'
+import MentorHomepage from '.routes/MentorHomepage.js'
+import Notes from './routes/Notes.js'
+
+// auth strategies
+import { TwitterCookie, TwitterOauth } from './authStrategies/twitterAuthStrategies.js'
 
 const ConnectionSettings = {port, routes: {cors: true}}
-const Plugins = [Inert]
-const Routes = [Hello, Images, ReactUrls, Scripts]
+const Plugins = [ Inert, Bell, AuthCookie ]
+const Routes = [Images, Scripts, MenteeHomepage, MentorSignup, MentorLogin, MentorHomepage, MenteeSignup, MenteeLogin, Feedback, Notes, Login]
 
 server.connection(ConnectionSettings)
 server.register(Plugins, handlePlugins)
+server.auth.strategy('twitter', 'bell', TwitterOauth)
+server.auth.strategy('session', 'cookie', TwitterCookie)
 server.route(Routes)
 server.start(handleStart)
 

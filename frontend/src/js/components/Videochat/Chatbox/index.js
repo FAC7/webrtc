@@ -5,13 +5,9 @@ import videoHelpers from './../../../helpers/videoHelpers.js'
 export default (props) => {
   console.log("chat box");
   return (
-    <Grid>
   <Row className="show-grid">
-    <Col xs={15} md={10}><input type="text" id="textbox" ></input></Col>
-    <Col xs={3} md={2}><input type="Submit" id="Submit" ></input></Col>
+    <Col xs={15} md={10} className="flush"><input type="text" id="textbox" style={props.chatstyle}></input></Col>
+    <Col xs={3} md={2} className="flush"><input type="Submit" id="Submit" style={props.submitstyle}></input></Col>
   </Row>
-  </Grid>
-
-
   )
 }

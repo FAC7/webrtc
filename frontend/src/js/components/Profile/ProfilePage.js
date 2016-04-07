@@ -7,16 +7,18 @@ class ProfilePage extends React.Component {
     return (
       <Grid>
         <Row>
-          <Col xs={1}></Col>
+          <Col xs={1}/>
           <Col xs={3}>
             <h3> {this.props.username}</h3>
             <p>gender: {this.props.gender}</p>
             <p>age: {this.props.age}</p>
-            <p>profession:  {this.props.profession}</p>
+            <p>profession: {this.props.profession}</p>
             <p>topics: </p>
-            <ul>  {this.props.topics.map((topic)=>{
+            <ul>
+              {this.props.topics.map((topic) => {
                 return <li>{topic}</li>
-              })}</ul>
+              })}
+            </ul>
             <p>some things about me: </p>
             <p> {this.props.aboutme}</p>
             <Button> Request a chat </Button>

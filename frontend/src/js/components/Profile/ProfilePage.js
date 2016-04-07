@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, Row, Col} from 'react-bootstrap'
+import {Grid, Row, Col, Button} from 'react-bootstrap'
 
 
 class ProfilePage extends React.Component {
@@ -8,25 +8,32 @@ class ProfilePage extends React.Component {
       <Grid>
         <Row>
           <Col xs={1}></Col>
-          <Col xs={10}>
-            <h1> {this.props.username}</h1>
-            <p> gender: {this.props.gender}</p>
-            <p> age: {this.props.age}</p>
-            <p> profession: {this.props.profession}</p>
-            <ul> <h5>topics: </h5> {this.props.topics.map((topic)=>{
-                return <p>{topic}</p>
+          <Col xs={3}>
+            <h3> {this.props.username}</h3>
+            <p>gender: {this.props.gender}</p>
+            <p>age: {this.props.age}</p>
+            <p>profession:  {this.props.profession}</p>
+            <p>topics: </p>
+            <ul>  {this.props.topics.map((topic)=>{
+                return <li>{topic}</li>
               })}</ul>
-            <h4>some things about me: </h4>
+            <p>some things about me: </p>
             <p> {this.props.aboutme}</p>
+            <Button> Request a chat </Button>
           </Col>
         </Row>
       </Grid>
     )
-    }
+  }
 }
 
 ProfilePage.propTypes = {
-
+  username: React.PropTypes.string.isRequired,
+  age: React.PropTypes.number.isRequired,
+  gender: React.PropTypes.string.isRequired,
+  profession: React.PropTypes.string.isRequired,
+  topics: React.PropTypes.array.isRequired,
+  aboutme: React.PropTypes.string.isRequired
 }
 
 ProfilePage.defaultProps = {

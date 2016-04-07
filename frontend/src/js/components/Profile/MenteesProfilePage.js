@@ -2,14 +2,14 @@ import React from 'react'
 import {Grid, Row, Col, Button} from 'react-bootstrap'
 
 
-class ProfilePage extends React.Component {
+class MenteesProfilePage extends React.Component {
   render () {
     return (
       <Grid>
         <Row>
           <Col xs={1}/>
           <Col xs={3}>
-            <h3> {this.props.username}</h3>
+            <h3> {this.props.firstname} {this.props.lastname}</h3>
             <p>gender: {this.props.gender}</p>
             <p>age: {this.props.age}</p>
             <p>profession: {this.props.profession}</p>
@@ -29,8 +29,8 @@ class ProfilePage extends React.Component {
   }
 }
 
-ProfilePage.propTypes = {
-  username: React.PropTypes.string.isRequired,
+MenteesProfilePage.propTypes = {
+  firstname: React.PropTypes.string.isRequired,
   age: React.PropTypes.number.isRequired,
   gender: React.PropTypes.string.isRequired,
   profession: React.PropTypes.string.isRequired,
@@ -38,8 +38,8 @@ ProfilePage.propTypes = {
   aboutme: React.PropTypes.string.isRequired
 }
 
-ProfilePage.defaultProps = {
-  username: 'smellyAndrew',
+MenteesProfilePage.defaultProps = {
+  firstname: 'smellyAndrew',
   age: 5,
   gender: 'female',
   profession: 'beingAndrew',
@@ -47,4 +47,4 @@ ProfilePage.defaultProps = {
   aboutme: 'I am da Bomb'
 }
 
-export default ProfilePage
+export default MenteesProfilePage

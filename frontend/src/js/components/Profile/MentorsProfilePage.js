@@ -9,7 +9,7 @@ class MentorsProfilePage extends React.Component {
         <Row>
           <Col xs={1}></Col>
           <Col xs={3}>
-            <h3> {this.props.username}</h3>
+            <h3> {this.props.firstname} {this.props.lastname}</h3>
             <p>gender: {this.props.gender}</p>
             <p>age: {this.props.age}</p>
             <p>profession:  {this.props.profession}</p>
@@ -28,7 +28,7 @@ class MentorsProfilePage extends React.Component {
 }
 
 MentorsProfilePage.propTypes = {
-  username: React.PropTypes.string.isRequired,
+  firstname: React.PropTypes.string.isRequired,
   age: React.PropTypes.number.isRequired,
   gender: React.PropTypes.string.isRequired,
   profession: React.PropTypes.string.isRequired,
@@ -37,7 +37,7 @@ MentorsProfilePage.propTypes = {
 }
 
 MentorsProfilePage.defaultProps = {
-  username: 'smellyAndrew',
+  firstname: 'smellyAndrew',
   age: 5,
   gender: 'female',
   profession: 'beingAndrew',

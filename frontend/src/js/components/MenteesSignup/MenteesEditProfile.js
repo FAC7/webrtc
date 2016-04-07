@@ -10,8 +10,11 @@ export default () => {
           <form action='/save-mentor-profile'>
             <h2>Mentee Profile Page</h2>
             <h4>Fill in your details</h4>
-            <Input id='name' type='text' placeholder='name' required />
             <Input id='username' type='text' placeholder='username' required/>
+            <Input id='password' type='password' placeholder='password' required/>
+            <Input id='confirm-password' type='password' placeholder='confirm-password' required/>
+            <Input id='firstname' type='text' placeholder='first name' required />
+            <Input id='lastname' type='text' placeholder='last name' required />
             <Input id='gender' type='text' placeholder='gender' required/>
             <Input id='age' type='text' placeholder='age' required/>
             <Input id='profession' type='text' placeholder='profession' required/>

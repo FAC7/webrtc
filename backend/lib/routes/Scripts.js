@@ -1,8 +1,9 @@
+import path from 'path'
+
 export default {
   path: '/{filename}.js',
   method: 'GET',
   handler: (response, reply) => {
-    const js = './public' + response.path
-    reply.file(js)
+    reply.file(path.join(__dirname, '..', '..', '..', 'public', response.path))
   }
 }

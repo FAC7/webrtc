@@ -7,7 +7,6 @@ class Room extends React.Component {
     //ajax call to PBX API for info on all contacts in the room
     initialisePBX(this.props.pbxUsername, this.props.pbxpassword)
   }
-
   render () {
     return (
       <div>hello</div>
@@ -36,6 +35,7 @@ const initialisePBX = (username, password) => {
         IPCortex.PBX.startFeed().then(
           function () {
             console.log(TAG, 'Live data feed started')
+
             // startTask()
           },
           function () {

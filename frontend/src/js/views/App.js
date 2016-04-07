@@ -14,6 +14,9 @@ export default class App extends React.Component {
     return (
       <div>
         <Header menuItems={options.menuItems} logoUrl={options.logoUrl} fluid />
+        <div id="contacts">
+    		  <div class="contacts-title">Contacts</div>
+    	  </div>
         <div className='header-spacing'></div>
           {this.props.children}
         <Footer logoUrl={options.logoUrl} />

@@ -16,14 +16,10 @@ import AuthCookie from 'hapi-auth-cookie'
 import ReactUrls from './routes/ReactUrls.js'
 import Images from './routes/Images.js'
 import Scripts from './routes/Scripts.js'
-import MenteeHomepage from './routes/MenteeHomepage.js.js'
+import MenteeHomepage from './routes/MenteeHomepage.js'
 import Feedback from './routes/Feedback.js'
-import Login from './routes/Login.js'
-import MenteeLogin from './routes/MenteeLogin.js'
-import MenteeSignup from './routes/MenteeSignup.js'
 import MentorLogin from './routes/MentorLogin.js'
-import MentorSignup from './routes/MentorSignup.js'
-import MentorHomepage from '.routes/MentorHomepage.js'
+import MentorHomepage from './routes/MentorHomepage.js'
 import Notes from './routes/Notes.js'
 
 // auth strategies
@@ -31,7 +27,7 @@ import { TwitterCookie, TwitterOauth } from './authStrategies/twitterAuthStrateg
 
 const ConnectionSettings = {port, routes: {cors: true}}
 const Plugins = [ Inert, Bell, AuthCookie ]
-const Routes = [ReactUrls, Images, Scripts, MenteeHomepage, MentorSignup, MentorLogin, MentorHomepage, MenteeSignup, MenteeLogin, Feedback, Notes, Login]
+const Routes = [ReactUrls, Images, Scripts, MenteeHomepage, MentorLogin, MentorHomepage, Feedback, Notes]
 
 server.connection(ConnectionSettings)
 server.register(Plugins, handlePlugins)

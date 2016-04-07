@@ -1,6 +1,6 @@
 export default {
   path: '/mentorhomepage',
-  method: 'POST',
+  method: 'GET',
   handler: (request, reply) => {
     console.log(request.url)
     reply('mentorhomepage')

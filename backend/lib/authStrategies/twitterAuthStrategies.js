@@ -5,7 +5,7 @@ const CONSUMER_SECRET = process.env.CONSUMER_SECRET
 export const TwitterCookie = {
   password: 'password1ajskdhasjkdhasjkdhasjkhdjsakdhajksdhasjkdh',
   cookie: 'twitterCookie',
-  redirectTo: '/login-with-twitter',
+  redirectTo: '/auth',
   isSecure: false
 }
 

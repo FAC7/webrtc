@@ -1,5 +1,5 @@
 import React from 'react'
-import { Well, Collapse } from 'react-bootstrap'
+import {Well, Collapse} from 'react-bootstrap'
 
 export default class MenteeItem extends React.Component {
   constructor () {
@@ -10,14 +10,21 @@ export default class MenteeItem extends React.Component {
     return (
       <div>
         <a href='#' style={{textDecoration: 'none'}}>
-          <li key={this.props.index} onClick={() => this.setState({ open: !this.state.open })} style={this.props.styles}>
+          <li
+            key={this.props.index}
+            onClick={() => this.setState({open: !this.state.open})}
+            style={this.props.styles}
+          >
             {this.props.menteeName}
           </li>
         </a>
         <Collapse in={this.state.open}>
           <div>
             <Well>
-              <p><b>Last conversation:</b> {(new Date(this.props.lastConversation)).toString().substr(0, 15)}</p>
+              <p>
+                <b>Last conversation:</b>
+                {(new Date(this.props.lastConversation)).toString().substr(0, 15)}
+              </p>
               <p><b>About:</b> {this.props.about}</p>
               <p><b>Notes:</b> {this.props.notes}</p>
             </Well>

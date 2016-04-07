@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Row, Col, Modal, Button } from 'react-bootstrap'
+import {Grid, Row, Col, Modal, Button} from 'react-bootstrap'
 import MenteeList from './MenteeList.js'
 import ProfileButtons from './ProfileButtons.js'
 import MentorsProfilePage from '../Profile/MentorsProfilePage.js'
@@ -16,9 +16,9 @@ export default class MentorDashboard extends React.Component {
     this.changeStatus = this.changeStatus.bind(this)
   }
 
-  changeStatus (status) {
+  changeStatus (newStatus) {
     this.setState({
-      status
+      newStatus
     })
   }
 
@@ -49,7 +49,9 @@ export default class MentorDashboard extends React.Component {
             />
           </Col>
         </Row>
-        <Modal show={this.state.showViewModal} onHide={this.toggleModal.bind(this, 'showViewModal')}>
+        <Modal
+          show={this.state.showViewModal}
+          onHide={this.toggleModal.bind(this, 'showViewModal')}>
           <Modal.Header closeButton>
             <Modal.Title>Mentor Profile</Modal.Title>
           </Modal.Header>
@@ -58,7 +60,9 @@ export default class MentorDashboard extends React.Component {
             <Button onClick={this.toggleModal.bind(this, 'showViewModal')}>Close</Button>
           </Modal.Footer>
         </Modal>
-        <Modal show={this.state.showEditModal} onHide={this.toggleModal.bind(this, 'showEditModal')}>
+        <Modal
+          show={this.state.showEditModal}
+          onHide={this.toggleModal.bind(this, 'showEditModal')}>
           <Modal.Header closeButton>
             <Modal.Title>Mentor Profile</Modal.Title>
           </Modal.Header>
@@ -75,23 +79,35 @@ export default class MentorDashboard extends React.Component {
 MentorDashboard.defaultProps = {
   status: 'Offline',
   mentees: [
-    { menteeName: 'Sam Houston',
+    {menteeName: 'Sam Houston',
       conversationLink: '/contact',
       notes: 'Sam was in a good mood last time. I think his waterpolo is going well.',
       lastConversation: 1460028602793,
-      about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly school-related. He would like to start working towards his exams but needs some direction around what to expect, how to deal with it and some advice to help alleviate his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks, they signpost him to the mentoring platform.'
+      about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly' +
+      'school-related. He would like to start working towards his exams but needs some ' +
+      'direction around what to expect, how to deal with it and some advice to help alleviate ' +
+      'his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks,' +
+      ' they signpost him to the mentoring platform.'
     },
-    { menteeName: 'Smelly Andrew',
+    {menteeName: 'Smelly Andrew',
       conversationLink: '/contact',
       notes: 'Sam was in a good mood last time. I think his waterpolo is going well.',
       lastConversation: 1460028602793,
-      about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly school-related. He would like to start working towards his exams but needs some direction around what to expect, how to deal with it and some advice to help alleviate his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks, they signpost him to the mentoring platform.'
+      about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly' +
+      'school-related. He would like to start working towards his exams but needs some ' +
+      'direction around what to expect, how to deal with it and some advice to help alleviate ' +
+      'his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks,' +
+      ' they signpost him to the mentoring platform.'
     },
-    { menteeName: 'Rob ',
+    {menteeName: 'Rob ',
       conversationLink: '/contact',
       notes: 'Sam was in a good mood last time. I think his waterpolo is going well.',
       lastConversation: 1460028602793,
-      about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly school-related. He would like to start working towards his exams but needs some direction around what to expect, how to deal with it and some advice to help alleviate his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks, they signpost him to the mentoring platform.'
+      about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly' +
+      'school-related. He would like to start working towards his exams but needs some ' +
+      'direction around what to expect, how to deal with it and some advice to help alleviate ' +
+      'his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks,' +
+      ' they signpost him to the mentoring platform.'
     }],
   editProfile: {
     username: 'theSmellyAndrew',

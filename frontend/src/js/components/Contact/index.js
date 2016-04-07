@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Row, Col } from 'react-bootstrap'
+import {Grid, Row, Col} from 'react-bootstrap'
 
 const styles = {
   textAlign: 'center',
@@ -7,7 +7,7 @@ const styles = {
 }
 const repoLink = 'https://github.com/foundersandcoders'
 
-export default (props) => {
+export default () => {
   return (
     <Grid style={styles}>
       <Row>

@@ -18,8 +18,14 @@ export const mentorSignUp = (data) => {
   }
 
   client.hmset('mentors', data.mentorUsername, JSON.stringify(obj))
-
 }
+
+export const getUserData = (hash, username) => {
+  return client.hget(hash)
+}
+
+
+
 export const getDummyData = () => {
   return client.lrange('myList', 0, -1)
 }

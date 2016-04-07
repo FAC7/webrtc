@@ -6,8 +6,8 @@ client.lrange = Bluebird.promisify(client.lrange)
 
 // these are some dummy functions
 // make sure to delete these if you're done using them
-export const addDummyData = (data) => {
-  return client.lpush('myList', data)
+export const getUserData = (hash, username) => {
+  return client.hget(hash)
 }
 
 export const getDummyData = () => {

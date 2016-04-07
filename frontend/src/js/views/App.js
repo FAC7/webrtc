@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './Header/index.js'
-import Footer from './Footer/index.js'
+import Header from '../components/Header/index.js'
+import Footer from '../components/Footer/index.js'
 
 import '../../scss/style.scss'
 

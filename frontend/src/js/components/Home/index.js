@@ -1,5 +1,7 @@
 import React from 'react'
 import {Jumbotron} from 'react-bootstrap'
+import MenteesEditProfile from '../MenteesSignup/MenteesEditProfile.js'
+import MenteesProfilePage from '../Profile/MenteesProfilePage.js'
 
 export default () => {
   return (

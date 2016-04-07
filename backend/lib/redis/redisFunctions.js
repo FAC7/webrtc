@@ -1,11 +1,9 @@
 import client from './client.js'
-import Bluebird from 'bluebird'
+import bluebird from 'bluebird'
 
-client.lpush = Bluebird.promisify(client.lpush)
-client.lrange = Bluebird.promisify(client.lrange)
+bluebird.promisifyAll(redis.RedisClient.prototype)
+bluebird.promisifyAll(redis.Multi.prototype)
 
-// these are some dummy functions
-// make sure to delete these if you're done using them
 export const mentorSignUp = (data) => {
   let obj = {
     mentorUsername: data.mentorUsername,
@@ -20,12 +18,15 @@ export const mentorSignUp = (data) => {
   client.hmset('mentors', data.mentorUsername, JSON.stringify(obj))
 }
 
-export const getUserData = (hash, username) => {
-  return client.hget(hash)
+
+export const getMenteeNotes = (menteeName) => {
+    client.hgetAsync('menteenotes', menteeName).then((data) => {
+      const parsedData = JSON.parse(data)
+    }).catch()
 }
 
-
-
-export const getDummyData = () => {
-  return client.lrange('myList', 0, -1)
+export const insertMenteeNotes = (menteeName, notes) => {
+  return new Promise((resolve, reject) => {
+    client.hset('menteenotes', notes)
+  })
 }

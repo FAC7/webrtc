@@ -4,7 +4,7 @@ import {Button} from 'react-bootstrap'
 class MentorsProfilePage extends React.Component {
   render () {
     return (
-      <div style={{'padding': '0 2em'}}>
+      <div style={{padding: '0 2em'}}>
         <h3> {this.props.firstname} {this.props.lastname}</h3>
         <p>gender: {this.props.gender}</p>
         <p>age: {this.props.age}</p>

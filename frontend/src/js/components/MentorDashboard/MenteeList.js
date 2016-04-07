@@ -1,14 +1,35 @@
 import React from 'react'
-import { Link } from 'react-router'
+import MenteeItem from './MenteeItem.js'
+
+const styles = {
+  li: {
+    listStyleType: 'none',
+    color: 'white',
+    fontSize: '1.7em',
+    textDecoration: 'none'
+  },
+  ul: {
+    backgroundColor: '#FFBE63',
+    padding: '2em',
+    borderRadius: '10px'
+  }
+}
 
 export default (props) => {
   return (
-    <ul>
-      {props.mentees.map((el, index) => {
+    <ul style={styles.ul} rounded>
+      {props.mentees.map((menteeObj, index) => {
         return (
-            <li key={index}>
-              <Link to={el.conversationLink} key={index}>{el.menteeName}</Link>
-            </li>
+          <MenteeItem
+            key={index}
+            index={index}
+            conversationLink={menteeObj.conversationLink}
+            menteeName={menteeObj.menteeName}
+            about={menteeObj.about}
+            lastConversation={menteeObj.lastConversation}
+            notes={menteeObj.notes}
+            styles={styles.li}
+          />
         )
       })}
     </ul>

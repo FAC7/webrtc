@@ -4,18 +4,14 @@ import Bluebird from 'bluebird'
 client.lpush = Bluebird.promisify(client.lpush)
 client.lrange = Bluebird.promisify(client.lrange)
 
-// these are some dummy functions
-// make sure to delete these if you're done using them
 export const mentorSignUp = (data) => {
   let obj = data[Object.keys(data)[0]]
-  console.log(obj)
 
   client.hmset('mentors', Object.keys(data)[0], JSON.stringify(obj))
 }
 
 export const menteeSignUp = (data) => {
   let obj = data[Object.keys(data)[0]]
-  console.log(obj)
 
   client.hmset('mentees', Object.keys(data)[0], JSON.stringify(obj))
 }

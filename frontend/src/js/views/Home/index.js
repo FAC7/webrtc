@@ -3,12 +3,18 @@ import {Jumbotron, Grid, Col, Row, Button, PageHeader} from 'react-bootstrap'
 import {browserHistory} from 'react-router'
 
 export default class Home extends React.Component {
+  constructor () {
+    super()
+    this.onMenteeSignupClick = this.onMenteeSignupClick.bind(this)
+  }
+
   onUrgentClick () {
     browserHistory.push('/chat/urgent')
   }
 
   onMenteeSignupClick () {
-    browserHistory.push('/signup/mentee')
+    console.log('clicked')
+    this.props.history.push('/auth/signup/mentee')
   }
 
   onMentorSignupClick () {
@@ -16,6 +22,7 @@ export default class Home extends React.Component {
   }
 
   render () {
+    console.log(this.props)
     return (
       <div className='content-wrap' style={{marginBottom: '200px'}}>
         <Jumbotron>

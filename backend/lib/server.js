@@ -36,7 +36,6 @@ const Routes = [
   Notes,
   Profile
 ]
->>>>>>> master
 
 server.connection(ConnectionSettings)
 server.register(Plugins, handlePlugins)

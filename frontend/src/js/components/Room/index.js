@@ -66,7 +66,10 @@ var chatEnabled = IPCortex.PBX.enableChat(
         if (rooms[room.roomID] && room.state === 'dead'){
           delete rooms[room.roomID]
         }
-        
+        var messagesBox = document.getElementById('messages')
+        room.messages.forEach((message) => {
+          // render messages
+        })
       }
     )
     /* If the room has come into existance due to a video request,

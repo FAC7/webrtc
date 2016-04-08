@@ -1,2 +1,2 @@
-// require('./server.test.js')
+require('./server.test.js')
 require('./redisFunctions.test.js')

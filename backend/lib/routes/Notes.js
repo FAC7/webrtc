@@ -1,4 +1,9 @@
-import db from '../redis/redisFunctions.js'
+import {
+  getMenteeNotes,
+  insertMenteeNotes,
+  getPrechatNotes,
+  insertPrechatNotes
+} from '../redis/redisFunctions.js'
 
 export default {
   path: '/notes/{noteType}/{menteeName}',
@@ -21,23 +26,19 @@ export default {
   }
 }
 
-function feedbackHandler () {
-
-}
-
 function prechatHandler (req, reply) {
   if (req.method.toUpperCase() === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
 
-    db.getPrechatNotes(req.params.menteename, numRecords)
+    getPrechatNotes(req.params.menteename, numRecords)
       .then((results) => {
         reply({success: true, data: results})
       })
       .catch((error) => {
         reply({success: false, data: error})
       })
-  } else if (req.method === 'POST') {
-    db.insertPrechatNotes(req.params.menteename, req.payload)
+  } else if (req.method.toUpperCase() === 'POST') {
+    insertPrechatNotes(req.params.menteename, req.payload)
       .then((success) => {
         reply({success: true, data: success})
       })
@@ -53,15 +54,15 @@ function postchatHandler (req, reply) {
   if (req.method.toUpperCase() === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
 
-    db.getMenteeNotes(req.params.menteename, numRecords)
+    getMenteeNotes(req.params.menteename, numRecords)
       .then((results) => {
         reply({success: true, data: results})
       })
       .catch((error) => {
         reply({success: false, data: error})
       })
-  } else if (req.method === 'POST') {
-    db.insertMenteeNotes(req.params.menteename, req.payload)
+  } else if (req.method.toUpperCase() === 'POST') {
+    insertMenteeNotes(req.params.menteename, req.payload)
       .then((success) => {
         reply({success: true, data: success})
       })

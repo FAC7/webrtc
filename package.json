@@ -11,7 +11,8 @@
     "watch": "webpack --watch --progress",
     "prestart": "webpack --progress --config webpack.config.js && babel backend/lib -d backend/dist --presets es2015,stage-1",
     "start": "node backend/dist/index.js",
-    "lint": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint .",
+    "test": "npm run server-build && tape ./backend/tests/runner.js"
   },
   "repository": {
     "type": "git",

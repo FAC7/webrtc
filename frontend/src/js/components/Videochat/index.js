@@ -4,7 +4,7 @@ import Chatbox from './Chatbox/index.js'
 
 import {Grid, Row, Col} from 'react-bootstrap'
 import EmptyCol from './Reused/EmptyCol.js'
-// import videoHelpers from './../../../helpers/videoHelpers.js'
+// import videoHelpers from './../../helpers/videoHelpers.js'
 
 export default () => {
   return (

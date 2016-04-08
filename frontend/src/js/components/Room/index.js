@@ -4,6 +4,7 @@ import React from 'react'
 class Room extends React.Component {
 
   componentDidMount () {
+    console.log('logging');
     //ajax call to PBX API for info on all contacts in the room
     initialisePBX('fac24b', 'wy3xxbsj')
   }

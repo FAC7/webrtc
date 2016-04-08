@@ -1,19 +1,25 @@
 const redisFunction = require('../redis/redisFunctions.js')
 
 export default {
-  path: '/mentor-signup',
+  path: '/auth/signup/mentor',
   method: 'GET',
   handler: (request, reply) => {
     const data = {
       mentorUsername: 'SuperJackie',
       name: 'Jackie',
       age: 105,
-      gender: 'male',
-      specialities: ['depression', 'anorexia'],
-      background: 'student of psychology',
-      availabile: true
-    }
-    console.log(request.payload)
+      firstName: 'Jackie',
+      lastName: 'string',
+      gender: 'female',
+      profession: 'student',
+      topics: ['depression', 'anorexia'],
+      aboutme: 'im the best',
+      feedback: [{date: 123,
+                 mentee: 'sam',
+                 content: 'doin well'}],
+      timeSpentMentoring: 15,
+      previousMentees: ['Sam', 'Owen', 'Virginie'] }
+   }
     redisFunction.mentorSignUp(data)
     // redisFunction.mentorSignUp(request.payload)
     reply.redirect('/')

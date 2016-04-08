@@ -30,12 +30,10 @@ import {TwitterCookie, TwitterOauth} from './authStrategies/twitterAuthStrategie
 
 const ConnectionSettings = {port, routes: {cors: true}}
 const Plugins = [Inert, Bell, AuthCookie]
-const Plugins = [ Inert, Bell, AuthCookie ]
 const Routes = [
   ReactUrls,
   Images,
   Scripts,
-  MenteeHomepage,
   GetAllMentors,
   MenteeSignup,
   TwitterLogin,

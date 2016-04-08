@@ -1,8 +1,15 @@
+const redisFunction = require('../redis/redisFunctions.js')
+
 export default {
   path: '/mentee-signup',
   method: 'GET',
   handler: (request, reply) => {
-    console.log(request.url)
-    reply('mentee-signup')
+    let data = {
+      menteeUsername: 'Donald',
+    }
+    console.log(request.payload)
+    redisFunction.menteeSignUp(data)
+    // redisFunction.mentorSignUp(request.payload)
+    reply.redirect('/')
   }
 }

@@ -1,65 +1,76 @@
-import client from './client.js'
-import Bluebird from 'bluebird'
+export const mentorSignUp = (client, data) => {
+  const obj = {
+    mentorUsername: data.mentorUsername,
+    name: data.name,
+    age: data.age,
+    gender: data.gender,
+    // 'specialities', data.specialities.toString(),
+    background: data.background,
+    status: data.status
+  }
 
-client.lpush = Bluebird.promisify(client.lpush)
-client.lrange = Bluebird.promisify(client.lrange)
-
-// these are some dummy functions
-// make sure to delete these if you're done using them
-export const mentorSignUp = (data) => {
-  let obj = data[Object.keys(data)[0]]
-  console.log(obj)
-
-  client.hmset('mentors', Object.keys(data)[0], JSON.stringify(obj))
+  client.hmset('mentors', data.mentorUsername, JSON.stringify(obj))
 }
 
-export const menteeSignUp = (data) => {
-  let obj = data[Object.keys(data)[0]]
-  console.log(obj)
-
-  client.hmset('mentees', Object.keys(data)[0], JSON.stringify(obj))
-}
-
-export const getAllMentors = (cb) => {
-  client.hgetall('mentors', (err, reply) => {
-    if (err) {
-      console.log('error in getAllMentors', err)
-    } else {
-      const mentorArray = Object.keys(reply).map((key) => {
-        return reply[key]
+const getNotes = (hashName) => {
+  return (client, menteeName, numRecords) => {
+    return client.hgetAsync(hashName, menteeName)
+      .then((result) => {
+        let results
+        if (result) {
+          results = JSON.parse(result)
+        } else {
+          results = []
+        }
+        return Promise.resolve(results.slice(results.length - numRecords))
       })
-      cb(JSON.stringify(mentorArray))
-    }
-  })
+  }
 }
 
-export const getUserData = (hash, username, cb) => {
-  client.hget(hash, username, (err, reply) => {
-    if (err) {
-      throw err
-    } else {
-      cb(reply)
-    }
-  })
+const insertNotes = (hashName) => {
+  return (client, menteeName, noteObj) => {
+    return client.hgetAsync(hashName, menteeName)
+      .then((result) => {
+        let notes
+        try {
+          notes = JSON.parse(result)
+          notes.push(noteObj)
+        } catch (e) {
+          notes = [noteObj]
+        } finally {
+          return client.hsetAsync(hashName, menteeName, JSON.stringify(notes))
+        }
+      })
+  }
 }
 
-export const getDummyData = () => {
-  return client.lrange('myList', 0, -1)
+export const getUserProfile = (client, userType, userName) => {
+  return client.hmgetAsync(userType, userName)
+    .then((result) => {
+      let results
+      if (result) {
+        results = JSON.parse(result)
+      } else {
+        results = {}
+      }
+      return Promise.resolve(results)
+    })
 }
 
-//
-//  Mentors: { username: {
-//     apiId: 'mentor-1',
-//     apiPassword: 'mentor1234',
-//     age: num,
-//     firstName: string,
-//     lastName: string,
-//     gender: string,
-//     profession: string,
-//     topics: [strings],
-//     aboutme: string,
-//     feedback: [{date: num,
-//                 mentee: string,
-//                 content: string}],
-//     timeSpentMentoring: num }, ...
-// }
+export const getAllUserTypes = (client, userType) => {
+  return client.hgetallAsync(userType)
+    .then((result) => {
+      let results
+      if (result) {
+        results = result
+      } else {
+        results = {}
+      }
+      return Promise.resolve(results)
+    })
+}
+
+export const getMenteeNotes = getNotes('menteenotes')
+export const insertMenteeNotes = insertNotes('menteenotes')
+export const getPrechatNotes = getNotes('prechatnotes')
+export const insertPrechatNotes = insertNotes('prechatnotes')

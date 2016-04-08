@@ -44,6 +44,19 @@ const insertNotes = (hashName) => {
   }
 }
 
+export const getUserProfile = (client, userType, userName) => {
+  return client.hmgetAsync(userType, userName)
+    .then((result) => {
+      let results
+      if (result) {
+        results = JSON.parse(result)
+      } else {
+        results = {}
+      }
+      return Promise.resolve(results)
+    })
+}
+
 export const getMenteeNotes = getNotes('menteenotes')
 export const insertMenteeNotes = insertNotes('menteenotes')
 export const getPrechatNotes = getNotes('prechatnotes')

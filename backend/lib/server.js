@@ -23,6 +23,7 @@ import TwitterLogin from './routes/TwitterLogin.js'
 import MentorHomepage from './routes/MentorHomepage.js'
 import MentorSignup from './routes/MentorSignup.js'
 import Notes from './routes/Notes.js'
+import GetUserProfile from './routes/GetUserProfile.js'
 
 // auth strategies
 import {TwitterCookie, TwitterOauth} from './authStrategies/twitterAuthStrategies.js'
@@ -39,7 +40,8 @@ const Routes = [
   MentorHomepage,
   MentorSignup,
   Feedback,
-  Notes
+  Notes,
+  GetUserProfile
 ]
 
 server.connection(ConnectionSettings)

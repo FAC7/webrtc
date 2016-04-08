@@ -7,11 +7,13 @@ import EmptyCol from './Reused/EmptyCol.js'
 // import videoHelpers from './../../helpers/videoHelpers.js'
 
 export default () => {
+  const contentWidthXs = 18 - contentOffset * 2
+  const contentWidthMd = 12 - contentOffset
   return (
     <Grid>
       <Row className='show-grid flush'>
         <EmptyCol md={contentOffset} />
-        <Col xs={10} md={8} className='flush'>
+        <Col xs={contentWidthXs} md={contentWidthMd} className='flush'>
           <Videobox
             videostyle={videostyle}
             buttonsStyle={buttonsStyle}
@@ -23,7 +25,7 @@ export default () => {
       </Row>
       <Row className='show-grid'>
         <EmptyCol md={contentOffset} />
-        <Col xs={10} md={8} className='flush'>
+        <Col xs={contentWidthXs} md={contentWidthMd} className='flush'>
           <Chatbox
             chatstyle={chatstyle}
             submitstyle={submitstyle}

@@ -36,13 +36,13 @@ class MentorList extends React.Component {
   }
 
   componentDidMount () {
-    //ajax call to PBX API for info on all contacts in the room
+    // ajax call to PBX API for info on all contacts in the room
     this.initialisePBX('fac33b', 'a2qitapm')
     var submit = document.getElementById('Submit')
     var input = document.getElementById('textbox')
     submit.addEventListener('click', (e) => {
       console.log('room (when clicking)-->', currentRoom)
-      console.log('posting', input.value);
+      console.log('posting', input.value)
       currentRoom.post(input.value)
       input.value = ''
     })
@@ -50,70 +50,68 @@ class MentorList extends React.Component {
   initialisePBX (username, password) {
     const that = this
 
-    var host = 'https://fac1.ipcortex.net'
+    var host = 'https://fac1.ipcortex.net' // eslint-disable-line
 
-    IPCortex.PBX.Auth.setHost('https://fac1.ipcortex.net')
-    IPCortex.PBX.Auth.login({username: username, password: password}).then(
+    IPCortex.PBX.Auth.setHost('https://fac1.ipcortex.net') // eslint-disable-line
+    IPCortex.PBX.Auth.login({username: username, password: password}).then( // eslint-disable-line
       () => {
         // console.log(TAG, 'Login successful')
         /* Get the API to start collecting data */
-        IPCortex.PBX.startFeed().then(() => {
-            // console.log(TAG, 'Live data feed started')
-            that.filterMentors ()
-            // sets up room for video chat to be sent over
-            IPCortex.PBX.enableChat((room) => {
-              // rob says decide if mentee shows their video????
-              currentRoom = room
-              if ( typeof room != 'object' ){
-                return
-              }
-              room.addListener('update', (room) => {
-                  if (rooms[room.roomID] && room.state === 'dead'){
-                    delete rooms[room.roomID]
-                  }
-                  var messagesBox = document.getElementById('messages')
-                  room.messages.forEach((message) => {
-                    // render messages
-                  })
-                }
-              )
-              /* If the room has come into existance due to a video request,
-                 start video with the stored stream */
-              if (room.cID == media.cID && media.stream && !that.state.pleaseCall) {
-                console.log('New room, starting video chat')
-                /* Listen for updates on the Av instance */
-                room.videoChat(media.stream).addListener('update', this.processFeed)
-                media = {}
-              }
-              rooms[room.roomID] = room
-
-              console.log('THAT OBJECT', that.state.pleaseCall)
-              if (that.state.pleaseCall) {
-                console.log('What is pleaseCall? pleaseCall is ', that.state.pleaseCall);
-                MentorItem.startVideoCall(room)
-
-              }
-              //following line is webrtc vanilla
-
-              //called after Mentor accepts video invitation
-              IPCortex.PBX.enableFeature('av', (av) => {
-                console.log('enable feature av')
-                av.addListener('update', this.processFeed)
-                this.processFeed(av, currentRoom)
-              }, ['chat'])
-            },
-            function () {
-              // console.log(TAG, 'Live data feed failed')
+        IPCortex.PBX.startFeed().then(() => { // eslint-disable-line
+          // console.log(TAG, 'Live data feed started')
+          that.filterMentors()
+          // sets up room for video chat to be sent over
+          IPCortex.PBX.enableChat((room) => { // eslint-disable-line
+            // rob says decide if mentee shows their video????
+            currentRoom = room
+            if (typeof room !== 'object') {
+              return
             }
-          )
-        },
-        function () {
-          // console.log(TAG, 'Login failed')
-        }
-      )
-    });
-  }
+            room.addListener('update', (room) => {
+              if (rooms[room.roomID] && room.state === 'dead') {
+                delete rooms[room.roomID]
+              }
+              var messagesBox = document.getElementById('messages') // eslint-disable-line
+              room.messages.forEach((message) => {
+                // render messages
+              })
+            }
+            )
+            /* If the room has come into existance due to a video request,
+               start video with the stored stream */
+            if (room.cID === media.cID && media.stream && !that.state.pleaseCall) {
+              console.log('New room, starting video chat')
+              /* Listen for updates on the Av instance */
+              room.videoChat(media.stream).addListener('update', this.processFeed)
+              media = {}
+            }
+            rooms[room.roomID] = room
 
+            console.log('THAT OBJECT', that.state.pleaseCall)
+            if (that.state.pleaseCall) {
+              console.log('What is pleaseCall? pleaseCall is ', that.state.pleaseCall)
+              MentorItem.startVideoCall(room)
+            }
+            // following line is webrtc vanilla
+
+            // called after Mentor accepts video invitation
+            IPCortex.PBX.enableFeature('av', (av) => { // eslint-disable-line
+              console.log('enable feature av')
+              av.addListener('update', this.processFeed)
+              this.processFeed(av, currentRoom)
+            }, ['chat'])
+          },
+          function () {
+            // console.log(TAG, 'Live data feed failed')
+          }
+        )
+        },
+      function () {
+        // console.log(TAG, 'Login failed')
+      }
+      )
+      })
+  }
 
   processFeed (av, room) {
     console.log('current Room (when process feed)-->', currentRoom)
@@ -122,14 +120,14 @@ class MentorList extends React.Component {
     var video = document.getElementById('video')
     /* Only process the Av instance if it has remote media */
 
-    if (typeof (av.remoteMedia) != 'object')
-      return
+    if (typeof (av.remoteMedia) !== 'object') { return }
     var videos = []
-    for ( var id in av.remoteMedia) {
-      if (av.remoteMedia[id].status == 'offered') {
+    for (var id in av.remoteMedia) {
+      if (av.remoteMedia[id].status === 'offered') {
         /* If the remote party is offering create an invite */
-        if (accepted[av.id]) // We have already accepted - return
+        if (accepted[av.id]) { // We have already accepted - return
           return
+        }
         console.log('Offer recieved from ' + av.remoteMedia[id].cN)
         /* Mark the offer as accepted as we may get another
            update with the 'offer' state still set */
@@ -139,20 +137,20 @@ class MentorList extends React.Component {
         hangup.addEventListener('click', () => {
           console.log('rejecting call')
           av.reject()
-        });
+        })
 
         accept.addEventListener('click', () => {
-            console.log('accepting call')
-            /* Grab the user media and accept the offer with the returned stream */
-            navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(
-              (stream) => {
-                av.accept(stream)
-              }
-            ).catch(
-              () => {
-                console.log('getUserMedia failed')
-              }
-            )
+          console.log('accepting call')
+          /* Grab the user media and accept the offer with the returned stream */
+          navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(
+            (stream) => {
+              av.accept(stream)
+            }
+          ).catch(
+            () => {
+              console.log('getUserMedia failed')
+            }
+          )
         })
         // this is a convient way to keep things in scope
         av.addListener('update', (av) => {
@@ -160,14 +158,14 @@ class MentorList extends React.Component {
             // get rid of video...
               // invite.parentNode.removeChild(invite)
         })
-      } else if (av.remoteMedia[id].status == 'connected') {
+      } else if (av.remoteMedia[id].status === 'connected') {
         console.log('New remote media source ', av.remoteMedia[id])
         /* Create a new video tag to play/display the remote media */
         hangup.addEventListener('click', () => {
           console.log('hanging up')
           room.leave()
         })
-        attachMediaStream(video, av.remoteMedia[id])
+        attachMediaStream(video, av.remoteMedia[id])  // eslint-disable-line
         videos.push(video)
         video.id = id
         video.play()
@@ -178,11 +176,9 @@ class MentorList extends React.Component {
     }
   }
 
-
-
   filterMentors () {
     // AJAX call to our api
-    //save mentors to state so if new contact arrives we can still check it?
+    // save mentors to state so if new contact arrives we can still check it?
     let mentors = [{
       username: 'fred',
       apiId: 'fac28a',
@@ -203,7 +199,7 @@ class MentorList extends React.Component {
       profession: 'string',
       topics: ['strings'],
       aboutme: 'string'
-    },{
+    }, {
       username: 'Mireia',
       apiId: 'mentor-4',
       age: 22,
@@ -223,12 +219,12 @@ class MentorList extends React.Component {
     //   console.log(response)
     // })
 
-    //filter contacts who are also mentors and save to state
-    //regardless of their online/offline state
-    let mentorList = IPCortex.PBX.contacts.filter((contact) => {
+    // filter contacts who are also mentors and save to state
+    // regardless of their online/offline state
+    let mentorList = IPCortex.PBX.contacts.filter((contact) => { // eslint-disable-line
       var isMentor = false
       mentors.forEach((mentor) => {
-        if(contact.uname === mentor.apiId) {
+        if (contact.uname === mentor.apiId) {
           isMentor = true
           Object.assign(contact, mentor)
         }
@@ -238,7 +234,7 @@ class MentorList extends React.Component {
       /* Listen for updates in case the user changes state */
       contact.addListener('update', () => {
         // console.log(this.state.mentorList)
-        const newMentorList = this.state.mentorList.filter((stateContact)  => {
+        const newMentorList = this.state.mentorList.filter((stateContact) => {
           return contact.cID !== stateContact.cID
         })
         this.updateState({
@@ -247,7 +243,7 @@ class MentorList extends React.Component {
             contact
           ]
         })
-      });
+      })
 
       this.updateState({
         mentorList: [

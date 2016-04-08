@@ -1,8 +1,7 @@
 import React from 'react'
-import {Grid, Row, Col} from 'react-bootstrap'
+import {Col} from 'react-bootstrap'
 import InputBox from './InputBox/index.js'
 import MessagesBox from './MessagesBox/index.js'
-import EmptyCol from './../Reused/EmptyCol.js'
 
 export default (props) => {
   return (

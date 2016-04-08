@@ -60,10 +60,6 @@ const submitstyle = {
   height: '10vh',
   width: '10%'
 }
-const chatboxstyle = {
-  border: '1px solid black',
-  height: '10vh'
-}
 const messagesBoxStyle = {
   height: '40vh',
   border: '1px solid black',

@@ -36,7 +36,7 @@ export default class MenteeDashboard extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col md={8}>Video team's component goes herre</Col>
+          <Col md={8}>{'Video team\'s component goes here'}</Col>
           <Col md={4}>
             <ProfileButtons
               status={this.state.status}

@@ -13,34 +13,33 @@ import Bell from 'bell'
 import AuthCookie from 'hapi-auth-cookie'
 
 // server routes
-import ReactUrls from './routes/ReactUrls.js'
-import Images from './routes/Images.js'
-import Scripts from './routes/Scripts.js'
-
-import TwitterLogin from './routes/TwitterLogin.js'
-import Feedback from './routes/api/feedback/index.js'
-import Notes from './routes/api/note/index.js'
-import Profile from './routes/api/profile/index.js'
+import reactUrls from './routes/ReactUrls.js'
+import images from './routes/Images.js'
+import scripts from './routes/Scripts.js'
+import twitterLogin from './routes/TwitterLogin.js'
+import notes from './routes/api/note/index.js'
+import profile from './routes/api/profile/index.js'
 
 // auth strategies
 import {TwitterCookie, TwitterOauth} from './authStrategies/twitterAuthStrategies.js'
 
 const ConnectionSettings = {port, routes: {cors: true}}
 const Plugins = [Inert, Bell, AuthCookie]
-const Routes = [
-  ReactUrls,
-  Images,
-  Scripts,
-  TwitterLogin,
-  Feedback,
-  Notes,
-  Profile
-]
 
 server.connection(ConnectionSettings)
 server.register(Plugins, handlePlugins)
 server.auth.strategy('twitter', 'bell', TwitterOauth)
 server.auth.strategy('session', 'cookie', TwitterCookie)
-server.route(Routes)
 
-export default server
+export default (client) => {
+  const Routes = [
+    reactUrls,
+    images,
+    scripts,
+    twitterLogin,
+    notes(client),
+    profile(client)
+  ]
+  server.route(Routes)
+  return server
+}

@@ -29,7 +29,7 @@ function prechatHandler (req, reply) {
   if (req.method === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
 
-    db.getPrechatNotes(req.params.menteename, numRecords)
+    db.getPrechatNotes(req.params.menteeName, numRecords)
       .then((results) => {
         reply({success: true, data: results})
       })
@@ -37,7 +37,7 @@ function prechatHandler (req, reply) {
         reply({success: false, data: error})
       })
   } else if (req.method === 'POST') {
-    db.insertPrechatNotes(req.params.menteename, req.payload)
+    db.insertPrechatNotes(req.params.menteeName, req.payload)
       .then((success) => {
         reply({success: true, data: success})
       })
@@ -53,7 +53,7 @@ function postchatHandler (req, reply) {
   if (req.method === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
 
-    db.getMenteeNotes(req.params.menteename, numRecords)
+    db.getMenteeNotes(req.params.menteeName, numRecords)
       .then((results) => {
         reply({success: true, data: results})
       })
@@ -61,7 +61,7 @@ function postchatHandler (req, reply) {
         reply({success: false, data: error})
       })
   } else if (req.method === 'POST') {
-    db.insertMenteeNotes(req.params.menteename, req.payload)
+    db.insertMenteeNotes(req.params.menteeName, req.payload)
       .then((success) => {
         reply({success: true, data: success})
       })

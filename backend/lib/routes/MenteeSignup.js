@@ -1,8 +1,8 @@
 export default {
-  path: '/hello',
+  path: '/mentee-signup',
   method: 'GET',
   handler: (request, reply) => {
     console.log(request.url)
-    reply('hello Hapi Server, this is a test route!')
+    reply('mentee-signup')
   }
 }

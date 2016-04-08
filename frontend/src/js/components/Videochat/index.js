@@ -30,7 +30,7 @@ export default () => {
             chatstyle={chatstyle}
             submitstyle={submitstyle}
             messagesBoxStyle={messagesBoxStyle}
-            />
+          />
         </Col>
         <EmptyCol md={contentOffset} />
       </Row>

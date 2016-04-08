@@ -40,7 +40,7 @@ class MentorList extends React.Component {
     this.initialisePBX('fac33b', 'a2qitapm')
     var submit = document.getElementById('Submit')
     var input = document.getElementById('textbox')
-    submit.addEventListener('click', (e) => {
+    submit.addEventListener('click', () => {
       console.log('room (when clicking)-->', currentRoom)
       console.log('posting', input.value)
       currentRoom.post(input.value)
@@ -67,14 +67,14 @@ class MentorList extends React.Component {
             if (typeof room !== 'object') {
               return
             }
-            room.addListener('update', (room) => {
-              if (rooms[room.roomID] && room.state === 'dead') {
-                delete rooms[room.roomID]
+            room.addListener('update', (_room) => {
+              if (rooms[_room.roomID] && _room.state === 'dead') {
+                delete rooms[_room.roomID]
               }
-              var messagesBox = document.getElementById('messages') // eslint-disable-line
-              room.messages.forEach((message) => {
-                // render messages
-              })
+              // var messagesBox = document.getElementById('messages')
+              // room.messages.forEach((message) => {
+              //   // render messages
+              // })
             }
             )
             /* If the room has come into existance due to a video request,
@@ -101,12 +101,12 @@ class MentorList extends React.Component {
               this.processFeed(av, currentRoom)
             }, ['chat'])
           },
-          function () {
+          () => {
             // console.log(TAG, 'Live data feed failed')
           }
         )
         },
-      function () {
+      () => {
         // console.log(TAG, 'Login failed')
       }
       )
@@ -120,7 +120,7 @@ class MentorList extends React.Component {
     var video = document.getElementById('video')
     /* Only process the Av instance if it has remote media */
 
-    if (typeof (av.remoteMedia) !== 'object') { return }
+    if (typeof av.remoteMedia !== 'object') {return}
     var videos = []
     for (var id in av.remoteMedia) {
       if (av.remoteMedia[id].status === 'offered') {
@@ -153,11 +153,11 @@ class MentorList extends React.Component {
           )
         })
         // this is a convient way to keep things in scope
-        av.addListener('update', (av) => {
-            // if (av.state == 'closed')
-            // get rid of video...
-              // invite.parentNode.removeChild(invite)
-        })
+        // av.addListener('update', (av) => {
+        //     // if (av.state == 'closed')
+        //     // get rid of video...
+        //       // invite.parentNode.removeChild(invite)
+        // })
       } else if (av.remoteMedia[id].status === 'connected') {
         console.log('New remote media source ', av.remoteMedia[id])
         /* Create a new video tag to play/display the remote media */
@@ -179,7 +179,7 @@ class MentorList extends React.Component {
   filterMentors () {
     // AJAX call to our api
     // save mentors to state so if new contact arrives we can still check it?
-    let mentors = [{
+    const mentors = [{
       username: 'fred',
       apiId: 'fac28a',
       age: 22,
@@ -262,20 +262,20 @@ class MentorList extends React.Component {
   render () {
     return (
       <div>
-      <ul style={styles.ul}>
-      {this.state.mentorList.map((mentor, i) => {
-        return mentor.canChat
-        ? <MentorItem
-            style={styles.li}
-            mentor={mentor}
-            key={i}
-            changeState={this.updateState}
-            processFeed={this.processFeed}
-          />
-        : null
-      })}
-      </ul>
-      <Videochat />
+        <ul style={styles.ul}>
+          {this.state.mentorList.map((mentor, i) => {
+            return mentor.canChat
+            ? <MentorItem
+              style={styles.li}
+              mentor={mentor}
+              key={i}
+              changeState={this.updateState}
+              processFeed={this.processFeed}
+              />
+            : null
+          })}
+        </ul>
+        <Videochat />
       </div>
     )
   }

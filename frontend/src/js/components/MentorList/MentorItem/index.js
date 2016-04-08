@@ -40,13 +40,13 @@ class MentorItem extends React.Component {
           console.log('av.remotemedia not object', typeof av.remoteMedia, typeof av.remoteMedia[0])
           return
         }
-        let streamio = av.remoteMedia[Object.keys(av.remoteMedia)[0]]
+        const streamio = av.remoteMedia[Object.keys(av.remoteMedia)[0]]
         console.log(streamio, '<<<< STREAMIO')
 
         if (streamio.status === 'connected') {
           console.log('3 remote media is connected')
           /* Create a new video tag to play/display the remote media */
-          let video = document.getElementById('video')
+          const video = document.getElementById('video')
           // following line from adapterjs (close to vanilla webrtc)
           attachMediaStream(video, streamio) // eslint-disable-line
           video.play()

@@ -5,7 +5,7 @@ export default (props) => {
   return (
     <Row className='show-grid' id='messages'>
       <Col xs={18} md={12} className='flush'>
-        <div id='textbox' style={props.messagesBoxStyle}></div>
+        <div id='messages' style={props.messagesBoxStyle}></div>
       </Col>
     </Row>
   )

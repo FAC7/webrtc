@@ -1,6 +1,6 @@
 import React from 'react'
-import Videobox from './Videobox/index.js'
-import Chatbox from './Chatbox/index.js'
+import Videobox from './VideoBox/index.js'
+import Chatbox from './ChatBox/index.js'
 
 import {Grid, Row, Col} from 'react-bootstrap'
 import EmptyCol from './Reused/EmptyCol.js'

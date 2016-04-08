@@ -1,9 +1,10 @@
 import prechatHandler from './prechat.js'
 import postchatHandler from './postchat.js'
+import feedbackHandler from './feedback.js'
 
 export default (client) => {
   return {
-    path: '/api/note/{noteType}/{menteeName}',
+    path: '/api/note/{noteType}/{userName}',
     method: ['GET', 'POST'],
     handler: (req, reply) => {
       if (req.method.toUpperCase() === 'POST' &&
@@ -17,6 +18,8 @@ export default (client) => {
         prechatHandler(client, req, reply)
       } else if (noteType === 'postchat') {
         postchatHandler(client, req, reply)
+      } else if (noteType === 'feedback') {
+        feedbackHandler(client, req, reply)
       } else {
         return reply({success: false, data: 'invalid note-type'})
       }

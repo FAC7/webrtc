@@ -17,7 +17,6 @@ import reactUrls from './routes/ReactUrls.js'
 import images from './routes/Images.js'
 import scripts from './routes/Scripts.js'
 import twitterLogin from './routes/TwitterLogin.js'
-import feedback from './routes/api/feedback/index.js'
 import notes from './routes/api/note/index.js'
 import profile from './routes/api/profile/index.js'
 
@@ -38,7 +37,6 @@ export default (client) => {
     images,
     scripts,
     twitterLogin,
-    feedback(client),
     notes(client),
     profile(client)
   ]

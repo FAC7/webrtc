@@ -6,7 +6,7 @@ import {
 export default (client, req, reply) => {
   if (req.method.toUpperCase() === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
-    getMenteeNotes(client, req.params.menteeName, numRecords)
+    getMenteeNotes(client, req.params.userName, numRecords)
       .then((results) => {
         reply({success: true, data: results})
       })
@@ -14,7 +14,7 @@ export default (client, req, reply) => {
         reply({success: false, data: error})
       })
   } else if (req.method.toUpperCase() === 'POST') {
-    insertMenteeNotes(client, req.params.menteeName, req.payload)
+    insertMenteeNotes(client, req.params.userName, req.payload)
       .then((success) => {
         reply({success: true, data: success})
       })

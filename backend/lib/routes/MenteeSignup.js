@@ -4,7 +4,7 @@ export default {
   path: '/auth/signup/mentee',
   method: 'GET',
   handler: (request, reply) => {
-    let data = { 'RobStaIIion': {
+    const data = {RobStaIIion: {
       apiId: 'mentor-1',
       age: 105,
       firstName: 'Jackie',

@@ -35,7 +35,6 @@ const Routes = [
   ReactUrls,
   Images,
   Scripts,
-  MenteeHomepage,
   GetAllMentors,
   MenteeSignup,
   TwitterLogin,

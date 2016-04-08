@@ -3,6 +3,7 @@ export default (client) => {
     path: '/api/profile/{userType}/{username*}',
     method: ['GET', 'POST'],
     handler: (req, reply) => {
+      console.log(client.connected)
       reply(req.method)
     }
   }

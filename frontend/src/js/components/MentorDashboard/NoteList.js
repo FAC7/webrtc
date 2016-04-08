@@ -1,15 +1,11 @@
 import React from 'react'
+import {Collapse} from 'react-bootstrap'
 
-export default (props) => {
-  return (
-    <div> {props.menteenotes.map( (note) => {
-      return (<div>
-
-      </div>
+export default class NotesList extends React.Component {
+  render () {
+    return (
+      <Collapse in={this.state.open}>
+      </Collapse>
     )
-    }
-
-    )}
-    </div>
-  )
+  }
 }

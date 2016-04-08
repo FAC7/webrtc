@@ -4,7 +4,7 @@ export default {
   path: '/mentor-signup',
   method: 'GET',
   handler: (request, reply) => {
-    let data = {
+    const data = {
       mentorUsername: 'SuperJackie',
       name: 'Jackie',
       age: 105,

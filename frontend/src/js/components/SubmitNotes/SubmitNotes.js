@@ -11,7 +11,6 @@ class Notes extends React.Component {
       showModal: false,
       sent: false
     }
-    this.setState = this.setState.bind(this)
     this.getDate = this.getDate.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.submitNotes = this.submitNotes.bind(this)

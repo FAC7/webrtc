@@ -1,23 +1,25 @@
 import prechatHandler from './prechat.js'
 import postchatHandler from './postchat.js'
 
-export default {
-  path: '/api/note/{noteType}/{menteeName}',
-  method: ['GET', 'POST'],
-  handler: (req, reply) => {
-    if (req.method.toUpperCase() === 'POST' &&
-        ! validateNoteObject(req.payload)) {
-      return reply({success: false, data: 'invalid payload'})
-    }
+export default (client) => {
+  return {
+    path: '/api/note/{noteType}/{menteeName}',
+    method: ['GET', 'POST'],
+    handler: (req, reply) => {
+      if (req.method.toUpperCase() === 'POST' &&
+          ! validateNoteObject(req.payload)) {
+        return reply({success: false, data: 'invalid payload'})
+      }
 
-    const noteType = req.params.noteType
+      const noteType = req.params.noteType
 
-    if (noteType === 'prechat') {
-      prechatHandler(req, reply)
-    } else if (noteType === 'postchat') {
-      postchatHandler(req, reply)
-    } else {
-      return reply({success: false, data: 'invalid note-type'})
+      if (noteType === 'prechat') {
+        prechatHandler(client, req, reply)
+      } else if (noteType === 'postchat') {
+        postchatHandler(client, req, reply)
+      } else {
+        return reply({success: false, data: 'invalid note-type'})
+      }
     }
   }
 }

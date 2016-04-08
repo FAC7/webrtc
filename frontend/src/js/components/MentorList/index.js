@@ -1,7 +1,22 @@
 import React from 'react'
 import MentorItem from './MentorItem/index.js'
 
-class Room extends React.Component {
+const styles = {
+  li: {
+    listStyleType: 'none',
+    color: 'white',
+    fontSize: '1.7em',
+    textDecoration: 'none',
+    padding: '5px'
+  },
+  ul: {
+    backgroundColor: '#FFBE63',
+    padding: '2em',
+    borderRadius: '10px'
+  }
+}
+
+class MentorList extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -148,9 +163,9 @@ class Room extends React.Component {
   render () {
     return (
       <div>
-      <ul>
+      <ul style={styles.ul}>
       {this.state.mentorList.map((mentor, i) => {
-        return mentor.canChat ? <MentorItem mentor={mentor} key={i} changeState={this.updateState} /> : null
+        return mentor.canChat ? <MentorItem style={styles.li} mentor={mentor} key={i} changeState={this.updateState} /> : null
       })}
       </ul>
       <video id='video'></video>
@@ -159,4 +174,4 @@ class Room extends React.Component {
   }
 }
 
-export default Room
+export default MentorList

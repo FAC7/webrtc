@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button} from 'react-bootstrap'
 
 class MentorItem extends React.Component {
   constructor () {
@@ -50,7 +51,9 @@ class MentorItem extends React.Component {
   }
   render () {
     return (
-      <li>{this.props.mentor.username}<button onClick={this.onClickFunc}>call</button></li>
+      <li style={this.props.style}>{this.props.mentor.username}
+        <Button bsStyle='success' style={{float:'right'}} onClick={this.onClickFunc}>CALL</Button>
+      </li>
     )
   }
 }

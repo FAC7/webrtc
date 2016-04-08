@@ -5,7 +5,7 @@ const server = new Hapi.Server()
 const port = process.env.PORT || 4000
 
 // helper methods
-import {handlePlugins, handleStart} from './helpers/server-helpers.js'
+import {handlePlugins} from './helpers/server-helpers.js'
 
 // server plugins
 import Inert from 'inert'
@@ -25,17 +25,27 @@ import MentorSignup from './routes/MentorSignup.js'
 import Notes from './routes/Notes.js'
 
 // auth strategies
-import { TwitterCookie, TwitterOauth } from './authStrategies/twitterAuthStrategies.js'
+import {TwitterCookie, TwitterOauth} from './authStrategies/twitterAuthStrategies.js'
 
 const ConnectionSettings = {port, routes: {cors: true}}
-const Plugins = [ Inert, Bell, AuthCookie ]
-const Routes = [ReactUrls, Images, Scripts, MenteeHomepage, MenteeSignup, TwitterLogin, MentorHomepage, MentorSignup, Feedback, Notes]
+const Plugins = [Inert, Bell, AuthCookie]
+const Routes = [
+  ReactUrls,
+  Images,
+  Scripts,
+  MenteeHomepage,
+  MenteeSignup,
+  TwitterLogin,
+  MentorHomepage,
+  MentorSignup,
+  Feedback,
+  Notes
+]
 
 server.connection(ConnectionSettings)
 server.register(Plugins, handlePlugins)
 server.auth.strategy('twitter', 'bell', TwitterOauth)
 server.auth.strategy('session', 'cookie', TwitterCookie)
 server.route(Routes)
-server.start(handleStart)
 
 export default server

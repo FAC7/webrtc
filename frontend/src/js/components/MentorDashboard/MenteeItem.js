@@ -1,6 +1,6 @@
 import React from 'react'
 import {Well, Collapse} from 'react-bootstrap'
-
+import Notes from '../Notes/Notes.js'
 export default class MenteeItem extends React.Component {
   constructor () {
     super()
@@ -27,6 +27,11 @@ export default class MenteeItem extends React.Component {
               </p>
               <p><b>About:</b> {this.props.about}</p>
               <p><b>Notes:</b> {this.props.notes}</p>
+              <Notes
+                menteeUsername={this.props.menteeUserame}
+                notesInstructions='Mentee notes'
+                mentorUserame={this.props.mentorUsername}
+              />
             </Well>
           </div>
         </Collapse>

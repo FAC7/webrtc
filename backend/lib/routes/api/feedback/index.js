@@ -1,4 +1,7 @@
-import db from '../redis/redisFunctions.js'
+import {
+  getMentorFeedback,
+  insertMentorFeedback
+} from '../../../redis/redisFunctions.js'
 
 export default {
   path: '/feedback/{mentorName}',
@@ -9,18 +12,17 @@ export default {
       return reply({success: false, data: 'invalid payload'})
     }
 
-    if (req.method === 'GET') {
+    if (req.method.toUpperCase() === 'GET') {
       const numRecords = req.url.query.n ? req.url.query.n : 5
-
-      db.getMentorFeedback(req.params.mentorName, numRecords)
+      getMentorFeedback(req.params.mentorName, numRecords)
         .then((results) => {
           reply({success: true, data: results})
         })
         .catch((error) => {
           reply({success: false, data: error})
         })
-    } else if (req.method === 'POST') {
-      db.insertMentorFeedback(req.params.mentorName, req.payload)
+    } else if (req.method.toUpperCase() === 'POST') {
+      insertMentorFeedback(req.params.mentorName, req.payload)
         .then((success) => {
           reply({success: true, data: success})
         })

@@ -57,7 +57,12 @@ class Notes extends React.Component {
               placeholder='let me know your thoughts'
               required
             />
-            <Button type='submit'>Submit</Button>
+            <Button
+              onClick={this.toggleModal}
+              type='submit'
+            >
+              Submit
+            </Button>
           </form>
         </Modal>
         <Button onClick={this.toggleModal}>Notes</Button>

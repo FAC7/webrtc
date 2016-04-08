@@ -46,7 +46,6 @@ const Routes = [
   GetAllUserTypes
 ]
 
-
 server.connection(ConnectionSettings)
 server.register(Plugins, handlePlugins)
 server.auth.strategy('twitter', 'bell', TwitterOauth)

@@ -15,7 +15,6 @@ export default class App extends React.Component {
     return (
       <div>
         <Header menuItems={options.menuItems} logoUrl={options.logoUrl} fluid />
-        <Videochat />
         <div className='header-spacing'></div>
           {this.props.children}
         <Footer logoUrl={options.logoUrl} />

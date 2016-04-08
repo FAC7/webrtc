@@ -8,7 +8,6 @@ export const prechatHandler = (req, reply) => {
   if (req.method.toUpperCase() === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
     getPrechatNotes(req.params.menteeName, numRecords)
-
       .then((results) => {
         reply({success: true, data: results})
       })

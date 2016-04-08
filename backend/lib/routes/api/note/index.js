@@ -2,7 +2,7 @@ import prechatHandler from './prechat.js'
 import postchatHandler from './postchat.js'
 
 export default {
-  path: '/notes/{noteType}/{menteeName}',
+  path: '/api/note/{noteType}/{menteeName}',
   method: ['GET', 'POST'],
   handler: (req, reply) => {
     if (req.method.toUpperCase() === 'POST' &&

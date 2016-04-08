@@ -4,7 +4,7 @@ import {
 } from '../../../redis/redisFunctions.js'
 
 export default {
-  path: '/feedback/{mentorName}',
+  path: '/api/feedback/{mentorName}',
   method: ['GET', 'POST'],
   handler: (req, reply) => {
     if (req.method === 'POST' &&

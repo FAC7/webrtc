@@ -25,7 +25,7 @@ blankTests('Check index status', (t) => {
   })
 })
 
-blankTests('Get ', (t) => {
+blankTests('Get empty data', (t) => {
   server.inject({
     method: 'GET',
     url: '/api/note/prechat/john',
@@ -36,7 +36,7 @@ blankTests('Get ', (t) => {
   })
 })
 
-const prechatTests = tape({
+const apiTests = tape({
   setup: (t) => {
     client.flushdb()
     t.end()
@@ -47,7 +47,7 @@ const prechatTests = tape({
   }
 })
 
-prechatTests('Test setting prechats', (t) => {
+apiTests('Test setting prechats', (t) => {
   server.inject({
     method: 'POST',
     url: '/api/note/prechat/john',
@@ -63,7 +63,7 @@ prechatTests('Test setting prechats', (t) => {
   })
 })
 
-prechatTests('Test getting prechats', (t) => {
+apiTests('Test getting prechats', (t) => {
   server.inject({
     method: 'POST',
     url: '/api/note/prechat/john',
@@ -85,6 +85,90 @@ prechatTests('Test getting prechats', (t) => {
     })
   })
 })
+
+apiTests('Test setting postchats', (t) => {
+  server.inject({
+    method: 'POST',
+    url: '/api/note/postchat/sally',
+    payload: {
+      menteeName: 'sally',
+      mentorName: 'phill',
+      note: 'bar',
+      date: '2016/06/20'
+    }
+  }, (res) => {
+    t.deepEqual(res.result, {data: 1, success: true}, 'Assert success')
+    t.end()
+  })
+})
+
+apiTests('Test getting postchats', (t) => {
+  server.inject({
+    method: 'POST',
+    url: '/api/note/postchat/sally',
+    payload: {
+      menteeName: 'sally',
+      mentorName: 'phill',
+      note: 'bar',
+      date: '2016/06/20'
+    }
+  }, () => {
+    server.inject({method: 'GET', url: '/api/note/postchat/sally'}, (res) => {
+      t.deepEqual(res.result, {success: true, data: [{
+        menteeName: 'sally',
+        mentorName: 'phill',
+        note: 'bar',
+        date: '2016/06/20'
+      }]})
+      t.end()
+    })
+  })
+})
+
+apiTests('Test posting feedback', (t) => {
+  server.inject({
+    method: 'POST',
+    url: '/api/feedback/kelly',
+    payload: {
+      menteeName: 'jimbob',
+      mentorName: 'kelly',
+      note: 'fam',
+      date: '2016/06/20'
+    }
+  }, (res) => {
+    t.deepEqual(res.result, {data: 1, success: true}, 'Assert success')
+    t.end()
+  })
+})
+
+apiTests('Test getting feedback', (t) => {
+  server.inject({
+    method: 'POST',
+    url: '/api/feedback/kelly',
+    payload: {
+      menteeName: 'jimbob',
+      mentorName: 'kelly',
+      note: 'fam',
+      date: '2016/06/20'
+    }
+  }, () => {
+    server.inject({
+      method: 'POST',
+      url: '/api/feedback/kelly',
+      payload: {
+        menteeName: 'jimbob',
+        mentorName: 'kelly',
+        note: 'fam',
+        date: '2016/06/20'
+      }
+    }, (res) => {
+      t.deepEqual(res.result, {data: 1, success: true}, 'Assert success')
+      t.end()
+    })
+  })
+})
+
+
 
 tape({
   setup: (t) => t.end(),

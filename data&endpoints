@@ -1,5 +1,5 @@
-GET  /api/feedback/{mentorName}?n=num
-POST /api/feedback/{mentorName}
+GET  /api/note/feedback/{mentorName}?n=num
+POST /api/note/feedback/{mentorName}
 
 GET  /api/note/prechat/{menteeName}?n=num
 POST /api/note/prechat/{menteeName}

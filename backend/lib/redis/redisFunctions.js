@@ -24,6 +24,18 @@ export const getUserData = (hash, username) => {
   return client.hget(hash)
 }
 
+export const getAllMentors = (cb) => {
+  client.hgetall('mentors', (err, reply) => {
+    if (err) {
+      console.log('error in getAllMentors', err)
+    } else {
+      const mentorArray = Object.keys(reply).map((key) => {
+        return reply[key]
+      })
+      cb(JSON.stringify(mentorArray))
+    }
+  })
+}
 
 
 export const getDummyData = () => {

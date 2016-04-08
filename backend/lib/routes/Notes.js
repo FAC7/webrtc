@@ -45,7 +45,7 @@ function prechatHandler (req, reply) {
         reply({success: false, data: error})
       })
   } else {
-    reply({success: false})
+    reply({success: false, data: 'invalid request type'})
   }
 }
 
@@ -69,7 +69,7 @@ function postchatHandler (req, reply) {
         reply({success: false, data: error})
       })
   } else {
-    reply({success: false})
+    reply({success: false, data: 'invalid request type'})
   }
 }
 

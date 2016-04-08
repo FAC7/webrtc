@@ -17,7 +17,7 @@ class Room extends React.Component {
 
 export default Room
 
-
+var currentRoom;
 var rooms = {}
 var media = {}
 var accepted = {}
@@ -60,6 +60,7 @@ console.log('AAAAAAAAA', IPCortex.PBX.contacts)
 var chatEnabled = IPCortex.PBX.enableChat(
   function (room) {
     /* Listen for updates to clean up dead rooms */
+    currentRoom = room
     room.addListener('update',
       function (room) {
         if (rooms[room.roomID] && room.state === 'dead')
@@ -85,12 +86,14 @@ if (chatEnabled) {
     function (av) {
       /* Listen for updates to the Av instance */
       av.addListener('update', processFeed)
-      processFeed(av)
+      processFeed(av , currentRoom)
     },
     ['chat']
   )
 }
-function processFeed (av) {
+function processFeed (av, room) {
+  var accept = document.getElementById('call')
+  var hangup = document.getElementById('hangup')
   var video = document.getElementById('phone')
   /* Only process the Av instance if it has remote media */
   if (typeof (av.remoteMedia) != 'object')
@@ -107,7 +110,11 @@ function processFeed (av) {
          update with the 'offer' state still set */
       accepted[av.id] = true
       // POP UP AN 'accept' BUTTON WITH ONCLICK
-      var accept = document.getElementById('call')
+
+      hangup.addEventListener('click', function(){
+              av.reject()
+            });
+
       accept.addEventListener('click',
         function () {
           /* Grab the user media and accept the offer with the returned stream */
@@ -134,6 +141,9 @@ function processFeed (av) {
       console.log('New remote media source ', av.remoteMedia[id])
       /* Create a new video tag to play/display the remote media */
       console.log(video)
+        hangup.addEventListener('click', function(){
+        room.leave()
+      });
       attachMediaStream(video, av.remoteMedia[id])
       videos.push(video)
       video.id = id

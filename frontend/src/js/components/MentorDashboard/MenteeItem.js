@@ -1,6 +1,6 @@
 import React from 'react'
 import {Well, Collapse} from 'react-bootstrap'
-import Notes from '../Notes/Notes.js'
+import SubmitNotes from '../SubmitNotes/SubmitNotes.js'
 export default class MenteeItem extends React.Component {
   constructor () {
     super()
@@ -9,7 +9,7 @@ export default class MenteeItem extends React.Component {
   render () {
     return (
       <div>
-        <a href='#' style={{textDecoration: 'none'}}>
+        <a style={{textDecoration: 'none'}}>
           <li
             key={this.props.index}
             onClick={() => this.setState({open: !this.state.open})}
@@ -27,7 +27,7 @@ export default class MenteeItem extends React.Component {
               </p>
               <p><b>About:</b> {this.props.about}</p>
               <p><b>Notes:</b> {this.props.notes}</p>
-              <Notes
+              <SubmitNotes
                 menteeUsername={this.props.menteeUserame}
                 notesInstructions='Mentee notes'
                 mentorUserame={this.props.mentorUsername}

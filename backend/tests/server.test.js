@@ -128,7 +128,7 @@ apiTests('Test getting postchats', (t) => {
 apiTests('Test posting feedback', (t) => {
   server.inject({
     method: 'POST',
-    url: '/api/feedback/kelly',
+    url: '/api/note/feedback/kelly',
     payload: {
       menteeName: 'jimbob',
       mentorName: 'kelly',
@@ -144,7 +144,7 @@ apiTests('Test posting feedback', (t) => {
 apiTests('Test getting feedback', (t) => {
   server.inject({
     method: 'POST',
-    url: '/api/feedback/kelly',
+    url: '/api/note/feedback/kelly',
     payload: {
       menteeName: 'jimbob',
       mentorName: 'kelly',
@@ -152,23 +152,58 @@ apiTests('Test getting feedback', (t) => {
       date: '2016/06/20'
     }
   }, () => {
-    server.inject({
-      method: 'POST',
-      url: '/api/feedback/kelly',
-      payload: {
+    server.inject({method: 'GET', url: '/api/note/feedback/kelly'}, (res) => {
+      t.deepEqual(res.result, {data: [{
         menteeName: 'jimbob',
         mentorName: 'kelly',
         note: 'fam',
         date: '2016/06/20'
-      }
-    }, (res) => {
-      t.deepEqual(res.result, {data: 1, success: true}, 'Assert success')
+      }], success: true}, 'Assert success')
       t.end()
     })
   })
 })
 
-
+apiTests('Test getting multiple notes', (t) => {
+  server.inject({
+    method: 'POST',
+    url: '/api/note/postchat/kelly',
+    payload: {
+      menteeName: 'jimbob',
+      mentorName: 'kelly',
+      note: 'fam',
+      date: '2016/06/20'
+    }
+  }, (res_) => {
+    t.deepEqual(res_.result, {data: 1, success: true}, 'Assert success')
+    server.inject({
+      method: 'POST',
+      url: '/api/note/postchat/kelly',
+      payload: {
+        menteeName: 'phill',
+        mentorName: 'kelly',
+        note: 'fam',
+        date: '2016/06/20'
+      }
+    }, (res0) => {
+      t.deepEqual(res0.result, {data: 0, success: true}, 'Assert success')
+      server.inject({method: 'GET', url: '/api/note/postchat/kelly?n=2'}, (res1) => {
+        t.deepEqual(res1.result, {data: [{
+          menteeName: 'jimbob',
+          mentorName: 'kelly',
+          note: 'fam',
+          date: '2016/06/20'
+        }, {
+          menteeName: 'phill',
+          mentorName: 'kelly',
+          note: 'fam',
+          date: '2016/06/20'
+        }], success: true}, 'Assert success')
+        t.end()
+      })
+    })
+  })
+})
 
 tape({
   setup: (t) => t.end(),

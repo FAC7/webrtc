@@ -31,7 +31,6 @@ class Notes extends React.Component {
   submitNotes (e) {
     e.preventDefault()
     const options = {
-      noteType: this.props.noteType,
       note: this.state.note,
       date: this.state.date,
       menteeUsername: this.props.menteeUsername,
@@ -74,7 +73,6 @@ class Notes extends React.Component {
 Notes.defaultProps = {
   noteRoute: 'feedback/smellyReem',
   noteInstructions: 'please let me know how you felt about this session, so I can improve',
-  noteType: 'menteeNote',
   note: 'Re\'em smells',
   menteeUsername: 'smellyRe\'em',
   mentorUsername: 'sublimeOwen'

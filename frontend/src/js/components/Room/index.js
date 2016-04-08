@@ -6,7 +6,7 @@ class Room extends React.Component {
   componentDidMount () {
     console.log('logging')
     //ajax call to PBX API for info on all contacts in the room
-    initialisePBX('fac24b', 'wy3xxbsj')
+    initialisePBX('fac21b', '2y5x85db')
   }
   render () {
     return (
@@ -63,8 +63,10 @@ var chatEnabled = IPCortex.PBX.enableChat(
     currentRoom = room
     room.addListener('update',
       function (room) {
-        if (rooms[room.roomID] && room.state === 'dead')
+        if (rooms[room.roomID] && room.state === 'dead'){
           delete rooms[room.roomID]
+        }
+        
       }
     )
     /* If the room has come into existance due to a video request,
@@ -73,6 +75,7 @@ var chatEnabled = IPCortex.PBX.enableChat(
       console.log('New room, starting video chat')
       /* Listen for updates on the Av instance */
       room.videoChat(media.stream).addListener('update', processFeed)
+
       media = {}
     }
     rooms[room.roomID] = room
@@ -91,11 +94,23 @@ if (chatEnabled) {
     ['chat']
   )
 }
+
+var submit = document.getElementById('Submit')
+var input = document.getElementById('textbox')
+submit.addEventListener('click', function(e){
+  console.log('room (when clicking)-->', currentRoom)
+
+  currentRoom.post(input.value)
+  input.value = ''
+})
+
 function processFeed (av, room) {
+  console.log('current Room (when process feed)-->', currentRoom)
   var accept = document.getElementById('call')
   var hangup = document.getElementById('hangup')
   var video = document.getElementById('phone')
   /* Only process the Av instance if it has remote media */
+
   if (typeof (av.remoteMedia) != 'object')
     return
   var videos = []
@@ -112,11 +127,13 @@ function processFeed (av, room) {
       // POP UP AN 'accept' BUTTON WITH ONCLICK
 
       hangup.addEventListener('click', function(){
-              av.reject()
-            });
+        console.log('rejecting call')
+        av.reject()
+      });
 
       accept.addEventListener('click',
         function () {
+          console.log('accepting call')
           /* Grab the user media and accept the offer with the returned stream */
           navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(
             function (stream) {
@@ -140,10 +157,9 @@ function processFeed (av, room) {
     } else if (av.remoteMedia[id].status == 'connected') {
       console.log('New remote media source ', av.remoteMedia[id])
       /* Create a new video tag to play/display the remote media */
-      console.log(video)
-        hangup.addEventListener('click', function(){
+      hangup.addEventListener('click', function(){
         room.leave()
-      });
+      })
       attachMediaStream(video, av.remoteMedia[id])
       videos.push(video)
       video.id = id

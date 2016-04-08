@@ -1,11 +1,7 @@
 import client from './client.js'
-import bluebird from 'bluebird'
-
-bluebird.promisifyAll(redis.RedisClient.prototype)
-bluebird.promisifyAll(redis.Multi.prototype)
 
 export const mentorSignUp = (data) => {
-  let obj = {
+  const obj = {
     mentorUsername: data.mentorUsername,
     name: data.name,
     age: data.age,
@@ -18,15 +14,19 @@ export const mentorSignUp = (data) => {
   client.hmset('mentors', data.mentorUsername, JSON.stringify(obj))
 }
 
-
-export const getMenteeNotes = (menteeName) => {
-    client.hgetAsync('menteenotes', menteeName).then((data) => {
-      const parsedData = JSON.parse(data)
-    }).catch()
+export const getMenteeNotes = (menteeName, numRecords) => {
+  return client.hgetAsync('menteenotes', menteeName)
+    .then((result) => {
+      const results = JSON.parse(result)
+      return Promise.resolve(results.slice(results.length - numRecords))
+    })
 }
 
-export const insertMenteeNotes = (menteeName, notes) => {
-  return new Promise((resolve, reject) => {
-    client.hset('menteenotes', notes)
-  })
+export const insertMenteeNotes = (menteeName, noteObj) => {
+  return client.hgetAsync('menteenotes', menteeName)
+    .then((result) => {
+      const notes = JSON.parse(result)
+      notes.push(noteObj)
+      return client.hsetAsync('menteenotes', menteeName, JSON.stringify(notes))
+    })
 }

@@ -1,33 +1,71 @@
 import React from 'react'
 import Videobox from './Videobox/index.js'
 import Chatbox from './Chatbox/index.js'
+
 import {Grid, Row, Col} from 'react-bootstrap'
+import EmptyCol from './Reused/EmptyCol.js'
+// import videoHelpers from './../../../helpers/videoHelpers.js'
 
+export default () => {
+  return (
+    <Grid>
+      <Row className='show-grid flush'>
+        <EmptyCol md={contentOffset} />
+        <Col xs={10} md={8} className='flush'>
+          <Videobox
+            videostyle={videostyle}
+            buttonsStyle={buttonsStyle}
+            callButtonStyle={callButtonStyle}
+            hangupButtonStyle={hangupButtonStyle}
+          />
+        </Col>
+        <EmptyCol md={contentOffset} />
+      </Row>
+      <Row className='show-grid'>
+        <EmptyCol md={contentOffset} />
+        <Col xs={10} md={8} className='flush'>
+          <Chatbox
+            chatstyle={chatstyle}
+            submitstyle={submitstyle}
+            messagesBoxStyle={messagesBoxStyle}
+            />
+        </Col>
+        <EmptyCol md={contentOffset} />
+      </Row>
+    </Grid>
+  )
+}
 
+const contentOffset = 2
 
 const videostyle = {
   padding: '0',
-  height: '100%',
   width: '100%',
-  border: '1px solid blue',
+  border: '3px solid blue',
+  borderRadius: '5%',
   height: '60vh',
-  marginTop: '30vh',
+  marginTop: '30vh'
 }
 
 const chatstyle = {
-padding: '0',
-border: '1px solid black',
-height: "10vh",
-width: '100%'
+  padding: '0',
+  border: '1px solid black',
+  height: '10vh',
+  width: '90%'
 }
 const submitstyle = {
   padding: '0',
-  height: "10vh",
-  width: '100%'
+  height: '10vh',
+  width: '10%'
 }
 const chatboxstyle = {
   border: '1px solid black',
   height: '10vh'
+}
+const messagesBoxStyle = {
+  height: '40vh',
+  border: '1px solid black',
+  width: '100%'
 }
 const callButtonStyle = {
 
@@ -39,33 +77,4 @@ const buttonsStyle = {
   position: 'absolute',
   bottom: '2vh',
   right: '2vw'
-}
-export default () => {
-  return (
-    <Grid>
-      <Row className="show-grid flush">
-        <Col xs={4} md={2}></Col>
-        <Col xs={10} md={8}>
-          <Videobox
-            videostyle={videostyle}
-            buttonsStyle={buttonsStyle}
-            callButtonStyle={callButtonStyle}
-            hangupButtonStyle={hangupButtonStyle}
-          />
-        </Col>
-        <Col xs={4} md={2} className='flush'></Col>
-      </Row>
-      <Row className="show-grid">
-          <Col xs={4} md={2} className='flush'></Col>
-          <Col xs={10} md={8} className='flush'>
-            <Chatbox
-              chatstyle={chatstyle}
-              submitstyle={submitstyle}
-              chatstyle={chatstyle}
-              />
-          </Col>
-          <Col xs={4} md={2} className='flush'></Col>
-      </Row>
-    </Grid>
-  )
 }

@@ -1,5 +1,5 @@
 require('env2')('config.env')
-import redisFunctions from '../redis/redisFunctions.js'
+import { getUserData } from '../redis/redisFunctions.js'
 
 import jwt from 'jsonwebtoken'
 const JWT_SECRET = process.env.JWT_SECRET
@@ -27,11 +27,13 @@ export default {
 
         if (mode === 'login') {
           if (type === 'mentor') {
-            redisFunctions.getUserData('mentor', dataToSend.screenName)
-            reply('stuff')
+            getUserData('mentors', dataToSend.screenName, (data) => {
+              reply(data)
+            })
           } else {
-            redisFunctions.getUserData('mentee', dataToSend.screenName)
-            reply('things')
+            getUserData('mentees', dataToSend.screenName, (data) => {
+              reply(data)
+            })
           }
         }
 

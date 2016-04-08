@@ -1,6 +1,7 @@
 import React from 'react'
 import {Well, Collapse} from 'react-bootstrap'
-import Notes from '../Notes/Notes.js'
+import Notes from '../../components/Notes/Notes.js'
+
 export default class MenteeItem extends React.Component {
   constructor () {
     super()

@@ -3,17 +3,17 @@ import db from '../redis/redisFunctions.js'
 export default {
   path: '/notes/{noteType}/{menteeName}',
   method: ['GET', 'POST'],
-  handler: (request, reply) => {
-    if (! validateNoteObject(request.payload)) {
+  handler: (req, reply) => {
+    if (! validateNoteObject(req.payload)) {
       return reply({success: false, data: 'invalid payload'})
     }
 
-    const noteType = request.params.noteType
+    const noteType = req.params.noteType
 
     if (noteType === 'prechat') {
-      prechatHandler(request, reply)
+      prechatHandler(req, reply)
     } else if (noteType === 'postchat') {
-      postchatHandler(request, reply)
+      postchatHandler(req, reply)
     } else {
       return reply({success: false, data: 'invalid note-type'})
     }
@@ -24,11 +24,11 @@ function feedbackHandler () {
 
 }
 
-function prechatHandler () {
+function prechatHandler (req, reply) {
   if (req.method === 'GET') {
-    const numRecords = (req.url.query.n) ? req.url.query.n : 1
+    const numRecords = req.url.query.n ? req.url.query.n : 1
 
-    db.getPrechatNotes(request.params.menteename, numRecords)
+    db.getPrechatNotes(req.params.menteename, numRecords)
       .then((results) => {
         reply({success: true, data: results})
       })
@@ -36,7 +36,7 @@ function prechatHandler () {
         reply({success: false, data: error})
       })
   } else if (req.method === 'POST') {
-    db.insertPrechatNotes(request.params.menteename, noteData)
+    db.insertPrechatNotes(req.params.menteename, req.payload)
       .then((success) => {
         reply({success: true, data: success})
       })
@@ -50,9 +50,9 @@ function prechatHandler () {
 
 function postchatHandler (req, reply) {
   if (req.method === 'GET') {
-    const numRecords = (req.url.query.n) ? req.url.query.n : 1
+    const numRecords = req.url.query.n ? req.url.query.n : 1
 
-    db.getMenteeNotes(request.params.menteename, numRecords)
+    db.getMenteeNotes(req.params.menteename, numRecords)
       .then((results) => {
         reply({success: true, data: results})
       })
@@ -60,7 +60,7 @@ function postchatHandler (req, reply) {
         reply({success: false, data: error})
       })
   } else if (req.method === 'POST') {
-    db.insertMenteeNotes(request.params.menteename, noteData)
+    db.insertMenteeNotes(req.params.menteename, req.payload)
       .then((success) => {
         reply({success: true, data: success})
       })
@@ -74,13 +74,13 @@ function postchatHandler (req, reply) {
 
 function validateNoteObject (noteObj) {
   const expectedKeys = {
-    'menteeName': 'string',
-    'mentorName': 'string',
-    'date': 'string',
-    'note': 'string'
+    menteeName: 'string',
+    mentorName: 'string',
+    date: 'string',
+    note: 'string'
   }
 
   return Object.keys(noteObj).reduce((acc, key) => {
-    return acc && (key in expectedKeys) && (typeof noteObj[key] === expectedKeys[key])
+    return acc && key in expectedKeys && typeof noteObj[key] === expectedKeys[key]
   }, true)
 }

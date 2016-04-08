@@ -1,0 +1,93 @@
+GET  /api/feedback/{mentorName}?n=num
+POST /api/feedback/{mentorName}
+
+GET  /api/note/prechat/{menteeName}?n=num
+POST /api/note/prechat/{menteeName}
+
+GET  /api/note/postchat/{menteeName}?n=num
+POST /api/note/postchat/{menteeName}
+
+GET  /api/profile/{userType}
+GET  /api/profile/{userType}/{username}
+POST /api/profile/{userType}/{username}
+
+-------------------------------------------
+
+GET  /feedback/{mentorName}?n=num
+GET  /api/note/prechat/{menteeName}?n=num
+GET  /api/note/postchat/{menteeName}?n=num
+[
+  {noteObj},
+  {noteObj},
+  ...
+]
+
+POST /api/feedback/{mentorName}
+POST /api/note/prechat/{menteeName}
+POST /api/note/postchat/{menteeName}
+POST /api/profile/{userType}/{username}
+{
+  success: bool,
+  data: ...
+}
+
+GET  /api/profile/{userType}
+[
+  {userObj},
+  {userObj},
+  ...
+]
+
+GET  /api/profile/{userType}/{username}
+{
+  apiId: string,
+  age: num,
+  firstName: string,
+  lastName: string,
+  gender: string,
+  profession: string,
+  topics: [strings],
+  aboutme: string
+}
+
+-------------------------------
+
+DB: {
+  'mentees': {
+    apiId: string,
+    apiPassword: string,
+    age: num,
+    firstName: string,
+    lastName: string,
+    gender: string,
+    aboutme: string
+  },
+
+  'mentors': {
+    'name': {
+      apiId: string,
+      age: num,
+      firstName: string,
+      lastName: string,
+      gender: string,
+      profession: string,
+      topics: [strings],
+      aboutme: string
+    },
+    'name': {
+      ...
+    }
+  },
+
+  'notes:prechat': {
+    'username': [{noteObj}, {noteObj}]
+  },
+
+  'notes:postchat': {
+    'username': [{noteObj}, {noteObj}]
+  },
+
+  'notes:feedback': {
+    'username': [{noteObj}, {noteObj}]
+  }
+}

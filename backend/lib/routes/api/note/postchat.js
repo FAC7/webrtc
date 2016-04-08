@@ -2,12 +2,10 @@ import {
   getMenteeNotes,
   insertMenteeNotes
 } from '../../../redis/redisFunctions.js'
-import client from '../../../redis/client.js'
 
-export const postchatHandler = (req, reply) => {
+export default (client, req, reply) => {
   if (req.method.toUpperCase() === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
-
     getMenteeNotes(client, req.params.menteeName, numRecords)
       .then((results) => {
         reply({success: true, data: results})

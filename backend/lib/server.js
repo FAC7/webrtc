@@ -22,13 +22,24 @@ import TwitterLogin from './routes/TwitterLogin.js'
 import MentorHomepage from './routes/MentorHomepage.js'
 import MentorSignup from './routes/MentorSignup.js'
 import Notes from './routes/Notes.js'
+import GetAllMentors from './routes/GetAllMentors.js'
 
 // auth strategies
 import { TwitterCookie, TwitterOauth } from './authStrategies/twitterAuthStrategies.js'
 
 const ConnectionSettings = {port, routes: {cors: true}}
 const Plugins = [ Inert, Bell, AuthCookie ]
-const Routes = [ReactUrls, Images, Scripts, MenteeSignup, TwitterLogin, MentorHomepage, MentorSignup, Feedback, Notes]
+const Routes = [
+  ReactUrls,
+  Images,
+  Scripts,
+  GetAllMentors,
+  MenteeSignup,
+  TwitterLogin,
+  MentorHomepage,
+  MentorSignup,
+  Feedback,
+  Notes]
 
 server.connection(ConnectionSettings)
 server.register(Plugins, handlePlugins)

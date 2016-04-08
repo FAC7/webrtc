@@ -20,6 +20,19 @@ export const menteeSignUp = (data) => {
   client.hmset('mentees', Object.keys(data)[0], JSON.stringify(obj))
 }
 
+export const getAllMentors = (cb) => {
+  client.hgetall('mentors', (err, reply) => {
+    if (err) {
+      console.log('error in getAllMentors', err)
+    } else {
+      const mentorArray = Object.keys(reply).map((key) => {
+        return reply[key]
+      })
+      cb(JSON.stringify(mentorArray))
+    }
+  })
+}
+
 export const getUserData = (hash, username, cb) => {
   client.hget(hash, username, (err, reply) => {
     if (err) {

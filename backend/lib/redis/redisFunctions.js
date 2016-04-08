@@ -30,3 +30,20 @@ export const insertMenteeNotes = (menteeName, noteObj) => {
       return client.hsetAsync('menteenotes', menteeName, JSON.stringify(notes))
     })
 }
+
+export const getPrechatNotes = (menteeName, numRecords) => {
+  return client.hgetAsync('prechatnotes', menteeName)
+  .then((result) => {
+    const results = JSON.parse(result)
+    return Promise.resolve(results.slice(results.length - numRecords))
+  })
+}
+
+export const insertPrechatNotes = (menteeName, noteObj) => {
+  return client.hgetAsync('prechatnotes', menteeName)
+    .then((result) => {
+      const notes = JSON.parse(result)
+      notes.push(noteObj)
+      return client.hsetAsync('prechatnotes', menteeName, JSON.stringify(notes))
+    })
+}

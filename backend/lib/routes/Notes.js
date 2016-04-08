@@ -4,7 +4,8 @@ export default {
   path: '/notes/{noteType}/{menteeName}',
   method: ['GET', 'POST'],
   handler: (req, reply) => {
-    if (! validateNoteObject(req.payload)) {
+    if (req.method === 'POST' &&
+    ! validateNoteObject(req.payload)) {
       return reply({success: false, data: 'invalid payload'})
     }
 

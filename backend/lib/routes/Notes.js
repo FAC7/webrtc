@@ -4,7 +4,7 @@ export default {
   path: '/notes/{noteType}/{menteeName}',
   method: ['GET', 'POST'],
   handler: (req, reply) => {
-    if (req.method === 'POST' &&
+    if (req.method.toUpperCase() === 'POST' &&
     ! validateNoteObject(req.payload)) {
       return reply({success: false, data: 'invalid payload'})
     }
@@ -26,7 +26,7 @@ function feedbackHandler () {
 }
 
 function prechatHandler (req, reply) {
-  if (req.method === 'GET') {
+  if (req.method.toUpperCase() === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
 
     db.getPrechatNotes(req.params.menteename, numRecords)
@@ -50,7 +50,7 @@ function prechatHandler (req, reply) {
 }
 
 function postchatHandler (req, reply) {
-  if (req.method === 'GET') {
+  if (req.method.toUpperCase() === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
 
     db.getMenteeNotes(req.params.menteename, numRecords)

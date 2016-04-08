@@ -39,50 +39,27 @@ class Room extends React.Component {
                 return
               }
               console.log('THAT OBJECT', that.state.pleaseCall)
-              // if (!that.state.pleaseCall) {
-              //   console.log('What is pleaseCall? pleaseCall is ', that.state.pleaseCall);
-              //   return
-              // }
+              if (that.state.pleaseCall) {
+                console.log('What is pleaseCall? pleaseCall is ', that.state.pleaseCall);
+                MentorItem.startVideoCall(room);
+              }
               //following line is webrtc vanilla
-              navigator.mediaDevices.getUserMedia({audio: true, video: true}).then((stream) => {
-                room.videoChat(stream).addListener('update', (av) => {
-                  //launch video window here
-                  /* Only process the Av instance if it has remote media */
-                  console.log('AV >>>>', av)
-                  console.log(Object.keys(av.remoteMedia)[0], '<<<< object keys');
 
-                  if ( !Object.keys(av.remoteMedia).length ){
-                    console.log('av.remotemedia not object', typeof av.remoteMedia, typeof av.remoteMedia[0]);
-                    return
-                  }
-                  let streamio = av.remoteMedia[Object.keys(av.remoteMedia)[0]]
-                  console.log(streamio, '<<<< STREAMIO')
-
-                  if (streamio.status == 'connected') {
-                    console.log('3 remote media is connected');
-                    /* Create a new video tag to play/display the remote media */
-                    let video = document.getElementById('video')
-                    // following line from adapterjs (close to vanilla webrtc)
-                    attachMediaStream(video, streamio)
-                    video.play()
-                  }
-                })
-              })
-            })
-            //called after Mentor accepts video invitation
-            IPCortex.PBX.enableFeature('av', (av) => {
-              console.log('enable feature av')
-            }, ['chat'])
-          },
-          function () {
-            // console.log(TAG, 'Live data feed failed')
-          }
-        )
-      },
-      function () {
-        // console.log(TAG, 'Login failed')
-      }
-    )
+              //called after Mentor accepts video invitation
+              IPCortex.PBX.enableFeature('av', (av) => {
+                console.log('enable feature av')
+              }, ['chat'])
+            },
+            function () {
+              // console.log(TAG, 'Live data feed failed')
+            }
+          )
+        },
+        function () {
+          // console.log(TAG, 'Login failed')
+        }
+      )
+    });
   }
 
   filterMentors () {
@@ -90,7 +67,7 @@ class Room extends React.Component {
     //save mentors to state so if new contact arrives we can still check it?
     let mentors = [{
       username: 'fred',
-      apiId: 'mentor-1',
+      apiId: 'fac21b',
       age: 22,
       firstName: 'mentor 1',
       lastName: 'string',
@@ -98,7 +75,7 @@ class Room extends React.Component {
       profession: 'string',
       topics: ['strings'],
       aboutme: 'string'
-      }, {
+    }, {
       username: 'jack',
       apiId: 'mentor-2',
       age: 22,
@@ -108,7 +85,7 @@ class Room extends React.Component {
       profession: 'string',
       topics: ['strings'],
       aboutme: 'string'
-      },{
+    },{
       username: 'Mireia',
       apiId: 'mentor-4',
       age: 22,
@@ -172,9 +149,9 @@ class Room extends React.Component {
     return (
       <div>
       <ul>
-        {this.state.mentorList.map((mentor, i) => {
-          return mentor.canChat ? <MentorItem mentor={mentor} key={i} changeState={this.updateState} /> : null
-        })}
+      {this.state.mentorList.map((mentor, i) => {
+        return mentor.canChat ? <MentorItem mentor={mentor} key={i} changeState={this.updateState} /> : null
+      })}
       </ul>
       <video id='video'></video>
       </div>

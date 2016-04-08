@@ -29,16 +29,17 @@ export default {
 function prechatHandler (req, reply) {
   if (req.method.toUpperCase() === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
+    getPrechatNotes(req.params.menteeName, numRecords)
 
-    getPrechatNotes(req.params.menteename, numRecords)
       .then((results) => {
         reply({success: true, data: results})
       })
       .catch((error) => {
         reply({success: false, data: error})
       })
+
   } else if (req.method.toUpperCase() === 'POST') {
-    insertPrechatNotes(req.params.menteename, req.payload)
+    insertPrechatNotes(req.params.menteeName, req.payload)
       .then((success) => {
         reply({success: true, data: success})
       })
@@ -54,7 +55,7 @@ function postchatHandler (req, reply) {
   if (req.method.toUpperCase() === 'GET') {
     const numRecords = req.url.query.n ? req.url.query.n : 1
 
-    getMenteeNotes(req.params.menteename, numRecords)
+    getMenteeNotes(req.params.menteeName, numRecords)
       .then((results) => {
         reply({success: true, data: results})
       })
@@ -62,7 +63,7 @@ function postchatHandler (req, reply) {
         reply({success: false, data: error})
       })
   } else if (req.method.toUpperCase() === 'POST') {
-    insertMenteeNotes(req.params.menteename, req.payload)
+    insertMenteeNotes(req.params.menteeName, req.payload)
       .then((success) => {
         reply({success: true, data: success})
       })

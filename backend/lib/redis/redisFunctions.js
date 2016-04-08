@@ -54,7 +54,9 @@ const insertNotes = (hashName) => {
   }
 }
 
-export const getMenteeNotes = getNotes('menteenotes')
-export const insertMenteeNotes = insertNotes('menteenotes')
-export const getPrechatNotes = getNotes('prechatnotes')
-export const insertPrechatNotes = insertNotes('prechatnotes')
+export const getMenteeNotes = getNotes('notes:postchat')
+export const insertMenteeNotes = insertNotes('notes:postchat')
+export const getPrechatNotes = getNotes('notes:prechat')
+export const insertPrechatNotes = insertNotes('notes:prechat')
+export const getMentorFeedback = getNotes('notes:feedback')
+export const insertMentorFeedback = insertNotes('notes:feedback')

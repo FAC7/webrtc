@@ -8,7 +8,7 @@ import EmptyCol from './Reused/EmptyCol.js'
 
 export default () => {
   const contentWidthXs = 18 - contentOffset * 2
-  const contentWidthMd = 12 - contentOffset
+  const contentWidthMd = 12 - contentOffset * 2
   return (
     <Grid>
       <Row className='show-grid flush'>

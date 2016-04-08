@@ -4,6 +4,7 @@ import MenteeList from './MenteeList.js'
 import ProfileButtons from './ProfileButtons.js'
 import MentorsProfilePage from '../Profile/MentorsProfilePage.js'
 import MentorsEditProfile from '../MentorsSignup/MentorsEditProfile.js'
+import MentorList from './../MentorList/index.js'
 
 export default class MentorDashboard extends React.Component {
   constructor () {
@@ -18,7 +19,7 @@ export default class MentorDashboard extends React.Component {
 
   changeStatus (newStatus) {
     this.setState({
-      newStatus
+      status: newStatus
     })
   }
 
@@ -38,7 +39,8 @@ export default class MentorDashboard extends React.Component {
         </Row>
         <Row>
           <Col md={8}>
-            <MenteeList mentees={this.props.mentees} />
+            <MenteeList mentees={this.props.mentees} mentorUsername={this.props.username}/>
+            <MentorList />
           </Col>
           <Col md={4}>
             <ProfileButtons

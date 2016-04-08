@@ -1,11 +1,11 @@
 import React from 'react'
 import {Jumbotron} from 'react-bootstrap'
-import MentorCall from './../MentorCall/index.js'
+import MentorList from './../MentorList/index.js'
 
 export default () => {
   return (
     <Jumbotron className='home'>
-      <MentorCall />
+      <MentorList />
     </Jumbotron>
   )
 }

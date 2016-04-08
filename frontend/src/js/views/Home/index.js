@@ -1,7 +1,7 @@
 import React from 'react'
 import {Jumbotron, Grid, Col, Row, Button, PageHeader} from 'react-bootstrap'
 import {browserHistory} from 'react-router'
-import MentorCall from '../../components/MentorCall/index.js'
+import MentorList from './../../components/MentorList/index.js'
 
 export default class Home extends React.Component {
   onUrgentClick () {
@@ -72,9 +72,6 @@ export default class Home extends React.Component {
               </Button>
             </Col>
           </Row>
-          <div>
-            <MentorCall />
-          </div>
         </Grid>
       </div>
     )

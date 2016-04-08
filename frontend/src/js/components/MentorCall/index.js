@@ -34,7 +34,6 @@ class Room extends React.Component {
   }
   initialisePBX (username, password) {
     const that = this
-
     var host = 'https://fac1.ipcortex.net'
 
     IPCortex.PBX.Auth.setHost('https://fac1.ipcortex.net')
@@ -112,146 +111,146 @@ class Room extends React.Component {
           return
         console.log('Offer recieved from ' + av.remoteMedia[id].cN)
         /* Mark the offer as accepted as we may get another
-           update with the 'offer' state still set */
-        accepted[av.id] = true
-        // POP UP AN 'accept' BUTTON WITH ONCLICK
+        update with the 'offer' state still set */
+      accepted[av.id] = true
+      // POP UP AN 'accept' BUTTON WITH ONCLICK
 
-        hangup.addEventListener('click', () => {
-          console.log('rejecting call')
-          av.reject()
-        });
-
-        accept.addEventListener('click', () => {
-            console.log('accepting call')
-            /* Grab the user media and accept the offer with the returned stream */
-            navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(
-              (stream) => {
-                av.accept(stream)
-              }
-            ).catch(
-              () => {
-                console.log('getUserMedia failed')
-              }
-            )
-        })
-        // this is a convient way to keep things in scope
-        av.addListener('update', (av) => {
-            // if (av.state == 'closed')
-            // get rid of video...
-              // invite.parentNode.removeChild(invite)
-        })
-      } else if (av.remoteMedia[id].status == 'connected') {
-        console.log('New remote media source ', av.remoteMedia[id])
-        /* Create a new video tag to play/display the remote media */
-        hangup.addEventListener('click', () => {
-          currentRoom.leave()
-        })
-        attachMediaStream(video, av.remoteMedia[id])
-        videos.push(video)
-        video.id = id
-        video.play()
-      } /* else if ( av.remoteMedia[id].status != 'connected' && video ) {
-  			// Remove any video tags that are no longer in a 'connected' state //
-  			video.parentNode.removeChild(video)
-  		} */
-    }
-  }
-
-
-
-  filterMentors () {
-    // AJAX call to our api
-    //save mentors to state so if new contact arrives we can still check it?
-    let mentors = [{
-      username: 'fred',
-      apiId: 'mentor-1',
-      age: 22,
-      firstName: 'mentor 1',
-      lastName: 'string',
-      gender: 'male',
-      profession: 'string',
-      topics: ['strings'],
-      aboutme: 'string'
-      }, {
-      username: 'jack',
-      apiId: 'mentor-2',
-      age: 22,
-      firstName: 'mentor 2',
-      lastName: 'string',
-      gender: 'male',
-      profession: 'string',
-      topics: ['strings'],
-      aboutme: 'string'
-      },{
-      username: 'Mireia',
-      apiId: 'mentor-4',
-      age: 22,
-      firstName: 'mentor 3',
-      lastName: 'string',
-      gender: 'male',
-      profession: 'string',
-      topics: ['strings'],
-      aboutme: 'string'
-    }]
-
-    // axios.get('/getAllMentors')
-    // .then((response) => {
-    //   mentors = response
-    // })
-    // .catch((response) => {
-    //   console.log(response)
-    // })
-
-    //filter contacts who are also mentors and save to state
-    //regardless of their online/offline state
-    let mentorList = IPCortex.PBX.contacts.filter((contact) => {
-      var isMentor = false
-      mentors.forEach((mentor) => {
-        if(contact.uname === mentor.apiId) {
-          isMentor = true
-          Object.assign(contact, mentor)
-        }
-      })
-      return isMentor
-    }).forEach((contact) => {
-      /* Listen for updates in case the user changes state */
-      contact.addListener('update', () => {
-        // console.log(this.state.mentorList)
-        const newMentorList = this.state.mentorList.filter((stateContact)  => {
-          return contact.cID !== stateContact.cID
-        })
-        this.updateState({
-          mentorList: [
-            ...newMentorList,
-            contact
-          ]
-        })
+      hangup.addEventListener('click', () => {
+        console.log('rejecting call')
+        av.reject()
       });
 
+      accept.addEventListener('click', () => {
+          console.log('accepting call')
+          /* Grab the user media and accept the offer with the returned stream */
+          navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(
+            (stream) => {
+              av.accept(stream)
+            }
+          ).catch(
+            () => {
+              console.log('getUserMedia failed')
+            }
+          )
+      })
+      // this is a convient way to keep things in scope
+      av.addListener('update', (av) => {
+          // if (av.state == 'closed')
+          // get rid of video...
+            // invite.parentNode.removeChild(invite)
+      })
+    } else if (av.remoteMedia[id].status == 'connected') {
+      console.log('New remote media source ', av.remoteMedia[id])
+      /* Create a new video tag to play/display the remote media */
+      hangup.addEventListener('click', () => {
+        currentRoom.leave()
+      })
+      attachMediaStream(video, av.remoteMedia[id])
+      videos.push(video)
+      video.id = id
+      video.play()
+    } /* else if ( av.remoteMedia[id].status != 'connected' && video ) {
+            // Remove any video tags that are no longer in a 'connected' state //
+            video.parentNode.removeChild(video)
+        } */
+  }
+}
+
+
+
+filterMentors () {
+  // AJAX call to our api
+  //save mentors to state so if new contact arrives we can still check it?
+  let mentors = [{
+    username: 'fred',
+    apiId: 'mentor-1',
+    age: 22,
+    firstName: 'mentor 1',
+    lastName: 'string',
+    gender: 'male',
+    profession: 'string',
+    topics: ['strings'],
+    aboutme: 'string'
+    }, {
+    username: 'jack',
+    apiId: 'mentor-2',
+    age: 22,
+    firstName: 'mentor 2',
+    lastName: 'string',
+    gender: 'male',
+    profession: 'string',
+    topics: ['strings'],
+    aboutme: 'string'
+    },{
+    username: 'Mireia',
+    apiId: 'mentor-4',
+    age: 22,
+    firstName: 'mentor 3',
+    lastName: 'string',
+    gender: 'male',
+    profession: 'string',
+    topics: ['strings'],
+    aboutme: 'string'
+  }]
+
+  // axios.get('/getAllMentors')
+  // .then((response) => {
+  //   mentors = response
+  // })
+  // .catch((response) => {
+  //   console.log(response)
+  // })
+
+  //filter contacts who are also mentors and save to state
+  //regardless of their online/offline state
+  let mentorList = IPCortex.PBX.contacts.filter((contact) => {
+    var isMentor = false
+    mentors.forEach((mentor) => {
+      if(contact.uname === mentor.apiId) {
+        isMentor = true
+        Object.assign(contact, mentor)
+      }
+    })
+    return isMentor
+  }).forEach((contact) => {
+    /* Listen for updates in case the user changes state */
+    contact.addListener('update', () => {
+      // console.log(this.state.mentorList)
+      const newMentorList = this.state.mentorList.filter((stateContact)  => {
+        return contact.cID !== stateContact.cID
+      })
       this.updateState({
         mentorList: [
-          ...this.state.mentorList,
+          ...newMentorList,
           contact
         ]
       })
+    });
+
+    this.updateState({
+      mentorList: [
+        ...this.state.mentorList,
+        contact
+      ]
     })
-  }
+  })
+}
 
-  updateState (newState) {
-    this.setState(newState)
-    console.log('update state called', this.state)
-  }
+updateState (newState) {
+  this.setState(newState)
+  console.log('update state called', this.state)
+}
 
-  render () {
-    return (
-      <div>
+render () {
+  return (
+    <div>
       <ul>
         {this.state.mentorList.map((mentor, i) => {
           return mentor.canChat ? <MentorItem mentor={mentor} key={i} changeState={this.updateState} /> : null
         })}
       </ul>
       <Videochat />
-      </div>
+    </div>
     )
   }
 }

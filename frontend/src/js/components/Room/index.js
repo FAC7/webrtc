@@ -4,7 +4,7 @@ import React from 'react'
 class Room extends React.Component {
 
   componentDidMount () {
-    console.log('logging');
+    console.log('logging')
     //ajax call to PBX API for info on all contacts in the room
     initialisePBX('fac24b', 'wy3xxbsj')
   }
@@ -18,10 +18,10 @@ class Room extends React.Component {
 export default Room
 
 
+var rooms = {}
+var media = {}
+var accepted = {}
 const initialisePBX = (username, password) => {
-  var rooms = {}
-  var media = {}
-  var accepted = {}
   var host = 'https://fac1.ipcortex.net'
 
   function onAPILoadReady () {
@@ -57,6 +57,93 @@ const initialisePBX = (username, password) => {
 const runApp = () => {
   /* prepare a list of icon names for the states: idle, busy, ringing, busy+ringing */
 console.log('AAAAAAAAA', IPCortex.PBX.contacts)
+var chatEnabled = IPCortex.PBX.enableChat(
+  function (room) {
+    /* Listen for updates to clean up dead rooms */
+    room.addListener('update',
+      function (room) {
+        if (rooms[room.roomID] && room.state === 'dead')
+          delete rooms[room.roomID]
+      }
+    )
+    /* If the room has come into existance due to a video request,
+       start video with the stored stream */
+    if (room.cID == media.cID && media.stream) {
+      console.log('New room, starting video chat')
+      /* Listen for updates on the Av instance */
+      room.videoChat(media.stream).addListener('update', processFeed)
+      media = {}
+    }
+    rooms[room.roomID] = room
+  }
+)
+if (chatEnabled) {
+  console.log('Chat enable, enabling av feature')
+  /* Register to receive new Av instances */
+  IPCortex.PBX.enableFeature(
+    'av',
+    function (av) {
+      /* Listen for updates to the Av instance */
+      av.addListener('update', processFeed)
+      processFeed(av)
+    },
+    ['chat']
+  )
+}
+function processFeed (av) {
+  var video = document.getElementById('phone')
+  /* Only process the Av instance if it has remote media */
+  if (typeof (av.remoteMedia) != 'object')
+    return
+  var videos = []
+  for ( var id in av.remoteMedia) {
+    if (av.remoteMedia[id].status == 'offered') {
+      /* If the remote party is offering create an invite
+               */
+      if (accepted[av.id]) // We have already accepted - return
+        return
+      console.log('Offer recieved from ' + av.remoteMedia[id].cN)
+      /* Mark the offer as accepted as we may get another
+         update with the 'offer' state still set */
+      accepted[av.id] = true
+      // POP UP AN 'accept' BUTTON WITH ONCLICK
+      var accept = document.getElementById('call')
+      accept.addEventListener('click',
+        function () {
+          /* Grab the user media and accept the offer with the returned stream */
+          navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(
+            function (stream) {
+              av.accept(stream)
+            }
+          ).catch(
+            function () {
+              console.log('getUserMedia failed')
+            }
+          )
+        }
+      )
+      // this is a convient way to keep things in scope
+      av.addListener('update',
+        function (av) {
+          // if (av.state == 'closed')
+          // get rid of video...
+            // invite.parentNode.removeChild(invite)
+        }
+      )
+    } else if (av.remoteMedia[id].status == 'connected') {
+      console.log('New remote media source ', av.remoteMedia[id])
+      /* Create a new video tag to play/display the remote media */
+      console.log(video)
+      attachMediaStream(video, av.remoteMedia[id])
+      videos.push(video)
+      video.id = id
+      video.play()
+    } /* else if ( av.remoteMedia[id].status != 'connected' && video ) {
+			// Remove any video tags that are no longer in a 'connected' state //
+			video.parentNode.removeChild(video)
+		} */
+  }
+}
 // var states = ["call_end", "phone", "ring_volume", "phone"];
 //
 // /* Inject the list of contacts into the page */

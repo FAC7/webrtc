@@ -8,22 +8,31 @@ client.lrange = Bluebird.promisify(client.lrange)
 // make sure to delete these if you're done using them
 export const mentorSignUp = (data) => {
   let obj = data[Object.keys(data)[0]]
-  console.log(obj);
+  console.log(obj)
 
   client.hmset('mentors', Object.keys(data)[0], JSON.stringify(obj))
 }
 
-export const getUserData = (hash, username) => {
-  return client.hget(hash)
+export const menteeSignUp = (data) => {
+  let obj = data[Object.keys(data)[0]]
+  console.log(obj)
+
+  client.hmset('mentees', Object.keys(data)[0], JSON.stringify(obj))
 }
 
-
+export const getUserData = (hash, username, cb) => {
+  client.hget(hash, username, (err, reply) => {
+    if (err) {
+      throw err
+    } else {
+      cb(reply)
+    }
+  })
+}
 
 export const getDummyData = () => {
   return client.lrange('myList', 0, -1)
 }
-
-
 
 //
 //  Mentors: { username: {

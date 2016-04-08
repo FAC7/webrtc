@@ -1,6 +1,4 @@
-import client from './client.js'
-
-export const mentorSignUp = (data) => {
+export const mentorSignUp = (client, data) => {
   const obj = {
     mentorUsername: data.mentorUsername,
     name: data.name,
@@ -15,22 +13,33 @@ export const mentorSignUp = (data) => {
 }
 
 const getNotes = (hashName) => {
-  return (menteeName, numRecords) => {
+  return (client, menteeName, numRecords) => {
     return client.hgetAsync(hashName, menteeName)
       .then((result) => {
-        const results = JSON.parse(result)
+        let results
+        if (result) {
+          results = JSON.parse(result)
+        } else {
+          results = []
+        }
         return Promise.resolve(results.slice(results.length - numRecords))
       })
   }
 }
 
 const insertNotes = (hashName) => {
-  return (menteeName, noteObj) => {
+  return (client, menteeName, noteObj) => {
     return client.hgetAsync(hashName, menteeName)
       .then((result) => {
-        const notes = JSON.parse(result)
-        notes.push(noteObj)
-        return client.hsetAsync(hashName, menteeName, JSON.stringify(notes))
+        let notes
+        try {
+          notes = JSON.parse(result)
+          notes.push(noteObj)
+        } catch (e) {
+          notes = [noteObj]
+        } finally {
+          return client.hsetAsync(hashName, menteeName, JSON.stringify(notes))
+        }
       })
   }
 }
@@ -38,4 +47,4 @@ const insertNotes = (hashName) => {
 export const getMenteeNotes = getNotes('menteenotes')
 export const insertMenteeNotes = insertNotes('menteenotes')
 export const getPrechatNotes = getNotes('prechatnotes')
-export const insertPrechatNotes = insertNotes('menteenotes')
+export const insertPrechatNotes = insertNotes('prechatnotes')

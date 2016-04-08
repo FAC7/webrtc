@@ -18,7 +18,7 @@ export default class MentorDashboard extends React.Component {
 
   changeStatus (newStatus) {
     this.setState({
-      newStatus
+      status: newStatus
     })
   }
 
@@ -38,7 +38,7 @@ export default class MentorDashboard extends React.Component {
         </Row>
         <Row>
           <Col md={8}>
-            <MenteeList mentees={this.props.mentees} />
+            <MenteeList mentees={this.props.mentees} mentorUsername={this.props.username}/>
           </Col>
           <Col md={4}>
             <ProfileButtons

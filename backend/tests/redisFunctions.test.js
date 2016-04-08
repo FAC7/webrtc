@@ -102,3 +102,13 @@ test('Can get prechat notes', (t) => {
     t.end()
   })
 })
+
+test('Can insert a mentor', (t) => {
+  db.setUserProfile(client, 'mentors', 'jackem', {
+    menteeName: 'john',
+    mentorName: 'sally',
+    note: 'Some stuff',
+    date: '2016/04/01'
+  })
+  t.end()
+})

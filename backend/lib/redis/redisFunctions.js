@@ -70,6 +70,11 @@ export const getAllUserTypes = (client, userType) => {
     })
 }
 
+export const setUserProfile = (client, userType, userName, payload) => {
+  const data = JSON.stringify(payload)
+  client.hmset(userType, userName, data)
+}
+
 export const getMenteeNotes = getNotes('menteenotes')
 export const insertMenteeNotes = insertNotes('menteenotes')
 export const getPrechatNotes = getNotes('prechatnotes')

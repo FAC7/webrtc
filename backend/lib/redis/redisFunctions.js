@@ -1,3 +1,13 @@
+export const getUserData = (client, hash, username, cb) => {
+  client.hget(hash, username, (err, reply) => {
+    if (err) {
+      throw err
+    } else {
+      cb(reply)
+    }
+  })
+}
+
 export const mentorSignUp = (client, data) => {
   const obj = {
     mentorUsername: data.mentorUsername,

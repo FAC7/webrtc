@@ -57,6 +57,19 @@ export const getUserProfile = (client, userType, userName) => {
     })
 }
 
+export const getAllUserTypes = (client, userType) => {
+  return client.hgetallAsync(userType)
+    .then((result) => {
+      let results
+      if (result) {
+        results = result
+      } else {
+        results = {}
+      }
+      return Promise.resolve(results)
+    })
+}
+
 export const getMenteeNotes = getNotes('menteenotes')
 export const insertMenteeNotes = insertNotes('menteenotes')
 export const getPrechatNotes = getNotes('prechatnotes')

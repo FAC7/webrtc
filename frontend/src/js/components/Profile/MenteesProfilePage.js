@@ -1,36 +1,31 @@
 import React from 'react'
-import {Grid, Row, Col, Button} from 'react-bootstrap'
-
+import {Button} from 'react-bootstrap'
 
 class MenteesProfilePage extends React.Component {
   render () {
     return (
-      <Grid>
-        <Row>
-          <Col xs={1}/>
-          <Col xs={3}>
-            <h3> {this.props.firstname} {this.props.lastname}</h3>
-            <p>gender: {this.props.gender}</p>
-            <p>age: {this.props.age}</p>
-            <p>profession: {this.props.profession}</p>
-            <p>topics: </p>
-            <ul>
-              {this.props.topics.map((topic) => {
-                return <li>{topic}</li>
-              })}
-            </ul>
-            <p>some things about me: </p>
-            <p> {this.props.aboutme}</p>
-            <Button> Request a chat </Button>
-          </Col>
-        </Row>
-      </Grid>
+      <div style={{padding: '0 2em'}}>
+        <h3> {this.props.firstname} {this.props.lastname}</h3>
+        <p>gender: {this.props.gender}</p>
+        <p>age: {this.props.age}</p>
+        <p>profession: {this.props.profession}</p>
+        <p>topics: </p>
+        <ul>
+          {this.props.topics.map((topic, i) => {
+            return <li key={i}>{topic}</li>
+          })}
+        </ul>
+        <p>some things about me: </p>
+        <p> {this.props.aboutme}</p>
+        <Button> Request a chat </Button>
+      </div>
     )
   }
 }
 
 MenteesProfilePage.propTypes = {
   firstname: React.PropTypes.string.isRequired,
+  lastname: React.PropTypes.string.isRequired,
   age: React.PropTypes.number.isRequired,
   gender: React.PropTypes.string.isRequired,
   profession: React.PropTypes.string.isRequired,
@@ -39,9 +34,10 @@ MenteesProfilePage.propTypes = {
 }
 
 MenteesProfilePage.defaultProps = {
-  firstname: 'smellyAndrew',
-  age: 5,
-  gender: 'female',
+  firstname: 'Ivan',
+  lastname: 'King of Puns',
+  age: 10,
+  gender: 'male',
   profession: 'beingAndrew',
   topics: ['Andrew', 'Andrews greatness', 'my glossy soft head of hair'],
   aboutme: 'I am da Bomb'

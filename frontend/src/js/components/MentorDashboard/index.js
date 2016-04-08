@@ -18,7 +18,7 @@ export default class MentorDashboard extends React.Component {
 
   changeStatus (newStatus) {
     this.setState({
-      newStatus
+      status: newStatus
     })
   }
 

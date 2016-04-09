@@ -1,5 +1,5 @@
 import React from 'react'
-import {Jumbotron, Grid, Col, Row, Button, PageHeader} from 'react-bootstrap'
+import {Jumbotron, Grid, Col, Row, Button} from 'react-bootstrap'
 import {browserHistory} from 'react-router'
 import Logo from '../../components/Logo/index.js'
 

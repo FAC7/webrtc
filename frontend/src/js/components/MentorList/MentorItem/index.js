@@ -35,6 +35,7 @@ class MentorItem extends React.Component {
         /* Only process the Av instance if it has remote media */
         console.log('AV >>>>', av)
         console.log(Object.keys(av.remoteMedia)[0], '<<<< object keys')
+        this.props.changeState({showModal: true})
 
         if (!Object.keys(av.remoteMedia).length) {
           console.log('av.remotemedia not object', typeof av.remoteMedia, typeof av.remoteMedia[0])

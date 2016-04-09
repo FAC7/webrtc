@@ -17,8 +17,8 @@ const test = tape({
     client = redis.createClient(DB_URL)
     client.select(DB_NUM, () => {
       client.flushdb()
+      t.end()
     })
-    t.end()
   },
   teardown: (t) => {
     client.flushdb()
@@ -101,4 +101,14 @@ test('Can get prechat notes', (t) => {
     }])
     t.end()
   })
+})
+
+test('Can insert a mentor', (t) => {
+  db.setUserProfile(client, 'mentors', 'jackem', {
+    menteeName: 'john',
+    mentorName: 'sally',
+    note: 'Some stuff',
+    date: '2016/04/01'
+  })
+  t.end()
 })

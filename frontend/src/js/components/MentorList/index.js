@@ -1,4 +1,5 @@
 import React from 'react'
+import {Modal, Button} from 'react-bootstrap'
 import MentorItem from './MentorItem/index.js'
 import Videochat from './../Videochat/index.js'
 
@@ -27,7 +28,8 @@ class MentorList extends React.Component {
     super()
     this.state = {
       pleaseCall: false,
-      mentorList: []
+      mentorList: [],
+      showModal: false
     }
     this.updateState = this.updateState.bind(this)
     this.filterMentors = this.filterMentors.bind(this)
@@ -37,7 +39,7 @@ class MentorList extends React.Component {
 
   componentDidMount () {
     // ajax call to PBX API for info on all contacts in the room
-    this.initialisePBX('fac33b', 'a2qitapm')
+    this.initialisePBX('fac20b', 'cwlfune3')
     var submit = document.getElementById('Submit')
     var input = document.getElementById('textbox')
     submit.addEventListener('click', () => {
@@ -113,32 +115,32 @@ class MentorList extends React.Component {
       })
   }
 
-  processFeed (av, room) {
+  processFeed (av) {
     console.log('current Room (when process feed)-->', currentRoom)
-    var accept = document.getElementById('call')
-    var hangup = document.getElementById('hangup')
-    var video = document.getElementById('video')
     /* Only process the Av instance if it has remote media */
 
     if (typeof av.remoteMedia !== 'object') {return}
     var videos = []
     for (var id in av.remoteMedia) {
+      var accept, hangup, video
       if (av.remoteMedia[id].status === 'offered') {
         /* If the remote party is offering create an invite */
         if (accepted[av.id]) { // We have already accepted - return
           return
         }
+        this.updateState({showModal: true})
+        accept = document.getElementById('call')
+        hangup = document.getElementById('hangup')
+        video = document.getElementById('video')
         console.log('Offer recieved from ' + av.remoteMedia[id].cN)
         /* Mark the offer as accepted as we may get another
            update with the 'offer' state still set */
         accepted[av.id] = true
         // POP UP AN 'accept' BUTTON WITH ONCLICK
-
         hangup.addEventListener('click', () => {
           console.log('rejecting call')
           av.reject()
         })
-
         accept.addEventListener('click', () => {
           console.log('accepting call')
           /* Grab the user media and accept the offer with the returned stream */
@@ -160,11 +162,14 @@ class MentorList extends React.Component {
         // })
       } else if (av.remoteMedia[id].status === 'connected') {
         console.log('New remote media source ', av.remoteMedia[id])
-        /* Create a new video tag to play/display the remote media */
+        video = document.getElementById('video')
+        hangup = document.getElementById('hangup')
         hangup.addEventListener('click', () => {
-          console.log('hanging up')
-          room.leave()
+          console.log('rejecting call')
+          av.reject()
         })
+        /* Create a new video tag to play/display the remote media */
+        console.log(video, '<< video\n', av.remoteMedia[id], '<< av remote')
         attachMediaStream(video, av.remoteMedia[id])  // eslint-disable-line
         videos.push(video)
         video.id = id
@@ -202,6 +207,16 @@ class MentorList extends React.Component {
     }, {
       username: 'Mireia',
       apiId: 'mentor-4',
+      age: 22,
+      firstName: 'mentor 3',
+      lastName: 'string',
+      gender: 'male',
+      profession: 'string',
+      topics: ['strings'],
+      aboutme: 'string'
+    }, {
+      username: 'Virginie',
+      apiId: 'fac30a',
       age: 22,
       firstName: 'mentor 3',
       lastName: 'string',
@@ -256,13 +271,14 @@ class MentorList extends React.Component {
 
   updateState (newState) {
     this.setState(newState)
-    console.log('update state called', this.state)
+    console.log('update state called', newState)
   }
 
   render () {
+    console.log(this.props.location)
     return (
       <div>
-        <ul style={styles.ul}>
+        {this.props.location === '/mentor-dashboard' ? '' : <ul style={styles.ul}>
           {this.state.mentorList.map((mentor, i) => {
             return mentor.canChat
             ? <MentorItem
@@ -274,8 +290,21 @@ class MentorList extends React.Component {
               />
             : null
           })}
-        </ul>
-        <Videochat />
+        </ul>}
+        <Modal bsSize='large'
+          show={this.state.showModal}
+          onHide={this.updateState.bind(this, {showModal: false})}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Videochat />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     )
   }

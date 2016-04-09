@@ -4,7 +4,7 @@ import {Col} from 'react-bootstrap'
 import Buttons from './buttons.js'
 
 export default class VideoBox extends React.Component {
-  shouldComponentUpdate (nextProps, nextState) {
+  shouldComponentUpdate (nextProps) {
     return nextProps.reason4update !== 'messages'
   }
   render () {

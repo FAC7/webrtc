@@ -70,7 +70,7 @@ class MentorList extends React.Component {
               if (rooms[_room.roomID] && _room.state === 'dead') {
                 delete rooms[_room.roomID]
               }
-              let newMessagesArr = this.state.messages.concat(_room.messages)
+              const newMessagesArr = this.state.messages.concat(_room.messages)
               if (newMessagesArr.length > this.state.messages.length) {
                 this.setState({
                   messages: newMessagesArr,
@@ -118,7 +118,7 @@ class MentorList extends React.Component {
     console.log('current Room (when process feed)-->', currentRoom)
     /* Only process the Av instance if it has remote media */
 
-    if (typeof av.remoteMedia !== 'object') { return }
+    if (typeof av.remoteMedia !== 'object') {return}
     var videos = []
     for (var id in av.remoteMedia) {
       var accept, hangup, video

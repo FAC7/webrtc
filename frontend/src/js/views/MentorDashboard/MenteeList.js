@@ -29,7 +29,10 @@ export default (props) => {
             lastConversation={menteeObj.lastConversation}
             notes={menteeObj.notes}
             styles={styles.li}
-            mentorUsername={props.mentorUsername}
+            mentorName={menteeObj.mentorName}
+            postchatNotes={menteeObj.postchatNotes}
+            prechatNotes={menteeObj.prechatNotes}
+            feedbackNotes={menteeObj.feedbackNotes}
           />
         )
       })}

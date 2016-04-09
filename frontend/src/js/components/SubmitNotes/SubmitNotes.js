@@ -39,6 +39,8 @@ class Notes extends React.Component {
     axios.post(url, options)
       .then(data => console.log(data))
       .then(this.setState({sent: true}))
+      .then(axios.get('/api/note/postchat/john')
+        .then(data => {console.log(data)}))
   }
   render () {
     return (

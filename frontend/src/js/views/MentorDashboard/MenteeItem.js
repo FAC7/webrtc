@@ -1,6 +1,7 @@
 import React from 'react'
 import {Well, Collapse} from 'react-bootstrap'
 import SubmitNotes from '../../components/SubmitNotes/SubmitNotes.js'
+import TabNotes from './TabNotes.js'
 
 export default class MenteeItem extends React.Component {
   constructor () {
@@ -27,11 +28,11 @@ export default class MenteeItem extends React.Component {
                 {(new Date(this.props.lastConversation)).toString().substr(0, 15)}
               </p>
               <p><b>About:</b> {this.props.about}</p>
-              <p><b>Notes:</b> {this.props.notes}</p>
+              <TabNotes {...this.props}/>
               <SubmitNotes
-                menteeUsername={this.props.menteeUserame}
+                menteeName={this.props.menteeName}
                 notesInstructions='Mentee notes'
-                mentorUserame={this.props.mentorUsername}
+                mentorName={this.props.mentorName}
               />
             </Well>
           </div>
@@ -48,5 +49,4 @@ MenteeItem.propTypes = {
   menteeName: React.PropTypes.string,
   styles: React.PropTypes.object,
   about: React.PropTypes.string,
-  notes: React.PropTypes.string
 }

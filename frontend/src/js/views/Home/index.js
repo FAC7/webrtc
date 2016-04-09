@@ -2,7 +2,6 @@ import React from 'react'
 import {Jumbotron, Grid, Col, Row, Button} from 'react-bootstrap'
 import Logo from '../../components/Logo/index.js'
 import {Link} from 'react-router'
-import SubmitNotes from '../../components/SubmitNotes/SubmitNotes.js'
 
 export default class Home extends React.Component {
   render () {
@@ -10,7 +9,6 @@ export default class Home extends React.Component {
       <div className='content-wrap' style={{marginBottom: '200px'}}>
         <Jumbotron style={{textAlign: 'center'}}>
           <Grid>
-            <SubmitNotes />
             <Col xs={10} xsOffset={1}/>
             <Logo imgUrl='img/confidant-black.png' maxWidth='300px' />
             <p>A safe space to talk to a mentor</p>

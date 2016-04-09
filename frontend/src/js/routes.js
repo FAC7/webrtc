@@ -8,6 +8,7 @@ import MentorDashboard from './views/MentorDashboard/index.js'
 import MenteeDashboard from './views/MenteeDashboard/index.js'
 import MentorSignup from './components/MentorsSignup/MentorsEditProfile.js'
 import MenteeSignup from './components/MenteesSignup/MenteesEditProfile.js'
+import EmergencyDashboard from './views/EmergencyDashboard/index.js'
 
 export default (
   <Route path='/' component={App}>
@@ -18,5 +19,6 @@ export default (
     <Route path='/mentee-dashboard' component={MenteeDashboard} />
     <Route path='/mentor-signup' component={MentorSignup} />
     <Route path='/mentee-signup' component={MenteeSignup} />
+    <Route path='/urgent' component={EmergencyDashboard} />
   </Route>
 )

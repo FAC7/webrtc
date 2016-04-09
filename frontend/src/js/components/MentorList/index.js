@@ -115,11 +115,11 @@ class MentorList extends React.Component {
       })
   }
 
-  processFeed (av, room) {
+  processFeed (av) {
     console.log('current Room (when process feed)-->', currentRoom)
     /* Only process the Av instance if it has remote media */
 
-    if (typeof av.remoteMedia !== 'object') { return }
+    if (typeof av.remoteMedia !== 'object') {return}
     var videos = []
     for (var id in av.remoteMedia) {
       var accept, hangup, video
@@ -291,7 +291,10 @@ class MentorList extends React.Component {
             : null
           })}
         </ul>}
-        <Modal bsSize='large' show={this.state.showModal} onHide={this.updateState.bind(this, { showModal: false })}>
+        <Modal bsSize='large'
+          show={this.state.showModal}
+          onHide={this.updateState.bind(this, {showModal: false})}
+        >
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>

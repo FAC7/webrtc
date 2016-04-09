@@ -10,7 +10,6 @@ export default (client) => ({ // eslint-disable-line
       const mode = request.params.mode
       const type = request.params.usertype
       if (request.auth.isAuthenticated) {
-        console.log(client)
         const cred = request.auth.credentials
         const username = cred.profile.raw.screen_name
         const dataToSend = {

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Modal, Button} from 'react-bootstrap'
+import {Modal} from 'react-bootstrap'
 import MentorItem from './MentorItem/index.js'
 import Videochat from './../Videochat/index.js'
 
@@ -304,7 +304,6 @@ class MentorList extends React.Component {
             <Videochat />
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.close}>Close</Button>
           </Modal.Footer>
         </Modal>
       </div>

@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import {getUserData} from '../redis/redisFunctions.js'
 
 export default client => ({
   method: ['GET', 'POST'],
@@ -10,6 +9,7 @@ export default client => ({
       const mode = request.params.mode
       const type = request.params.usertype
       if (request.auth.isAuthenticated) {
+        console.log(client)
         const cred = request.auth.credentials
         const username = cred.profile.raw.screen_name
         const dataToSend = {

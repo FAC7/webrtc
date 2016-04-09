@@ -28,7 +28,7 @@ export default class MenteeSignup extends React.Component {
       mobile
     }).then((results) => {
       console.log('RESULTS: ', results)
-      this.props.MUTATE_GLOBAL_STATE({
+      this.props.MUTATE_GLOBAL_STATE({ // eslint-disable-line
         IPCId: results.data.data.apidId,
         IPCPassword: results.data.data.apiPassword,
         name: results.data.data.firstName

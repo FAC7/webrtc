@@ -12,7 +12,6 @@ const IPCAddUser = (username, name) => { // eslint-disable-line
       name: name,
       password: createPassword()
     }
-    
     const request = https.request({
       method: 'POST',
       host: process.env.IPC_HOST,

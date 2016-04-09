@@ -84,6 +84,7 @@ MentorDashboard.defaultProps = {
   status: 'Offline',
   mentees: [
     {menteeName: 'Sam Houston',
+    phoneNumber: '+447849619953',
       conversationLink: '/contact',
       notes: 'Sam was in a good mood last time. I think his waterpolo is going well.',
       lastConversation: 1460028602793,
@@ -94,6 +95,7 @@ MentorDashboard.defaultProps = {
       ' they signpost him to the mentoring platform.'
     },
     {menteeName: 'Smelly Andrew',
+      phoneNumber: '+447885727095',
       conversationLink: '/contact',
       notes: 'Sam was in a good mood last time. I think his waterpolo is going well.',
       lastConversation: 1460028602793,
@@ -104,6 +106,7 @@ MentorDashboard.defaultProps = {
       ' they signpost him to the mentoring platform.'
     },
     {menteeName: 'Rob ',
+      phoneNumber: '+447849619953',
       conversationLink: '/contact',
       notes: 'Sam was in a good mood last time. I think his waterpolo is going well.',
       lastConversation: 1460028602793,

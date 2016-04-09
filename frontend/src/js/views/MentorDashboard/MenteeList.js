@@ -30,6 +30,7 @@ export default (props) => {
             notes={menteeObj.notes}
             styles={styles.li}
             mentorUsername={props.mentorUsername}
+            phoneNumber={menteeObj.phoneNumber}
           />
         )
       })}

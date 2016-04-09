@@ -44,7 +44,7 @@ export default class MenteeItem extends React.Component {
 MenteeItem.propTypes = {
   index: React.PropTypes.number,
   conversationLink: React.PropTypes.string,
-  lastConversation: React.PropTypes.string,
+  lastConversation: React.PropTypes.number,
   menteeName: React.PropTypes.string,
   styles: React.PropTypes.object,
   about: React.PropTypes.string,

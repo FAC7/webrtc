@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-export default client => ({
+export default (client) => ({ // eslint-disable-line
   method: ['GET', 'POST'],
   path: '/auth/{mode}/{usertype}',
   config: {
@@ -19,19 +19,11 @@ export default client => ({
         }
         const jwToken = jwt.sign(dataToSend, process.env.JWT_SECRET)
         request.cookieAuth.set({twitterCookie: jwToken})
-        // request.cookieAuth.set({test: 'ivan'})
-
 
         if (mode === 'login') {
           if (type === 'mentor') {
-            // getUserData('mentors', dataToSend.screenName, (data) => {
-            //   reply(data)
-            // })
             reply.redirect('/mentor-dashboard/#' + username)
           } else {
-            // getUserData('mentees', dataToSend.screenName, (data) => {
-            //   reply(data)
-            // })
             reply.redirect('/mentee-dashboard/#' + username)
           }
         }
@@ -40,11 +32,11 @@ export default client => ({
           if (type === 'mentor') {
             console.log('signed up as mentor')
             // should redirect to mentor signup when it's complete
-            reply.redirect('/mentor-dashboard#wrongplace')
+            reply.redirect('/mentor-signup')
           } else {
             console.log('signed up as mentee')
             // should redirect to mentee signup when it's complete
-            reply.redirect('/mentee-dashboard#wrongplace')
+            reply.redirect('/mentee-signup')
           }
         }
       }

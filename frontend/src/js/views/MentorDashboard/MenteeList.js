@@ -6,7 +6,8 @@ const styles = {
     listStyleType: 'none',
     color: 'white',
     fontSize: '1.7em',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    cursor: 'pointer'
   },
   ul: {
     backgroundColor: '#FFBE63',

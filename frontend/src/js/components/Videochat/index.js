@@ -2,12 +2,7 @@ import React from 'react'
 import Videobox from './VideoBox/index.js'
 import Chatbox from './ChatBox/index.js'
 
-// import {Grid, Row, Col} from 'react-bootstrap'
-// import videoHelpers from './../../helpers/videoHelpers.js'
-
-export default () => {
-  // const contentWidthXs = 18 - contentOffset * 2
-  // const contentWidthMd = 12 - contentOffset * 2
+export default (props) => {
   return (
     <div className='videoModal'>
       <div className='videoBox'>
@@ -16,6 +11,7 @@ export default () => {
           buttonsStyle={buttonsStyle}
           callButtonStyle={callButtonStyle}
           hangupButtonStyle={hangupButtonStyle}
+          reason4update={props.reason4update}
         />
       </div>
       <div className='chatBox'>
@@ -23,14 +19,15 @@ export default () => {
           chatstyle={chatstyle}
           submitstyle={submitstyle}
           messagesBoxStyle={messagesBoxStyle}
+          room={props.room}
+          rooms={props.rooms}
+          messages={props.messages}
         />
       </div>
     </div>
 
   )
 }
-
-// const contentOffset = 2
 
 const videostyle = {
   padding: '0',

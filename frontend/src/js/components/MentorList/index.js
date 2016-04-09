@@ -29,7 +29,10 @@ class MentorList extends React.Component {
     this.state = {
       pleaseCall: false,
       mentorList: [],
-      showModal: false
+      showModal: false,
+      room: currentRoom,
+      messages: [],
+      reason4update: 'non-videos'
     }
     this.updateState = this.updateState.bind(this)
     this.filterMentors = this.filterMentors.bind(this)
@@ -39,16 +42,20 @@ class MentorList extends React.Component {
 
   componentDidMount () {
     // ajax call to PBX API for info on all contacts in the room
-    this.initialisePBX('fac20b', 'cwlfune3')
-    var submit = document.getElementById('Submit')
+    this.initialisePBX('fac33b', 'a2qitapm')
+    var form = document.getElementById('newMessage')
     var input = document.getElementById('textbox')
-    submit.addEventListener('click', () => {
-      console.log('room (when clicking)-->', currentRoom)
-      console.log('posting', input.value)
-      currentRoom.post(input.value)
-      input.value = ''
-    })
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        console.log('room (when clicking)-->', currentRoom)
+        console.log('posting', input.value)
+        currentRoom.post(input.value)
+        input.value = ''
+      })
+    }
   }
+
   initialisePBX (username, password) {
     const that = this
 
@@ -66,6 +73,7 @@ class MentorList extends React.Component {
           IPCortex.PBX.enableChat((room) => { // eslint-disable-line
             // rob says decide if mentee shows their video????
             currentRoom = room
+            this.setState({room})
             if (typeof room !== 'object') {
               return
             }
@@ -73,12 +81,14 @@ class MentorList extends React.Component {
               if (rooms[_room.roomID] && _room.state === 'dead') {
                 delete rooms[_room.roomID]
               }
-              // var messagesBox = document.getElementById('messages')
-              // room.messages.forEach((message) => {
-              //   // render messages
-              // })
-            }
-            )
+              let newMessagesArr = this.state.messages.concat(_room.messages)
+              if (newMessagesArr.length > this.state.messages.length) {
+                this.setState({
+                  messages: newMessagesArr,
+                  reason4update: 'messages'
+                })
+              }
+            })
             /* If the room has come into existance due to a video request,
                start video with the stored stream */
             if (room.cID === media.cID && media.stream && !that.state.pleaseCall) {
@@ -119,7 +129,7 @@ class MentorList extends React.Component {
     console.log('current Room (when process feed)-->', currentRoom)
     /* Only process the Av instance if it has remote media */
 
-    if (typeof av.remoteMedia !== 'object') {return}
+    if (typeof av.remoteMedia !== 'object') { return }
     var videos = []
     for (var id in av.remoteMedia) {
       var accept, hangup, video
@@ -195,8 +205,8 @@ class MentorList extends React.Component {
       topics: ['strings'],
       aboutme: 'string'
     }, {
-      username: 'Franzzzz',
-      apiId: 'fac21b',
+      username: 'Rob',
+      apiId: 'fac26a',
       age: 22,
       firstName: 'mentor 2',
       lastName: 'string',
@@ -301,7 +311,9 @@ class MentorList extends React.Component {
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Videochat />
+            <Videochat
+              
+            />
           </Modal.Body>
           <Modal.Footer>
           </Modal.Footer>

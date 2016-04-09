@@ -16,6 +16,9 @@ class Notes extends React.Component {
     this.submitNotes = this.submitNotes.bind(this)
     this.toggleModal = this.toggleModal.bind(this)
   }
+  componentDidMount () {
+    this.setState({showModal: this.props.modalStatus})
+  }
   toggleModal () {
     this.setState({showModal: !this.state.showModal})
   }
@@ -40,7 +43,7 @@ class Notes extends React.Component {
       .then(data => console.log(data))
       .then(this.setState({sent: true}))
       .then(axios.get('/api/note/postchat/john')
-        .then(data => {console.log(data)}))
+        .then(data => { console.log(data) }))
   }
   render () {
     return (
@@ -78,7 +81,8 @@ Notes.defaultProps = {
   noteInstructions: 'please let me know how you felt about this session, so I can improve',
   note: 'Reem smells',
   menteeName: 'ellie',
-  mentorName: 'sublimeOwen'
+  mentorName: 'sublimeOwen',
+  modalStatus: false
 }
 
 export default Notes

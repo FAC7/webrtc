@@ -4,6 +4,7 @@ import ProfileButtons from '../MentorDashboard/ProfileButtons.js'
 import MenteesProfilePage from '../../components/Profile/MenteesProfilePage.js'
 import MenteesEditProfile from '../../components/MenteesSignup/MenteesEditProfile.js'
 import MentorList from '../../components/MentorList/index.js'
+import SubmitNotes from '../../components/SubmitNotes/SubmitNotes.js'
 
 export default class MenteeDashboard extends React.Component {
   constructor () {
@@ -71,6 +72,10 @@ export default class MenteeDashboard extends React.Component {
             <Button onClick={this.toggleModal.bind(this, 'showEditModal')}>Close</Button>
           </Modal.Footer>
         </Modal>
+        <SubmitNotes
+          noteInstructions={'Please tell us how you\'re feeling today'}
+          modalStatus={false}
+        />
       </Grid>
     )
   }

@@ -38,3 +38,25 @@ button:focus {
 a {
   cursor: pointer;
 }
+
+ul {
+  padding: 0
+}
+.videoBox {
+  float: left;
+  width: 65%;
+  img {
+    width: 50px;
+    margin-right: 20px;
+  }
+}
+
+.chatBox {
+  float: left;
+  width: 34%;
+  margin-left: 1%;
+}
+
+.modal-footer {
+  border-top: none;
+}

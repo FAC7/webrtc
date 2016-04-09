@@ -2,77 +2,76 @@ import React from 'react'
 import Videobox from './VideoBox/index.js'
 import Chatbox from './ChatBox/index.js'
 
-import {Grid, Row, Col} from 'react-bootstrap'
-import EmptyCol from './Reused/EmptyCol.js'
-// import videoHelpers from './../../helpers/videoHelpers.js'
-
-export default () => {
-  const contentWidthXs = 18 - contentOffset * 2
-  const contentWidthMd = 12 - contentOffset * 2
+export default (props) => {
   return (
-    <Grid>
-      <Row className='show-grid flush'>
-        <EmptyCol md={contentOffset} />
-        <Col xs={contentWidthXs} md={contentWidthMd} className='flush'>
-          <Videobox
-            videostyle={videostyle}
-            buttonsStyle={buttonsStyle}
-            callButtonStyle={callButtonStyle}
-            hangupButtonStyle={hangupButtonStyle}
-          />
-        </Col>
-        <EmptyCol md={contentOffset} />
-      </Row>
-      <Row className='show-grid'>
-        <EmptyCol md={contentOffset} />
-        <Col xs={contentWidthXs} md={contentWidthMd} className='flush'>
-          <Chatbox
-            chatstyle={chatstyle}
-            submitstyle={submitstyle}
-            messagesBoxStyle={messagesBoxStyle}
-          />
-        </Col>
-        <EmptyCol md={contentOffset} />
-      </Row>
-    </Grid>
+    <div className='videoModal'>
+      <div className='videoBox'>
+        <Videobox
+          videostyle={videostyle}
+          buttonsStyle={buttonsStyle}
+          callButtonStyle={callButtonStyle}
+          hangupButtonStyle={hangupButtonStyle}
+          reason4update={props.reason4update}
+        />
+      </div>
+      <div className='chatBox'>
+        <Chatbox
+          chatstyle={chatstyle}
+          submitstyle={submitstyle}
+          messagesBoxStyle={messagesBoxStyle}
+          room={props.room}
+          rooms={props.rooms}
+          messages={props.messages}
+        />
+      </div>
+    </div>
+
   )
 }
-
-const contentOffset = 2
 
 const videostyle = {
   padding: '0',
   width: '100%',
-  border: '3px solid blue',
-  borderRadius: '5%',
+  borderRadius: '10px',
   height: '60vh',
-  marginTop: '30vh'
+  marginTop: '0',
+  backgroundColor: 'black'
 }
 
 const chatstyle = {
   padding: '0',
-  border: '1px solid black',
+  border: '1px solid #034484',
   height: '10vh',
-  width: '90%'
+  width: '80%',
+  paddingLeft: '5px'
 }
+
 const submitstyle = {
   padding: '0',
   height: '10vh',
-  width: '10%'
+  width: '20%',
+  minWidth: '50px',
+  backgroundColor: '#034484',
+  color: 'white',
+  border: 'none'
 }
-const messagesBoxStyle = {
-  height: '40vh',
-  border: '1px solid black',
-  width: '100%'
-}
+
 const callButtonStyle = {
 
 }
 const hangupButtonStyle = {
 
 }
+
+const messagesBoxStyle = {
+  height: '50vh',
+  border: '1px solid #034484',
+  width: '100%',
+  marginBottom: '-1px'
+}
+
 const buttonsStyle = {
-  position: 'absolute',
-  bottom: '2vh',
-  right: '2vw'
+  position: 'relative',
+  left: '17vw',
+  marginTop: '-70px'
 }

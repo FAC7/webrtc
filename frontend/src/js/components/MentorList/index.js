@@ -2,6 +2,7 @@ import React from 'react'
 import {Modal, Button} from 'react-bootstrap'
 import MentorItem from './MentorItem/index.js'
 import Videochat from './../Videochat/index.js'
+import axios from 'axios'
 
 var currentRoom
 var rooms = {}
@@ -184,89 +185,99 @@ class MentorList extends React.Component {
   filterMentors () {
     // AJAX call to our api
     // save mentors to state so if new contact arrives we can still check it?
-    const mentors = [{
-      username: 'Jacket',
-      apiId: 'fac28a',
-      age: 22,
-      firstName: 'mentor 1',
-      lastName: 'string',
-      gender: 'male',
-      profession: 'string',
-      topics: ['strings'],
-      aboutme: 'string'
-    }, {
-      username: 'Franzzzz',
-      apiId: 'fac21b',
-      age: 22,
-      firstName: 'mentor 2',
-      lastName: 'string',
-      gender: 'male',
-      profession: 'string',
-      topics: ['strings'],
-      aboutme: 'string'
-    }, {
-      username: 'Mireia',
-      apiId: 'mentor-4',
-      age: 22,
-      firstName: 'mentor 3',
-      lastName: 'string',
-      gender: 'male',
-      profession: 'string',
-      topics: ['strings'],
-      aboutme: 'string'
-    }, {
-      username: 'Virginie',
-      apiId: 'fac30a',
-      age: 22,
-      firstName: 'mentor 3',
-      lastName: 'string',
-      gender: 'male',
-      profession: 'string',
-      topics: ['strings'],
-      aboutme: 'string'
-    }]
+    // const mentors = [{
+    //   username: 'Jacket',
+    //   apiId: 'fac28a',
+    //   age: 22,
+    //   firstName: 'mentor 1',
+    //   lastName: 'string',
+    //   gender: 'male',
+    //   profession: 'string',
+    //   topics: ['strings'],
+    //   aboutme: 'string'
+    // }, {
+    //   username: 'Franzzzz',
+    //   apiId: 'fac21b',
+    //   age: 22,
+    //   firstName: 'mentor 2',
+    //   lastName: 'string',
+    //   gender: 'male',
+    //   profession: 'string',
+    //   topics: ['strings'],
+    //   aboutme: 'string'
+    // }, {
+    //   username: 'Mireia',
+    //   apiId: 'mentor-4',
+    //   age: 22,
+    //   firstName: 'mentor 3',
+    //   lastName: 'string',
+    //   gender: 'male',
+    //   profession: 'string',
+    //   topics: ['strings'],
+    //   aboutme: 'string'
+    // }, {
+    //   username: 'Virginie',
+    //   apiId: 'fac30a',
+    //   age: 22,
+    //   firstName: 'mentor 3',
+    //   lastName: 'string',
+    //   gender: 'male',
+    //   profession: 'string',
+    //   topics: ['strings'],
+    //   aboutme: 'string'
+    // }]
 
-    // axios.get('/getAllMentors')
-    // .then((response) => {
-    //   mentors = response
-    // })
-    // .catch((response) => {
-    //   console.log(response)
-    // })
 
     // filter contacts who are also mentors and save to state
     // regardless of their online/offline state
-    let mentorList = IPCortex.PBX.contacts.filter((contact) => { // eslint-disable-line
-      var isMentor = false
-      mentors.forEach((mentor) => {
-        if (contact.uname === mentor.apiId) {
-          isMentor = true
-          Object.assign(contact, mentor)
-        }
+
+    const sieveMentors = (mentorsObject) => {
+      const mentors = Object.keys(mentorsObject.data.data).map((mentorName) => {
+        return JSON.parse(mentorsObject.data.data[mentorName])
       })
-      return isMentor
-    }).forEach((contact) => {
-      /* Listen for updates in case the user changes state */
-      contact.addListener('update', () => {
-        // console.log(this.state.mentorList)
-        const newMentorList = this.state.mentorList.filter((stateContact) => {
-          return contact.cID !== stateContact.cID
+      let mentorList = IPCortex.PBX.contacts.filter((contact) => { // eslint-disable-line
+        var isMentor = false
+        mentors.forEach((mentor) => {
+          if (contact.uname === mentor.apiId) {
+            console.log('made it')
+            isMentor = true
+            Object.assign(contact, mentor)
+          }
         })
+        return isMentor
+      }).forEach((contact) => {
+        /* Listen for updates in case the user changes state */
+        contact.addListener('update', () => {
+          // console.log(this.state.mentorList)
+          const newMentorList = this.state.mentorList.filter((stateContact) => {
+            return contact.cID !== stateContact.cID
+          })
+          this.updateState({
+            mentorList: [
+              ...newMentorList,
+              contact
+            ]
+          })
+        })
+
         this.updateState({
           mentorList: [
-            ...newMentorList,
+            ...this.state.mentorList,
             contact
           ]
         })
       })
 
-      this.updateState({
-        mentorList: [
-          ...this.state.mentorList,
-          contact
-        ]
-      })
+    }
+
+    axios.get('/api/profile/mentors')
+    .then((response) => {
+      sieveMentors(response)
     })
+    .catch((error) => {
+      console.log('axios error', error)
+    })
+
   }
 
   updateState (newState) {

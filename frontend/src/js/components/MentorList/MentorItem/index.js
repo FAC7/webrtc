@@ -58,7 +58,8 @@ class MentorItem extends React.Component {
   }
   render () {
     return (
-      <li style={this.props.style}>{this.props.mentor.username}
+      <li style={this.props.style}>
+        {this.props.mentor.firstName + ' ' + this.props.mentor.lastName}
         <Button bsStyle='success' style={{float: 'right'}} onClick={this.onClickFunc}>CALL</Button>
       </li>
     )

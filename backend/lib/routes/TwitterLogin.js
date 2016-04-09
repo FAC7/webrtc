@@ -6,6 +6,7 @@ export default (client) => ({ // eslint-disable-line
   config: {
     auth: 'twitter',
     handler: (request, reply) => {
+      console.log(client)
       const mode = request.params.mode
       const type = request.params.usertype
       if (request.auth.isAuthenticated) {

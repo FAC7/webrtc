@@ -46,6 +46,7 @@ const chatstyle = {
   border: '1px solid #034484',
   height: '10vh',
   width: '80%',
+  paddingLeft: '5px'
 }
 
 const submitstyle = {

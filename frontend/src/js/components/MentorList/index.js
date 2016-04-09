@@ -180,7 +180,7 @@ class MentorList extends React.Component {
     // AJAX call to our api
     // save mentors to state so if new contact arrives we can still check it?
     const mentors = [{
-      username: 'fred',
+      username: 'Jacket',
       apiId: 'fac28a',
       age: 22,
       firstName: 'mentor 1',
@@ -190,8 +190,8 @@ class MentorList extends React.Component {
       topics: ['strings'],
       aboutme: 'string'
     }, {
-      username: 'jack',
-      apiId: 'fac20a',
+      username: 'Franzzzz',
+      apiId: 'fac21b',
       age: 22,
       firstName: 'mentor 2',
       lastName: 'string',

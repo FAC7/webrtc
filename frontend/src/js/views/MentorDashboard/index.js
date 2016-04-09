@@ -4,7 +4,7 @@ import MenteeList from './MenteeList.js'
 import ProfileButtons from './ProfileButtons.js'
 import MentorsProfilePage from '../../components/Profile/MentorsProfilePage.js'
 import MentorsEditProfile from '../../components/MentorsSignup/MentorsEditProfile.js'
-import MentorList from './../MentorList/index.js'
+import MentorList from '../../components/MentorList/index.js'
 
 export default class MentorDashboard extends React.Component {
   constructor () {

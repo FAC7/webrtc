@@ -6,36 +6,42 @@ import {Grid, Row, Col} from 'react-bootstrap'
 import EmptyCol from './Reused/EmptyCol.js'
 // import videoHelpers from './../../helpers/videoHelpers.js'
 
-export default () => {
-  const contentWidthXs = 18 - contentOffset * 2
-  const contentWidthMd = 12 - contentOffset * 2
-  return (
-    <Grid>
-      <Row className='show-grid flush'>
-        <EmptyCol md={contentOffset} />
-        <Col xs={contentWidthXs} md={contentWidthMd} className='flush'>
-          <Videobox
-            videostyle={videostyle}
-            buttonsStyle={buttonsStyle}
-            callButtonStyle={callButtonStyle}
-            hangupButtonStyle={hangupButtonStyle}
-          />
-        </Col>
-        <EmptyCol md={contentOffset} />
-      </Row>
-      <Row className='show-grid'>
-        <EmptyCol md={contentOffset} />
-        <Col xs={contentWidthXs} md={contentWidthMd} className='flush'>
-          <Chatbox
-            chatstyle={chatstyle}
-            submitstyle={submitstyle}
-            messagesBoxStyle={messagesBoxStyle}
-          />
-        </Col>
-        <EmptyCol md={contentOffset} />
-      </Row>
-    </Grid>
-  )
+export default class Videochat extends React.Component {
+  render () {
+    const contentWidthXs = 18 - contentOffset * 2
+    const contentWidthMd = 12 - contentOffset * 2
+    return (
+      <Grid>
+        <Row className='show-grid flush'>
+          <EmptyCol md={contentOffset} />
+          <Col xs={contentWidthXs} md={contentWidthMd} className='flush'>
+            <Videobox
+              videostyle={videostyle}
+              buttonsStyle={buttonsStyle}
+              callButtonStyle={callButtonStyle}
+              hangupButtonStyle={hangupButtonStyle}
+              reason4update={this.props.reason4update}
+            />
+          </Col>
+          <EmptyCol md={contentOffset} />
+        </Row>
+        <Row className='show-grid'>
+          <EmptyCol md={contentOffset} />
+          <Col xs={contentWidthXs} md={contentWidthMd} className='flush'>
+            <Chatbox
+              chatstyle={chatstyle}
+              submitstyle={submitstyle}
+              messagesBoxStyle={messagesBoxStyle}
+              room={this.props.room}
+              rooms={this.props.rooms}
+              messages={this.props.messages}
+            />
+          </Col>
+          <EmptyCol md={contentOffset} />
+        </Row>
+      </Grid>
+    )
+  }
 }
 
 const contentOffset = 2

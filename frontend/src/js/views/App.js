@@ -6,7 +6,7 @@ import '../../scss/style.scss'
 
 const options = {
   menuItems: ['about', 'contact'],
-  logoUrl: 'img/rhino.png'
+  logoUrl: 'img/confidant.png'
 }
 
 export default class App extends React.Component {
@@ -14,7 +14,6 @@ export default class App extends React.Component {
     return (
       <div>
         <Header menuItems={options.menuItems} logoUrl={options.logoUrl} fluid />
-        <div className='header-spacing'></div>
           {this.props.children}
         <Footer logoUrl={options.logoUrl} />
       </div>

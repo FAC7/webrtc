@@ -32,11 +32,15 @@ class Notes extends React.Component {
     const options = {
       note: this.state.note,
       date: this.state.date,
-      menteeUsername: this.props.menteeUsername,
-      mentorUsername: this.props.mentorUsername
+      menteeName: this.props.menteeName,
+      mentorName: this.props.mentorName
     }
     const url = this.props.noteRoute
-    axios.post(url, options).then(this.setState({sent: true}))
+    axios.post(url, options)
+      .then(data => console.log(data))
+      .then(this.setState({sent: true}))
+      .then(axios.get('/api/note/postchat/john')
+        .then(data => {console.log(data)}))
   }
   render () {
     return (
@@ -63,18 +67,18 @@ class Notes extends React.Component {
             </Button>
           </form>
         </Modal>
-        <Button onClick={this.toggleModal}>Notes</Button>
+        <Button onClick={this.toggleModal}>Create a note</Button>
       </div>
     )
   }
 }
 
 Notes.defaultProps = {
-  noteRoute: 'feedback/smellyReem',
+  noteRoute: '/api/note/postchat/john',
   noteInstructions: 'please let me know how you felt about this session, so I can improve',
-  note: 'Re\'em smells',
-  menteeUsername: 'smellyRe\'em',
-  mentorUsername: 'sublimeOwen'
+  note: 'Reem smells',
+  menteeName: 'ellie',
+  mentorName: 'sublimeOwen'
 }
 
 export default Notes

@@ -53,6 +53,37 @@ const insertNotes = (hashName) => {
   }
 }
 
+export const getUserProfile = (client, userType, userName) => {
+  return client.hmgetAsync(userType, userName)
+    .then((result) => {
+      let results
+      if (result) {
+        results = JSON.parse(result)
+      } else {
+        results = {}
+      }
+      return Promise.resolve(results)
+    })
+}
+
+export const getAllUserTypes = (client, userType) => {
+  return client.hgetallAsync(userType)
+    .then((result) => {
+      let results
+      if (result) {
+        results = result
+      } else {
+        results = {}
+      }
+      return Promise.resolve(results)
+    })
+}
+
+export const setUserProfile = (client, userType, userName, payload) => {
+  const data = JSON.stringify(payload)
+  client.hmset(userType, userName, data)
+}
+
 export const getMenteeNotes = getNotes('notes:postchat')
 export const insertMenteeNotes = insertNotes('notes:postchat')
 export const getPrechatNotes = getNotes('notes:prechat')

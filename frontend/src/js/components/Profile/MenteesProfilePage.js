@@ -1,5 +1,4 @@
 import React from 'react'
-import {Button} from 'react-bootstrap'
 
 class MenteesProfilePage extends React.Component {
   render () {
@@ -17,7 +16,6 @@ class MenteesProfilePage extends React.Component {
         </ul>
         <p>some things about me: </p>
         <p> {this.props.aboutme}</p>
-        <Button> Request a chat </Button>
       </div>
     )
   }

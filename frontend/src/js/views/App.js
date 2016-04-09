@@ -10,11 +10,30 @@ const options = {
 }
 
 export default class App extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {test: 'im in view props!'}
+
+    this.mapStateToChildren = this.mapStateToChildren.bind(this)
+    this.MUTATE_GLOBAL_STATE = this.MUTATE_GLOBAL_STATE.bind(this)
+  }
+  mapStateToChildren (children) {
+    return React.Children.map(children, child => {
+      return React.cloneElement(child, {
+        appState: this.state,
+        MUTATE_GLOBAL_STATE: this.MUTATE_GLOBAL_STATE
+      })
+    })
+  }
+  MUTATE_GLOBAL_STATE (newState) {
+    this.setState(newState)
+  }
   render () {
     return (
       <div>
         <Header menuItems={options.menuItems} logoUrl={options.logoUrl} fluid />
-          {this.props.children}
+          {this.mapStateToChildren(this.props.children)}
         <Footer logoUrl={options.logoUrl} />
       </div>
     )

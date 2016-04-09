@@ -1,21 +1,9 @@
 import React from 'react'
 import {Jumbotron, Grid, Col, Row, Button} from 'react-bootstrap'
-import {browserHistory} from 'react-router'
 import Logo from '../../components/Logo/index.js'
+import {Link} from 'react-router'
 
 export default class Home extends React.Component {
-  onUrgentClick () {
-    browserHistory.push('/chat/urgent')
-  }
-
-  onMenteeSignupClick () {
-    browserHistory.push('/signup/mentee')
-  }
-
-  onMentorSignupClick () {
-    browserHistory.push('/signup/mentor')
-  }
-
   render () {
     return (
       <div className='content-wrap' style={{marginBottom: '200px'}}>
@@ -26,24 +14,26 @@ export default class Home extends React.Component {
             <p>A safe space to talk to a mentor</p>
             <Row style={{marginTop: '5em'}}>
               <Col xs={8} xsOffset={2}>
-                <Button
-                  style={styles.button}
-                  bsStyle='danger'
-                  bsSize='lg'
-                  onClick={this.onUrgentClick}
-                  block
-                >
-                  Talk to someone right now?
-                </Button>
-                <Button
-                  style={styles.button}
-                  bsStyle='primary'
-                  bsSize='lg'
-                  onClick={this.onMenteeSignupClick}
-                  block
-                >
-                  Sign up for regular mentoring
-                </Button>
+                <Link to={'/chat/urgent'}>
+                  <Button
+                    style={styles.button}
+                    bsStyle='danger'
+                    bsSize='lg'
+                    block
+                  >
+                    Talk to someone right now?
+                  </Button>
+                </Link>
+                <a href={'/auth/signup/mentor'}>
+                  <Button
+                    style={styles.button}
+                    bsStyle='primary'
+                    bsSize='lg'
+                    block
+                  >
+                    Sign up for regular mentoring
+                  </Button>
+                </a>
               </Col>
             </Row>
           </Grid>
@@ -57,15 +47,16 @@ export default class Home extends React.Component {
           </Row>
           <Row>
             <Col xs={8} xsOffset={2}>
-              <Button
-                style={styles.button}
-                bsStyle='primary'
-                bsSize='lg'
-                onClick={this.onMentorSignupClick}
-                block
-              >
-                Sign-up / Login
-              </Button>
+              <a href={'/auth/signup/mentee'}>
+                <Button
+                  style={styles.button}
+                  bsStyle='primary'
+                  bsSize='lg'
+                  block
+                >
+                  Sign-up / Login
+                </Button>
+              </a>
             </Col>
           </Row>
         </Grid>

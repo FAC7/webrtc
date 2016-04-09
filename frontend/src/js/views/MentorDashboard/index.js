@@ -2,8 +2,8 @@ import React from 'react'
 import {Grid, Row, Col, Modal, Button} from 'react-bootstrap'
 import MenteeList from './MenteeList.js'
 import ProfileButtons from './ProfileButtons.js'
-import MentorsProfilePage from '../Profile/MentorsProfilePage.js'
-import MentorsEditProfile from '../MentorsSignup/MentorsEditProfile.js'
+import MentorsProfilePage from '../../components/Profile/MentorsProfilePage.js'
+import MentorsEditProfile from '../../components/MentorsSignup/MentorsEditProfile.js'
 
 export default class MentorDashboard extends React.Component {
   constructor () {

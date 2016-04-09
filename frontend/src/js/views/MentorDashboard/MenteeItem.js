@@ -1,6 +1,7 @@
 import React from 'react'
 import {Well, Collapse} from 'react-bootstrap'
-import SubmitNotes from '../SubmitNotes/SubmitNotes.js'
+import SubmitNotes from '../../components/SubmitNotes/SubmitNotes.js'
+
 export default class MenteeItem extends React.Component {
   constructor () {
     super()

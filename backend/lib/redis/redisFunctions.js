@@ -82,7 +82,7 @@ export const getAllUserTypes = (client, userType) => {
 
 export const setUserProfile = (client, userType, userName, payload) => {
   const data = JSON.stringify(payload)
-  client.hmset(userType, userName, data)
+  return client.hsetAsync(userType, userName, data)
 }
 
 export const getMenteeNotes = getNotes('notes:postchat')

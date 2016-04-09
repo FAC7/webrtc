@@ -47,7 +47,7 @@ export default class Home extends React.Component {
           </Row>
           <Row>
             <Col xs={8} xsOffset={2}>
-              <a href={'/auth/signup/mentee'}>
+              <a href={'/auth/signup/mentor'}>
                 <Button
                   style={styles.button}
                   bsStyle='primary'

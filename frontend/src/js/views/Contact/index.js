@@ -5,15 +5,16 @@ const styles = {
   textAlign: 'center',
   margin: '4em auto'
 }
-const repoLink = 'https://github.com/foundersandcoders'
+const repoLink = 'https://github.com/FAC7/webrtc'
 
 export default () => {
   return (
     <Grid style={styles}>
       <Row>
         <Col xs={12}>
-          <h3>Get in touch via our repo!</h3>
-          <a href={repoLink} target='_blank'>Your repo link</a>
+          <a href={repoLink} target='_blank'>
+            <h3>Get in touch via our repo!</h3>
+          </a>
         </Col>
       </Row>
     </Grid>

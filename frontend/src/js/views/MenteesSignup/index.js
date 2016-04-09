@@ -1,9 +1,10 @@
 import React from 'react'
+import axios from 'axios'
 import {Input, ButtonInput} from 'react-bootstrap'
 
 export default (props) => {
   return (
-    <form action='/save-mentee-profile' style={{padding: '0 2em'}}>
+    <form onSubmit={onSubmit} style={{padding: '0 2em'}}>
       <h4>Fill in your details</h4>
       <Input
         id='firstname'
@@ -43,4 +44,27 @@ export default (props) => {
       <ButtonInput type='submit' defaultValue='save details'/>
     </form>
   )
+}
+
+const onSubmit = (e) => {
+  e.preventDefault()
+
+  const username = window.location.href.split('#')[1] || 'unknown'
+  const firstName = document.getElementById('firstname').value
+  const lastName = document.getElementById('lastname').value
+  const gender = document.getElementById('gender').value
+  const age = document.getElementById('gender').value
+  const aboutme = document.getElementById('aboutme').value
+
+  axios.post('/api/profile/mentee/' + username, {
+    firstName,
+    lastName,
+    age,
+    gender,
+    aboutme
+  }).then((results) => {
+    console.log('RESULTS: ', results)
+  }).catch((err) => {
+    console.log('[Error]: ' + err)
+  })
 }

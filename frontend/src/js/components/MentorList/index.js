@@ -282,7 +282,6 @@ class MentorList extends React.Component {
 
   updateState (newState) {
     this.setState(newState)
-    console.log('update state called', newState)
   }
 
   render () {

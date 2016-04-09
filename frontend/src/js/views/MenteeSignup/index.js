@@ -18,7 +18,7 @@ export default class MenteeSignup extends React.Component {
     const age = document.getElementById('age').value
     const aboutme = document.getElementById('aboutme').value
     const mobile = document.getElementById('mobile-number').value
-    var that = this
+
     axios.post('/api/profile/mentee/' + username, {
       firstName,
       lastName,
@@ -28,13 +28,12 @@ export default class MenteeSignup extends React.Component {
       mobile
     }).then((results) => {
       console.log('RESULTS: ', results)
-      console.log('THAT', that)
-      that.props.MUTATE_GLOBAL_STATE({
+      this.props.MUTATE_GLOBAL_STATE({
         IPCId: results.data.data.apidId,
         IPCPassword: results.data.data.apiPassword,
         name: results.data.data.firstName
       })
-      that.props.history.push('/mentee-dashboard')
+      this.props.history.push('/mentee-dashboard')
     }).catch((err) => {
       console.log('[Error]: ' + err)
     })

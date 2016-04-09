@@ -1,5 +1,6 @@
 import React from 'react'
-import {Jumbotron, Grid, Col, Row, Button, PageHeader} from 'react-bootstrap'
+import {Jumbotron, Grid, Col, Row, Button} from 'react-bootstrap'
+import Logo from '../../components/Logo/index.js'
 import {Link} from 'react-router'
 
 export default class Home extends React.Component {
@@ -7,18 +8,14 @@ export default class Home extends React.Component {
     console.log(this.props)
     return (
       <div className='content-wrap' style={{marginBottom: '200px'}}>
-        <Jumbotron>
+        <Jumbotron style={{textAlign: 'center'}}>
           <Grid>
-            <Row style={styles.row}>
-              <Col xs={10} xsOffset={1}>
-                <PageHeader style={styles.header}>
-                  Mentoring and Counselling Services
-                </PageHeader>
-              </Col>
-            </Row>
-            <Row>
+            <Col xs={10} xsOffset={1}/>
+            <Logo imgUrl='img/confidant-black.png' maxWidth='300px' />
+            <p>A safe space to talk to a mentor</p>
+            <Row style={{marginTop: '5em'}}>
               <Col xs={8} xsOffset={2}>
-                <Link to={'/chat/urgent'}>
+                <Link to={'/urgent'}>
                   <Button
                     style={styles.button}
                     bsStyle='danger'

@@ -6,10 +6,10 @@ export default (client) => ({ // eslint-disable-line
   config: {
     auth: 'twitter',
     handler: (request, reply) => {
+      console.log(client)
       const mode = request.params.mode
       const type = request.params.usertype
       if (request.auth.isAuthenticated) {
-        console.log(client)
         const cred = request.auth.credentials
         const username = cred.profile.raw.screen_name
         const dataToSend = {
@@ -32,11 +32,11 @@ export default (client) => ({ // eslint-disable-line
           if (type === 'mentor') {
             console.log('signed up as mentor')
             // should redirect to mentor signup when it's complete
-            reply.redirect('/mentor-signup#' + username)
+            reply.redirect('/mentor-signup/#' + username)
           } else {
             console.log('signed up as mentee')
             // should redirect to mentee signup when it's complete
-            reply.redirect('/mentee-signup#' + username)
+            reply.redirect('/mentee-signup/#' + username)
           }
         }
       }

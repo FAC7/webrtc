@@ -10,6 +10,27 @@ body {
   font-family: $main-font;
   margin-bottom: $footer-height;
 }
+
+button:focus {
+  outline: 0 !important;
+}
+
+.mentee-item {
+  padding-bottom: 8px;
+}
+
+.notes-item {
+  padding: 2em;
+  margin: 1em 0;
+  background-color: #038EF4;
+  color: #fff;
+  border-radius: 5px;
+}
+
 .flush {
   padding: 0;
+}
+
+a {
+  cursor: pointer;
 }

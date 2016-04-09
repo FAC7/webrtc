@@ -5,7 +5,7 @@ export default class TabNotes extends React.Component {
   mapNotes (notes) {
     return notes.map(note => {
       return (
-        <div>
+        <div className='notes-item'>
           <p>author: {note.mentorName}</p>
           <p>{note.note}</p>
         </div>

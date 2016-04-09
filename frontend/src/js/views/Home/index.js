@@ -16,7 +16,7 @@ export default class Home extends React.Component {
             <p>A safe space to talk to a mentor</p>
             <Row style={{marginTop: '5em'}}>
               <Col xs={8} xsOffset={2}>
-                <Link to={'/chat/urgent'}>
+                <Link to={'/urgent'}>
                   <Button
                     style={styles.button}
                     bsStyle='danger'

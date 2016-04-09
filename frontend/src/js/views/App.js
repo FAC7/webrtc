@@ -6,7 +6,7 @@ import '../../scss/style.scss'
 
 const options = {
   menuItems: ['about', 'contact'],
-  logoUrl: 'img/confidant.png'
+  logoUrl: '/img/confidant.png'
 }
 
 export default class App extends React.Component {

@@ -10,7 +10,7 @@ export default class MenteeItem extends React.Component {
   }
   render () {
     return (
-      <div>
+      <div className='mentee-item'>
         <a style={{textDecoration: 'none'}}>
           <li
             key={this.props.index}

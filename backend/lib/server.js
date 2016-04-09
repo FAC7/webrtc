@@ -3,6 +3,7 @@ require('env2')('./config.env')
 import Hapi from 'hapi'
 const server = new Hapi.Server()
 const port = process.env.PORT || 4000
+import fs from 'fs'
 
 // helper methods
 import {handlePlugins} from './helpers/server-helpers.js'
@@ -23,7 +24,12 @@ import profile from './routes/api/profile/index.js'
 // auth strategies
 import {TwitterCookie, TwitterOauth} from './authStrategies/twitterAuthStrategies.js'
 
-const ConnectionSettings = {port, routes: {cors: true}}
+const tls = {
+  key: fs.readFileSync(`${__dirname}/../../key.pem`),
+  cert: fs.readFileSync(`${__dirname}/../../cert.pem`)
+}
+
+const ConnectionSettings = {port, routes: {cors: true}, tls}
 const Plugins = [Inert, Bell, AuthCookie]
 
 server.connection(ConnectionSettings)

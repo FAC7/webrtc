@@ -52,8 +52,7 @@ export default class MenteeItem extends React.Component {
                 notesInstructions='Mentee notes'
                 mentorUserame={this.props.mentorUsername}
               />
-                <Button onClick={this.sendReminder.bind(this)}>Send reminder</Button>
-
+              <Button onClick={this.sendReminder.bind(this)}>Send reminder</Button>
             </Well>
           </div>
         </Collapse>

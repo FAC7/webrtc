@@ -5,6 +5,7 @@ import axios from 'axios'
 export default class MentorSignup extends React.Component {
   constructor () {
     super()
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   onSubmit (e) {
@@ -29,7 +30,12 @@ export default class MentorSignup extends React.Component {
       aboutme,
     }).then((results) => {
       console.log('RESULTS: ', results)
-
+      this.props.MUTATE_GLOBAL_STATE({
+        IPCId: results.data.data.apidId,
+        IPCPassword: results.data.data.apiPassword,
+        name: results.data.data.firstName
+      })
+      this.props.history.push('/mentor-dashboard')
     }).catch((err) => {
       console.log('[Error]: ' + err)
     })

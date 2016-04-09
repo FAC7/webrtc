@@ -17,7 +17,6 @@ class MenteesProfilePage extends React.Component {
         </ul>
         <p>some things about me: </p>
         <p> {this.props.aboutme}</p>
-        <Button> Request a chat </Button>
       </div>
     )
   }

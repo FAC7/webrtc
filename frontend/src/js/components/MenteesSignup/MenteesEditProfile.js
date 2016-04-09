@@ -3,7 +3,7 @@ import {Input, ButtonInput} from 'react-bootstrap'
 
 export default (props) => {
   return (
-    <form action='/save-mentee-profile' style={{padding: '0 2em'}}>
+    <form style={{padding: '0 2em'}} onSubmit={props.onSubmit}>
       <h4>Fill in your details</h4>
       <Input
         id='firstname'
@@ -41,7 +41,7 @@ export default (props) => {
         required
       />
       <Input
-        id='mobile number'
+        id='mobile-number'
         type='text'
         placeholder='mobile number'
         defaultValue={props.mobilenumber}

@@ -8,7 +8,7 @@ export default (client) => {
     method: ['GET', 'POST'],
     handler: (req, reply) => {
       const userType = req.params.userType
-      const userName = req.params.userName
+      const userName = req.params.username
       const payload = req.payload
       if (req.params.username) {
         if (req.method.toUpperCase() === 'GET') {

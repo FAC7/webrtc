@@ -3,7 +3,7 @@ import {Input, ButtonInput} from 'react-bootstrap'
 
 export default (props) => {
   return (
-    <form action='/save-mentor-profile' style={{padding: '0 2em'}}>
+    <form style={{padding: '0 2em'}} onSubmit={props.onSubmit}>
       <h4>Fill in your details</h4>
       <Input
         id='firstname'

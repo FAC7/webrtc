@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken'
-import {getUserData} from '../redis/redisFunctions.js'
 
-export default client => ({
+export default (client) => ({ // eslint-disable-line
   method: ['GET', 'POST'],
   path: '/auth/{mode}/{usertype}',
   config: {
@@ -24,14 +23,8 @@ export default client => ({
 
         if (mode === 'login') {
           if (type === 'mentor') {
-            // getUserData('mentors', dataToSend.screenName, (data) => {
-            //   reply(data)
-            // })
             reply.redirect('/mentor-dashboard/#' + username)
           } else {
-            // getUserData('mentees', dataToSend.screenName, (data) => {
-            //   reply(data)
-            // })
             reply.redirect('/mentee-dashboard/#' + username)
           }
         }

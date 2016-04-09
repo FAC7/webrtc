@@ -16,11 +16,14 @@ POST /api/profile/{userType}/{username}
 GET  /feedback/{mentorName}?n=num
 GET  /api/note/prechat/{menteeName}?n=num
 GET  /api/note/postchat/{menteeName}?n=num
-[
-  {noteObj},
-  {noteObj},
-  ...
-]
+{
+  success: bool,
+  data: [
+    {noteObj},
+    {noteObj},
+    ...
+  ]
+}
 
 POST /api/feedback/{mentorName}
 POST /api/note/prechat/{menteeName}
@@ -32,22 +35,28 @@ POST /api/profile/{userType}/{username}
 }
 
 GET  /api/profile/{userType}
-[
-  {userObj},
-  {userObj},
-  ...
-]
+{
+  success: bool,
+  data: [
+    {userObj},
+    {userObj},
+    ...
+  ]
+}
 
 GET  /api/profile/{userType}/{username}
 {
-  apiId: string,
-  age: num,
-  firstName: string,
-  lastName: string,
-  gender: string,
-  profession: string,
-  topics: [strings],
-  aboutme: string
+  success: bool,
+  data: {
+    apiId: string,
+    age: num,
+    firstName: string,
+    lastName: string,
+    gender: string,
+    profession: string,
+    topics: [strings],
+    aboutme: string
+  }
 }
 
 -------------------------------

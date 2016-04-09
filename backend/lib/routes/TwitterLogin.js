@@ -9,6 +9,7 @@ export default (client) => ({ // eslint-disable-line
       const mode = request.params.mode
       const type = request.params.usertype
       if (request.auth.isAuthenticated) {
+        console.log(client)
         const cred = request.auth.credentials
         const username = cred.profile.raw.screen_name
         const dataToSend = {
@@ -18,8 +19,6 @@ export default (client) => ({ // eslint-disable-line
         }
         const jwToken = jwt.sign(dataToSend, process.env.JWT_SECRET)
         request.cookieAuth.set({twitterCookie: jwToken})
-        // request.cookieAuth.set({test: 'ivan'})
-
 
         if (mode === 'login') {
           if (type === 'mentor') {
@@ -33,11 +32,11 @@ export default (client) => ({ // eslint-disable-line
           if (type === 'mentor') {
             console.log('signed up as mentor')
             // should redirect to mentor signup when it's complete
-            reply.redirect('/mentor-dashboard#wrongplace')
+            reply.redirect('/mentor-signup')
           } else {
             console.log('signed up as mentee')
             // should redirect to mentee signup when it's complete
-            reply.redirect('/mentee-dashboard#wrongplace')
+            reply.redirect('/mentee-signup')
           }
         }
       }

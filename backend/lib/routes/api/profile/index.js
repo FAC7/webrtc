@@ -1,42 +1,25 @@
-import {
-  getUserProfile,
-  getAllUserTypes,
-  setUserProfile
-} from '../../../redis/redisFunctions.js'
+import getUserProfileHandler from './getUserProfile.js'
+import getAllUserTypesHandler from './getAllUserTypes.js'
+import setUserProfileHandler from './setUserProfile.js'
 
 export default (client) => {
   return {
     path: '/api/profile/{userType}/{username?}',
     method: ['GET', 'POST'],
     handler: (req, reply) => {
+      const userType = req.params.userType
+      const userName = req.params.userName
+      const payload = req.payload
       if (req.params.username) {
         if (req.method.toUpperCase() === 'GET') {
-          getUserProfile(client, req.params.userType, req.params.username)
-            .then((result) => {
-              reply({success: true, data: result})
-            })
-            .catch((err) => {
-              reply({success: false, data: err})
-            })
+          getUserProfileHandler(client, userType, userName, reply)
         } else if (req.method.toUpperCase() === 'POST') {
-          setUserProfile(client, req.params.userType, req.params.username, req.payload)
-            .then((result) => {
-              reply({success: true, data: result})
-            })
-            .catch((err) => {
-              reply({success: false, data: err})
-            })
+          setUserProfileHandler(client, userType, userName, payload, reply)
         } else {
           reply({success: false, data: 'invalid request method'})
         }
       } else if (req.method.toUpperCase() === 'GET') {
-        getAllUserTypes(client, req.params.userType)
-          .then((result) => {
-            reply({success: true, data: result})
-          })
-          .catch((err) => {
-            reply({success: false, data: err})
-          })
+        getAllUserTypesHandler(client, userType, reply)
       } else {
         reply({success: false, data: 'invalid request method'})
       }

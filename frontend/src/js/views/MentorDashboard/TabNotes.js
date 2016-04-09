@@ -15,15 +15,15 @@ export default class TabNotes extends React.Component {
   render () {
     return (
       <Tabs defaultActiveKey='2'>
-      <Tab eventKey='1' title='Mentor Notes'>
-        {this.mapNotes(this.props.prechatNotes)}
-      </Tab>
-      <Tab eventKey='2' title='Mentee Summaries'>
+        <Tab eventKey='1' title='Mentor Notes'>
+          {this.mapNotes(this.props.prechatNotes)}
+        </Tab>
+        <Tab eventKey='2' title='Mentee Summaries'>
         {this.mapNotes(this.props.postchatNotes)}
-      </Tab>
-      <Tab eventKey='3' title='Mentee Feedback' >
-        {this.mapNotes(this.props.feedbackNotes)}
-      </Tab>
+        </Tab>
+        <Tab eventKey='3' title='Mentee Feedback' >
+          {this.mapNotes(this.props.feedbackNotes)}
+        </Tab>
       </Tabs>
     )
   }

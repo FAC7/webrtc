@@ -4,9 +4,7 @@ import {Collapse} from 'react-bootstrap'
 export default class NotesList extends React.Component {
   render () {
     return (
-      <Collapse in={this.state.open}>
-        <p>sublime Owen</p>
-      </Collapse>
+      <Collapse in={this.state.open}/>
     )
   }
 }

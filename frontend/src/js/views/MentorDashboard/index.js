@@ -40,7 +40,7 @@ export default class MentorDashboard extends React.Component {
         <Row>
           <Col md={8}>
             <MenteeList mentees={this.props.mentees} mentorUsername={this.props.username}/>
-            <MentorList />
+            <MentorList location={this.props.location.pathname}/>
           </Col>
           <Col md={4}>
             <ProfileButtons

@@ -10,6 +10,15 @@ body {
   font-family: $main-font;
   margin-bottom: $footer-height;
 }
+
+button:focus {
+  outline: 0 !important;
+}
+
 .flush {
   padding: 0;
+}
+
+a {
+  cursor: pointer;
 }

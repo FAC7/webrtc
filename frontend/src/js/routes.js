@@ -6,8 +6,8 @@ import About from './views/About/index.js'
 import Contact from './views/Contact/index.js'
 import MentorDashboard from './views/MentorDashboard/index.js'
 import MenteeDashboard from './views/MenteeDashboard/index.js'
-import MentorSignup from './components/MentorsSignup/MentorsEditProfile.js'
-import MenteeSignup from './components/MenteesSignup/MenteesEditProfile.js'
+import MentorSignup from './views/MentorsSignup/index.js'
+import MenteeSignup from './views/MenteesSignup/index.js'
 import EmergencyDashboard from './views/EmergencyDashboard/index.js'
 
 export default (

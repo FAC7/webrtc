@@ -40,11 +40,11 @@ export default client => ({
           if (type === 'mentor') {
             console.log('signed up as mentor')
             // should redirect to mentor signup when it's complete
-            reply.redirect('/mentor-dashboard#wrongplace')
+            reply.redirect('/mentor-signup')
           } else {
             console.log('signed up as mentee')
             // should redirect to mentee signup when it's complete
-            reply.redirect('/mentee-dashboard#wrongplace')
+            reply.redirect('/mentee-signup')
           }
         }
       }

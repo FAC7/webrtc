@@ -3,11 +3,7 @@ import {Input, ButtonInput} from 'react-bootstrap'
 
 export default (props) => {
   return (
-<<<<<<< HEAD:frontend/src/js/components/MentorsSignup/MentorsEditProfile.js
     <form style={{padding: '0 2em'}} onSubmit={props.onSubmit}>
-=======
-    <form style={{padding: '0 2em'}}>
->>>>>>> origin/api-update:frontend/src/js/views/MentorsSignup/index.js
       <h4>Fill in your details</h4>
       <Input
         id='firstname'

@@ -5,6 +5,7 @@ import {Link} from 'react-router'
 
 export default class Home extends React.Component {
   render () {
+    console.log(this.props)
     return (
       <div className='content-wrap' style={{marginBottom: '200px'}}>
         <Jumbotron style={{textAlign: 'center'}}>

@@ -18,7 +18,6 @@ export const mentorSignUp = (client, data) => {
     background: data.background,
     status: data.status
   }
-
   client.hmset('mentors', data.mentorUsername, JSON.stringify(obj))
 }
 

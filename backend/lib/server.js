@@ -14,6 +14,7 @@ import Bell from 'bell'
 import AuthCookie from 'hapi-auth-cookie'
 
 // server routes
+
 import reactUrls from './routes/ReactUrls.js'
 import images from './routes/Images.js'
 import scripts from './routes/Scripts.js'

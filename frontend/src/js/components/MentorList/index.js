@@ -260,6 +260,9 @@ class MentorList extends React.Component {
   }
 
   render () {
+    if (window.location.pathname.indexOf('mentor-dashboard') > -1) {
+      styles.ul.display = 'none'
+    }
     return (
       <div>
         <ul style={styles.ul}>

@@ -20,7 +20,7 @@ export default class MentorSignup extends React.Component {
     const topics = document.getElementById('topics').value
     const aboutme = document.getElementById('aboutme').value
 
-    axios.post('/api/profile/mentee/' + username, {
+    axios.post('/api/profile/mentor/' + username, {
       firstName,
       lastName,
       age,

@@ -302,7 +302,6 @@ class MentorList extends React.Component {
             <Videochat />
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.close}>Close</Button>
           </Modal.Footer>
         </Modal>
       </div>

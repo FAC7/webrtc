@@ -275,9 +275,10 @@ class MentorList extends React.Component {
   }
 
   render () {
+    console.log(this.props.location)
     return (
       <div>
-        <ul style={styles.ul}>
+        {this.props.location === '/mentor-dashboard' ? '' : <ul style={styles.ul}>
           {this.state.mentorList.map((mentor, i) => {
             return mentor.canChat
             ? <MentorItem
@@ -289,7 +290,7 @@ class MentorList extends React.Component {
               />
             : null
           })}
-        </ul>
+        </ul>}
         <Modal bsSize='large' show={this.state.showModal} onHide={this.updateState.bind(this, { showModal: false })}>
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>

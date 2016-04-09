@@ -38,15 +38,19 @@ class MentorList extends React.Component {
   componentDidMount () {
     // ajax call to PBX API for info on all contacts in the room
     this.initialisePBX('fac33b', 'a2qitapm')
-    var submit = document.getElementById('Submit')
+    var form = document.getElementById('newMessage')
     var input = document.getElementById('textbox')
-    submit.addEventListener('click', () => {
-      console.log('room (when clicking)-->', currentRoom)
-      console.log('posting', input.value)
-      currentRoom.post(input.value)
-      input.value = ''
-    })
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        console.log('room (when clicking)-->', currentRoom)
+        console.log('posting', input.value)
+        currentRoom.post(input.value)
+        input.value = ''
+      })
+    }
   }
+
   initialisePBX (username, password) {
     const that = this
 

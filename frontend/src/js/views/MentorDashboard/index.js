@@ -121,7 +121,8 @@ MentorDashboard.defaultProps = {
     gender: 'female',
     profession: 'beingAndrew',
     topics: ['Andrew', 'Andrews greatness', 'my glossy soft head of hair'],
-    aboutme: 'I am da Bomb'
+    aboutme: 'I am da Bomb',
+    mobile: '07512345678'
   }
 }
 

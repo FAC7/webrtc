@@ -1,6 +1,7 @@
 import React from 'react'
 import {Jumbotron, Grid, Col, Row, Button, PageHeader} from 'react-bootstrap'
 import {browserHistory} from 'react-router'
+import Logo from '../../components/Logo/index.js'
 
 export default class Home extends React.Component {
   onUrgentClick () {
@@ -18,16 +19,12 @@ export default class Home extends React.Component {
   render () {
     return (
       <div className='content-wrap' style={{marginBottom: '200px'}}>
-        <Jumbotron>
+        <Jumbotron style={{textAlign: 'center'}}>
           <Grid>
-            <Row style={styles.row}>
-              <Col xs={10} xsOffset={1}>
-                <PageHeader style={styles.header}>
-                  Mentoring and Counselling Services
-                </PageHeader>
-              </Col>
-            </Row>
-            <Row>
+            <Col xs={10} xsOffset={1}/>
+            <Logo imgUrl='img/confidant-black.png' maxWidth='300px' />
+            <p>A safe space to talk to a mentor</p>
+            <Row style={{marginTop: '5em'}}>
               <Col xs={8} xsOffset={2}>
                 <Button
                   style={styles.button}

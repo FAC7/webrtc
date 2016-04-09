@@ -24,14 +24,16 @@ export default class Home extends React.Component {
                     Talk to someone right now?
                   </Button>
                 </Link>
-                <a href={'/auth/signup/mentee'}>
+                <a href={this.props.appState.isLoggedIn
+                  ? '/auth/login/mentee' : '/auth/signup/mentee'}
+                >
                   <Button
                     style={styles.button}
                     bsStyle='primary'
                     bsSize='lg'
                     block
                   >
-                    Sign up for regular mentoring
+                  {this.props.appState.isLoggedIn ? 'Login' : 'Sign up for regular mentoring'}
                   </Button>
                 </a>
               </Col>

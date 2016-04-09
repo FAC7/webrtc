@@ -36,7 +36,7 @@ export default (client) => {
     reactUrls,
     images,
     scripts,
-    twitterLogin,
+    twitterLogin(client),
     notes(client),
     profile(client)
   ]

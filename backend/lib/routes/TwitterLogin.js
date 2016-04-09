@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
-import getUserData from '../redis/redisFunctions.js'
+import {getUserData} from '../redis/redisFunctions.js'
 
-export default {
+export default client => ({
   method: ['GET', 'POST'],
   path: '/auth/{mode}/{usertype}',
   config: {
@@ -11,10 +11,11 @@ export default {
       const type = request.params.usertype
       if (request.auth.isAuthenticated) {
         const cred = request.auth.credentials
+        const username = cred.profile.raw.screen_name
         const dataToSend = {
           token: cred.token,
           secret: cred.secret,
-          screenName: cred.profile.raw.screen_name
+          screenName: username
         }
         const jwToken = jwt.sign(dataToSend, process.env.JWT_SECRET)
         request.cookieAuth.set({twitterCookie: jwToken})
@@ -23,32 +24,30 @@ export default {
 
         if (mode === 'login') {
           if (type === 'mentor') {
-            getUserData('mentors', dataToSend.screenName, (data) => {
-              reply(data)
-            })
+            // getUserData('mentors', dataToSend.screenName, (data) => {
+            //   reply(data)
+            // })
+            reply.redirect('/mentor-dashboard/#' + username)
           } else {
-            getUserData('mentees', dataToSend.screenName, (data) => {
-              reply(data)
-            })
+            // getUserData('mentees', dataToSend.screenName, (data) => {
+            //   reply(data)
+            // })
+            reply.redirect('/mentee-dashboard/#' + username)
           }
         }
 
         if (mode === 'signup') {
           if (type === 'mentor') {
             console.log('signed up as mentor')
-            var response = JSON.stringify(reply)
-            reply(response)
-            // reply.redirect('/')
+            // should redirect to mentor signup when it's complete
+            reply.redirect('/mentor-dashboard#wrongplace')
           } else {
             console.log('signed up as mentee')
-            reply({
-              isLoginSuccessful: true,
-              isSignedUp: false,
-              isMentor: false
-            })
+            // should redirect to mentee signup when it's complete
+            reply.redirect('/mentee-dashboard#wrongplace')
           }
         }
       }
     }
   }
-}
+})

@@ -33,11 +33,11 @@ export default (client) => ({ // eslint-disable-line
           if (type === 'mentor') {
             console.log('signed up as mentor')
             // should redirect to mentor signup when it's complete
-            reply.redirect('/mentor-signup')
+            reply.redirect('/mentor-signup/#' + username)
           } else {
             console.log('signed up as mentee')
             // should redirect to mentee signup when it's complete
-            reply.redirect('/mentee-signup')
+            reply.redirect('/mentee-signup/#' + username)
           }
         }
       }

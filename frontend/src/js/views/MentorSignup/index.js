@@ -33,7 +33,8 @@ export default class MentorSignup extends React.Component {
       this.props.MUTATE_GLOBAL_STATE({ //eslint-disable-line
         IPCId: results.data.data.apidId,
         IPCPassword: results.data.data.apiPassword,
-        name: results.data.data.firstName
+        name: results.data.data.firstName,
+        isLoggedIn: true
       })
       this.props.history.push('/mentor-dashboard')
     }).catch((err) => {

@@ -31,7 +31,8 @@ export default class MenteeSignup extends React.Component {
       this.props.MUTATE_GLOBAL_STATE({ // eslint-disable-line
         IPCId: results.data.data.apidId,
         IPCPassword: results.data.data.apiPassword,
-        name: results.data.data.firstName
+        name: results.data.data.firstName,
+        isLoggedIn: true
       })
       this.props.history.push('/mentee-dashboard')
     }).catch((err) => {

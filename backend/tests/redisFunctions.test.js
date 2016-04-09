@@ -17,8 +17,8 @@ const test = tape({
     client = redis.createClient(DB_URL)
     client.select(DB_NUM, () => {
       client.flushdb()
+      t.end()
     })
-    t.end()
   },
   teardown: (t) => {
     client.flushdb()
@@ -34,7 +34,7 @@ test('Can insert mentee notes', (t) => {
     note: 'Some stuff',
     date: '2016/04/01'
   }).then(() => {
-    return client.hgetAsync('menteenotes', 'john')
+    return client.hgetAsync('notes:postchat', 'john')
   }).then((results) => {
     t.deepEqual(results, JSON.stringify([{
       menteeName: 'john',
@@ -53,7 +53,7 @@ test('Can insert prechat notes', (t) => {
     note: 'Some stuff',
     date: '2016/04/01'
   }).then(() => {
-    return client.hgetAsync('prechatnotes', 'john')
+    return client.hgetAsync('notes:prechat', 'john')
   }).then((results) => {
     t.deepEqual(results, JSON.stringify([{
       menteeName: 'john',

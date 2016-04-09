@@ -1,3 +1,13 @@
+export const getUserData = (client, hash, username, cb) => {
+  client.hget(hash, username, (err, reply) => {
+    if (err) {
+      throw err
+    } else {
+      cb(reply)
+    }
+  })
+}
+
 export const mentorSignUp = (client, data) => {
   const obj = {
     mentorUsername: data.mentorUsername,
@@ -75,7 +85,9 @@ export const setUserProfile = (client, userType, userName, payload) => {
   client.hmset(userType, userName, data)
 }
 
-export const getMenteeNotes = getNotes('menteenotes')
-export const insertMenteeNotes = insertNotes('menteenotes')
-export const getPrechatNotes = getNotes('prechatnotes')
-export const insertPrechatNotes = insertNotes('prechatnotes')
+export const getMenteeNotes = getNotes('notes:postchat')
+export const insertMenteeNotes = insertNotes('notes:postchat')
+export const getPrechatNotes = getNotes('notes:prechat')
+export const insertPrechatNotes = insertNotes('notes:prechat')
+export const getMentorFeedback = getNotes('notes:feedback')
+export const insertMentorFeedback = insertNotes('notes:feedback')

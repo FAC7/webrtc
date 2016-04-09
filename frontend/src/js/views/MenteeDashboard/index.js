@@ -1,8 +1,9 @@
 import React from 'react'
 import {Grid, Row, Col, Modal, Button} from 'react-bootstrap'
 import ProfileButtons from '../MentorDashboard/ProfileButtons.js'
-import MenteesProfilePage from '../Profile/MenteesProfilePage.js'
-import MenteesEditProfile from '../MenteesSignup/MenteesEditProfile.js'
+import MenteesProfilePage from '../../components/Profile/MenteesProfilePage.js'
+import MenteesEditProfile from '../../components/MenteesSignup/MenteesEditProfile.js'
+import MentorList from '../../components/MentorList/index.js'
 
 export default class MenteeDashboard extends React.Component {
   constructor () {
@@ -36,7 +37,7 @@ export default class MenteeDashboard extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col md={8}>{'Video team\'s component goes here'}</Col>
+          <Col md={8}><MentorList /></Col>
           <Col md={4}>
             <ProfileButtons
               status={this.state.status}

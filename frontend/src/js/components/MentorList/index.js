@@ -42,18 +42,7 @@ class MentorList extends React.Component {
 
   componentDidMount () {
     // ajax call to PBX API for info on all contacts in the room
-    this.initialisePBX('fac33b', 'a2qitapm')
-    var form = document.getElementById('newMessage')
-    var input = document.getElementById('textbox')
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        console.log('room (when clicking)-->', currentRoom)
-        console.log('posting', input.value)
-        currentRoom.post(input.value)
-        input.value = ''
-      })
-    }
+    this.initialisePBX('fac21b', '2y5x85db')
   }
 
   initialisePBX (username, password) {
@@ -150,6 +139,7 @@ class MentorList extends React.Component {
         hangup.addEventListener('click', () => {
           console.log('rejecting call')
           av.reject()
+          this.updateState({showModal: false})
         })
         accept.addEventListener('click', () => {
           console.log('accepting call')
@@ -174,8 +164,19 @@ class MentorList extends React.Component {
         console.log('New remote media source ', av.remoteMedia[id])
         video = document.getElementById('video')
         hangup = document.getElementById('hangup')
+        var form = document.getElementById('newMessage')
+        var input = document.getElementById('textbox')
+        if (form) {
+          form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            console.log('room (when clicking)-->', currentRoom)
+            console.log('posting', input.value)
+            currentRoom.post(input.value)
+            input.value = ''
+          })
+        }
         hangup.addEventListener('click', () => {
-          console.log('rejecting call')
+          console.log('hanging up')
           av.reject()
         })
         /* Create a new video tag to play/display the remote media */
@@ -225,8 +226,8 @@ class MentorList extends React.Component {
       topics: ['strings'],
       aboutme: 'string'
     }, {
-      username: 'Virginie',
-      apiId: 'fac30a',
+      username: 'Owen',
+      apiId: 'fac20b',
       age: 22,
       firstName: 'mentor 3',
       lastName: 'string',
@@ -312,7 +313,10 @@ class MentorList extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <Videochat
-              
+              room={this.state.room}
+              rooms={rooms}
+              reason4update={this.state.reason4update}
+              messages={this.state.messages}
             />
           </Modal.Body>
           <Modal.Footer>

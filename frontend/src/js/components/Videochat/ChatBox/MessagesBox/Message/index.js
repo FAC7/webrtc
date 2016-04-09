@@ -18,7 +18,8 @@ export default (props) => {
 }
 
 const messageInfo = {
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  paddingLeft: '5%'
 }
 
 const userMessage = {

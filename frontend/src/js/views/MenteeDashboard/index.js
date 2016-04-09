@@ -38,7 +38,7 @@ export default class MenteeDashboard extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col md={8}><MentorList /></Col>
+          <Col md={8}><MentorList {...this.props}/></Col>
           <Col md={4}>
             <ProfileButtons
               status={this.state.status}

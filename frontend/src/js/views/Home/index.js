@@ -24,7 +24,7 @@ export default class Home extends React.Component {
                     Talk to someone right now?
                   </Button>
                 </Link>
-                <a href={'/auth/signup/mentor'}>
+                <a href={'/auth/signup/mentee'}>
                   <Button
                     style={styles.button}
                     bsStyle='primary'

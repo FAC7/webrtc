@@ -43,7 +43,7 @@ class MentorList extends React.Component {
 
   componentDidMount () {
     // ajax call to PBX API for info on all contacts in the room
-    this.initialisePBX('fac21b', '2y5x85db')
+    this.initialisePBX(this.props.appState.IPCId, this.props.appState.IPCPassword)
   }
 
   initialisePBX (username, password) {

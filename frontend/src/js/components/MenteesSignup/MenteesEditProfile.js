@@ -40,6 +40,13 @@ export default (props) => {
         defaultValue={props.aboutme}
         required
       />
+      <Input
+        id='mobile number'
+        type='text'
+        placeholder='mobile number'
+        defaultValue={props.mobilenumber}
+        required
+      />
       <ButtonInput type='submit' defaultValue='save details'/>
     </form>
   )

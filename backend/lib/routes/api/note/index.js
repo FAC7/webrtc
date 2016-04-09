@@ -7,6 +7,7 @@ export default (client) => {
     path: '/api/note/{noteType}/{userName}',
     method: ['GET', 'POST'],
     handler: (req, reply) => {
+      console.log('going to note handler')
       if (req.method.toUpperCase() === 'POST' &&
           ! validateNoteObject(req.payload)) {
         return reply({success: false, data: 'invalid payload'})

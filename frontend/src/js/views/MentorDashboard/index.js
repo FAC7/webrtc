@@ -39,7 +39,12 @@ export default class MentorDashboard extends React.Component {
         </Row>
         <Row>
           <Col md={8}>
-            <MenteeList mentees={this.props.mentees} mentorUsername={this.props.username}/>
+            <MenteeList
+              mentees={this.props.mentees}
+              mentorUsername={this.props.username}
+              {...this.props}
+            />
+            <MentorList />
             <MentorList location={this.props.location.pathname}/>
           </Col>
           <Col md={4}>
@@ -85,7 +90,54 @@ MentorDashboard.defaultProps = {
   mentees: [
     {menteeName: 'Sam Houston',
       conversationLink: '/contact',
-      notes: 'Sam was in a good mood last time. I think his waterpolo is going well.',
+      feedbackNotes: [{
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }],
+      prechatNotes: [{
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }],
+      postchatNotes: [{
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }],
       lastConversation: 1460028602793,
       about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly' +
       'school-related. He would like to start working towards his exams but needs some ' +
@@ -95,7 +147,54 @@ MentorDashboard.defaultProps = {
     },
     {menteeName: 'Smelly Andrew',
       conversationLink: '/contact',
-      notes: 'Sam was in a good mood last time. I think his waterpolo is going well.',
+      feedbackNotes: [{
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }],
+      prechatNotes: [{
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }],
+      postchatNotes: [{
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }],
       lastConversation: 1460028602793,
       about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly' +
       'school-related. He would like to start working towards his exams but needs some ' +
@@ -105,7 +204,54 @@ MentorDashboard.defaultProps = {
     },
     {menteeName: 'Rob ',
       conversationLink: '/contact',
-      notes: 'Sam was in a good mood last time. I think his waterpolo is going well.',
+      feedbackNotes: [{
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }],
+      prechatNotes: [{
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }],
+      postchatNotes: [{
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }, {
+        note: 'I feel great right now',
+        mentorName: 'smellyAndrew',
+        menteeName: 'sublimeOwen',
+        date: 'somestring'
+      }],
       lastConversation: 1460028602793,
       about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly' +
       'school-related. He would like to start working towards his exams but needs some ' +
@@ -121,7 +267,8 @@ MentorDashboard.defaultProps = {
     gender: 'female',
     profession: 'beingAndrew',
     topics: ['Andrew', 'Andrews greatness', 'my glossy soft head of hair'],
-    aboutme: 'I am da Bomb'
+    aboutme: 'I am da Bomb',
+    mobile: '07512345678'
   }
 }
 

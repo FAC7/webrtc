@@ -27,7 +27,10 @@ class MentorList extends React.Component {
     super()
     this.state = {
       pleaseCall: false,
-      mentorList: []
+      mentorList: [],
+      room: currentRoom,
+      messages: [],
+      reason4update: 'non-videos'
     }
     this.updateState = this.updateState.bind(this)
     this.filterMentors = this.filterMentors.bind(this)
@@ -68,6 +71,7 @@ class MentorList extends React.Component {
           IPCortex.PBX.enableChat((room) => { // eslint-disable-line
             // rob says decide if mentee shows their video????
             currentRoom = room
+            this.setState({room})
             if (typeof room !== 'object') {
               return
             }
@@ -75,12 +79,14 @@ class MentorList extends React.Component {
               if (rooms[_room.roomID] && _room.state === 'dead') {
                 delete rooms[_room.roomID]
               }
-              // var messagesBox = document.getElementById('messages')
-              // room.messages.forEach((message) => {
-              //   // render messages
-              // })
-            }
-            )
+              let newMessagesArr = this.state.messages.concat(_room.messages)
+              if (newMessagesArr.length > this.state.messages.length) {
+                this.setState({
+                  messages: newMessagesArr,
+                  reason4update: 'messages'
+                })
+              }
+            })
             /* If the room has come into existance due to a video request,
                start video with the stored stream */
             if (room.cID === media.cID && media.stream && !that.state.pleaseCall) {
@@ -124,7 +130,7 @@ class MentorList extends React.Component {
     var video = document.getElementById('video')
     /* Only process the Av instance if it has remote media */
 
-    if (typeof av.remoteMedia !== 'object') {return}
+    if (typeof av.remoteMedia !== 'object') { return }
     var videos = []
     for (var id in av.remoteMedia) {
       if (av.remoteMedia[id].status === 'offered') {
@@ -194,8 +200,8 @@ class MentorList extends React.Component {
       topics: ['strings'],
       aboutme: 'string'
     }, {
-      username: 'Franzzzz',
-      apiId: 'fac21b',
+      username: 'Rob',
+      apiId: 'fac26a',
       age: 22,
       firstName: 'mentor 2',
       lastName: 'string',
@@ -264,6 +270,7 @@ class MentorList extends React.Component {
   }
 
   render () {
+    console.log(this.state.messages, 'top level messages')
     return (
       <div>
         <ul style={styles.ul}>
@@ -279,7 +286,12 @@ class MentorList extends React.Component {
             : null
           })}
         </ul>
-        <Videochat />
+        <Videochat
+          room={this.state.room}
+          rooms={rooms}
+          reason4update={this.state.reason4update}
+          messages={this.state.messages}
+        />
       </div>
     )
   }

@@ -43,7 +43,7 @@ class Notes extends React.Component {
       .then(data => console.log(data))
       .then(this.setState({sent: true}))
       .then(axios.get('/api/note/postchat/john')
-        .then(data => { console.log(data) }))
+      .then(data => { console.log(data) }))
   }
   render () {
     return (

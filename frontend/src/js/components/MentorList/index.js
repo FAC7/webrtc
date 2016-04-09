@@ -119,18 +119,19 @@ class MentorList extends React.Component {
     console.log('current Room (when process feed)-->', currentRoom)
     /* Only process the Av instance if it has remote media */
 
-    if (typeof av.remoteMedia !== 'object') {return}
+    if (typeof av.remoteMedia !== 'object') { return }
     var videos = []
     for (var id in av.remoteMedia) {
+      var accept, hangup, video
       if (av.remoteMedia[id].status === 'offered') {
         /* If the remote party is offering create an invite */
         if (accepted[av.id]) { // We have already accepted - return
           return
         }
         this.updateState({showModal: true})
-        var accept = document.getElementById('call')
-        var hangup = document.getElementById('hangup')
-        var video = document.getElementById('video')
+        accept = document.getElementById('call')
+        hangup = document.getElementById('hangup')
+        video = document.getElementById('video')
         console.log('Offer recieved from ' + av.remoteMedia[id].cN)
         /* Mark the offer as accepted as we may get another
            update with the 'offer' state still set */
@@ -161,8 +162,8 @@ class MentorList extends React.Component {
         // })
       } else if (av.remoteMedia[id].status === 'connected') {
         console.log('New remote media source ', av.remoteMedia[id])
-        var video = document.getElementById('video')
-        var hangup = document.getElementById('hangup')
+        video = document.getElementById('video')
+        hangup = document.getElementById('hangup')
         hangup.addEventListener('click', () => {
           console.log('rejecting call')
           av.reject()

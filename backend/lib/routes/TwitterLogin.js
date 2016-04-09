@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import {getUserData} from '../redis/redisFunctions.js'
+// import {getUserData} from '../redis/redisFunctions.js'
 
 export default client => ({
   method: ['GET', 'POST'],
@@ -7,6 +7,7 @@ export default client => ({
   config: {
     auth: 'twitter',
     handler: (request, reply) => {
+      console.log(client)
       const mode = request.params.mode
       const type = request.params.usertype
       if (request.auth.isAuthenticated) {

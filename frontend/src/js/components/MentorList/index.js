@@ -17,7 +17,7 @@ const styles = {
     padding: '5px'
   },
   ul: {
-    backgroundColor: '#FFBE63',
+    backgroundColor: '#3F51B5',
     padding: '2em',
     borderRadius: '10px'
   }

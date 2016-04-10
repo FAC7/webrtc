@@ -29,7 +29,7 @@ export default class MentorSignup extends React.Component {
       topics,
       aboutme,
     }).then((results) => {
-      if (results.success) {
+      if (results.data.success) {
         console.log('RESULTS: ', results)
         this.props.MUTATE_GLOBAL_STATE({ //eslint-disable-line
           IPCId: results.data.data.apiId,
@@ -40,7 +40,7 @@ export default class MentorSignup extends React.Component {
         })
         this.props.history.push('/mentor-dashboard')
       } else {
-        console.log('something went wrong')
+        console.log('something went wrong: ', results)
       }
     }).catch((err) => {
       console.log('[Error]: ' + err)

@@ -27,7 +27,7 @@ export default class MenteeSignup extends React.Component {
       aboutme,
       mobile
     }).then((results) => {
-      if (results.success) {
+      if (results.data.success) {
         console.log('RESULTS: ', results)
         this.props.MUTATE_GLOBAL_STATE({ // eslint-disable-line
           IPCId: results.data.data.apiId,
@@ -38,7 +38,7 @@ export default class MenteeSignup extends React.Component {
         })
         this.props.history.push('/mentee-dashboard')
       } else {
-        console.log('Something went wrong')
+        console.log('Something went wrong: ', results)
       }
     }).catch((err) => {
       console.log('[Error]: ' + err)

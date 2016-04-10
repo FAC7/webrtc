@@ -205,6 +205,7 @@ class MentorList extends React.Component {
       const mentors = Object.keys(mentorsObject.data.data).map((mentorName) => {
         return JSON.parse(mentorsObject.data.data[mentorName])
       })
+      console.log('Here are all the mentors: ', mentors)
       let mentorList = IPCortex.PBX.contacts.filter((contact) => { // eslint-disable-line
         // var isMentor = false
         // mentors.forEach((mentor) => {
@@ -241,7 +242,7 @@ class MentorList extends React.Component {
       })
     }
 
-    axios.get('/api/profile/mentors')
+    axios.get('/api/profile/mentor')
     .then((response) => {
       console.log('what we get back: ', response)
       sieveMentors(response)

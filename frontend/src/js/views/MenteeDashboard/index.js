@@ -73,7 +73,7 @@ export default class MenteeDashboard extends React.Component {
           </Modal.Footer>
         </Modal>
         <SubmitNotes
-          noteInstructions={'Please tell us how you\'re feeling today'}
+          noteInstructions={'Please let us know how you\'re feeling today'}
           modalStatus={false}
         />
       </Grid>

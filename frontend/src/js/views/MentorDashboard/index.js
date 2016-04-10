@@ -90,51 +90,28 @@ MentorDashboard.defaultProps = {
     {menteeName: 'Sam Houston',
       conversationLink: '/contact',
       feedbackNotes: [{
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'Virginie really helped me this time',
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
-      }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'Francesco was great',
       }],
       prechatNotes: [{
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'I\'m feeling very anxious today',
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'I\'m feeling pretty good',
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'I\'m feeling very sad',
       }],
       postchatNotes: [{
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
+        note: 'Sam seems better this time',
+        mentorName: 'Francesco',
         date: 'somestring'
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
+        note: 'I think Sam might be struggling with his anxiety this week',
+        mentorName: 'Francesco',
         date: 'somestring'
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
+        note: 'Sam told me he felt better after our chat',
+        mentorName: 'Virginie',
         date: 'somestring'
       }],
       lastConversation: 1460028602793,
@@ -144,129 +121,83 @@ MentorDashboard.defaultProps = {
       'his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks,' +
       ' they signpost him to the mentoring platform.'
     },
-    {menteeName: 'Smelly Andrew',
+    {menteeName: 'Andrew MacMurray',
       conversationLink: '/contact',
       feedbackNotes: [{
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'Virginie really helped me this time',
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
-      }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'Francesco was great',
       }],
       prechatNotes: [{
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'I\'m feeling very anxious today',
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'I\'m feeling pretty good',
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'I\'m feeling very sad',
       }],
       postchatNotes: [{
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
+        note: 'Andrew seems better this time',
+        mentorName: 'Francesco',
         date: 'somestring'
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
+        note: 'I think Andrew might be struggling with his anxiety this week',
+        mentorName: 'Francesco',
         date: 'somestring'
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
+        note: 'Andrew told me he felt better after our chat',
+        mentorName: 'Virginie',
         date: 'somestring'
       }],
       lastConversation: 1460028602793,
-      about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly' +
+      about: 'Andrew is 17 and recently diagnosed with quite severe anxiety, particularly' +
       'school-related. He would like to start working towards his exams but needs some ' +
       'direction around what to expect, how to deal with it and some advice to help alleviate ' +
       'his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks,' +
       ' they signpost him to the mentoring platform.'
     },
-    {menteeName: 'Rob ',
+    {menteeName: 'Rob Francis',
       conversationLink: '/contact',
       feedbackNotes: [{
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'Virginie really helped me this time',
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
-      }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'Francesco was great',
       }],
       prechatNotes: [{
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'I\'m feeling very anxious today',
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'I\'m feeling pretty good',
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
+        note: 'I\'m feeling very sad',
       }],
       postchatNotes: [{
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
+        note: 'Rob seems better this time',
+        mentorName: 'Francesco',
         date: 'somestring'
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
+        note: 'I think Rob might be struggling with his anxiety this week',
+        mentorName: 'Francesco',
         date: 'somestring'
       }, {
-        note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
-        menteeName: 'sublimeOwen',
+        note: 'Rob told me he felt better after our chat',
+        mentorName: 'Virginie',
         date: 'somestring'
       }],
       lastConversation: 1460028602793,
-      about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly' +
+      about: 'Rob is 17 and recently diagnosed with quite severe anxiety, particularly' +
       'school-related. He would like to start working towards his exams but needs some ' +
       'direction around what to expect, how to deal with it and some advice to help alleviate ' +
       'his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks,' +
       ' they signpost him to the mentoring platform.'
     }],
   editProfile: {
-    username: 'theSmellyAndrew',
-    firstname: 'Smelly',
-    lastname: 'Andrew',
-    age: 5,
-    gender: 'female',
-    profession: 'beingAndrew',
-    topics: ['Andrew', 'Andrews greatness', 'my glossy soft head of hair'],
-    aboutme: 'I am da Bomb',
+    username: 'Fracesco Moro',
+    firstname: 'Francesco',
+    lastname: 'Moro',
+    age: 26,
+    gender: 'male',
+    profession: 'software developer',
+    topics: ['javascript', 'helping people'],
+    aboutme: 'I\'m 26, originally from Rome and interesting in software and helping people',
     mobile: '07512345678'
   }
 }

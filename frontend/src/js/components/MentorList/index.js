@@ -207,16 +207,16 @@ class MentorList extends React.Component {
       })
       console.log('Here are all the mentors: ', mentors)
       let mentorList = IPCortex.PBX.contacts.filter((contact) => { // eslint-disable-line
-        // var isMentor = false
-        // mentors.forEach((mentor) => {
-        //   if (contact.uname === mentor.apiId) {
-        //     console.log('made it')
-        //     isMentor = true
-        //     Object.assign(contact, mentor)
-        //   }
-        // })
-        // return isMentor
-        return true
+        var isMentor = false
+        mentors.forEach((mentor) => {
+          if (contact.uname === mentor.apiId) {
+            console.log('made it')
+            isMentor = true
+            Object.assign(contact, mentor)
+          }
+        })
+        return isMentor
+        // return true
       }).forEach((contact) => {
         /* Listen for updates in case the user changes state */
         contact.addListener('update', () => {

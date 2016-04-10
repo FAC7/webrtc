@@ -197,48 +197,6 @@ class MentorList extends React.Component {
   filterMentors () {
     // AJAX call to our api
     // save mentors to state so if new contact arrives we can still check it?
-    // const mentors = [{
-    //   username: 'Jacket',
-    //   apiId: 'fac28a',
-    //   age: 22,
-    //   firstName: 'mentor 1',
-    //   lastName: 'string',
-    //   gender: 'male',
-    //   profession: 'string',
-    //   topics: ['strings'],
-    //   aboutme: 'string'
-    // }, {
-    //   username: 'Franzzzz',
-    //   apiId: 'fac21b',
-    //   age: 22,
-    //   firstName: 'mentor 2',
-    //   lastName: 'string',
-    //   gender: 'male',
-    //   profession: 'string',
-    //   topics: ['strings'],
-    //   aboutme: 'string'
-    // }, {
-    //   username: 'Mireia',
-    //   apiId: 'mentor-4',
-    //   age: 22,
-    //   firstName: 'mentor 3',
-    //   lastName: 'string',
-    //   gender: 'male',
-    //   profession: 'string',
-    //   topics: ['strings'],
-    //   aboutme: 'string'
-    // }, {
-    //   username: 'Virginie',
-    //   apiId: 'fac30a',
-    //   age: 22,
-    //   firstName: 'mentor 3',
-    //   lastName: 'string',
-    //   gender: 'male',
-    //   profession: 'string',
-    //   topics: ['strings'],
-    //   aboutme: 'string'
-    // }]
-
 
     // filter contacts who are also mentors and save to state
     // regardless of their online/offline state

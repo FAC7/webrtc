@@ -88,6 +88,7 @@ MentorDashboard.defaultProps = {
   status: 'Offline',
   mentees: [
     {menteeName: 'Sam Houston',
+    phoneNumber: '+447849619953',
       conversationLink: '/contact',
       feedbackNotes: [{
         note: 'I feel great right now',
@@ -145,6 +146,7 @@ MentorDashboard.defaultProps = {
       ' they signpost him to the mentoring platform.'
     },
     {menteeName: 'Smelly Andrew',
+      phoneNumber: '+447885727095',
       conversationLink: '/contact',
       feedbackNotes: [{
         note: 'I feel great right now',
@@ -202,6 +204,7 @@ MentorDashboard.defaultProps = {
       ' they signpost him to the mentoring platform.'
     },
     {menteeName: 'Rob ',
+      phoneNumber: '+447849619953',
       conversationLink: '/contact',
       feedbackNotes: [{
         note: 'I feel great right now',

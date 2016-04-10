@@ -47,7 +47,7 @@ class Notes extends React.Component {
   }
   render () {
     return (
-      <div>
+      <div style={{display: 'inline-block'}}>
         <Modal
           show={this.state.showModal}
           onHide={this.toggleModal}
@@ -63,6 +63,7 @@ class Notes extends React.Component {
               required
             />
             <Button
+
               onClick={this.toggleModal}
               type='submit'
             >
@@ -70,7 +71,7 @@ class Notes extends React.Component {
             </Button>
           </form>
         </Modal>
-        <Button onClick={this.toggleModal}>Create a note</Button>
+        <Button bsClass='btn' onClick={this.toggleModal}>Notes</Button>
       </div>
     )
   }

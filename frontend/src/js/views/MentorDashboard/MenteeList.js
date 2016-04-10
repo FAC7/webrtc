@@ -34,6 +34,7 @@ export default (props) => {
             postchatNotes={menteeObj.postchatNotes}
             prechatNotes={menteeObj.prechatNotes}
             feedbackNotes={menteeObj.feedbackNotes}
+            phoneNumber={menteeObj.phoneNumber}
           />
         )
       })}

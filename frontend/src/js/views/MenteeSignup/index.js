@@ -11,9 +11,9 @@ export default class MenteeSignup extends React.Component {
   onSubmit (e) {
     e.preventDefault()
 
-    const username = window.location.href.split('#')[1] || 'unknown'
     const firstName = document.getElementById('firstname').value
     const lastName = document.getElementById('lastname').value
+    const username = firstName + '_' + lastName
     const gender = document.getElementById('gender').value
     const age = document.getElementById('age').value
     const aboutme = document.getElementById('aboutme').value

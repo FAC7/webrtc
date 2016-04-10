@@ -57,13 +57,14 @@ class MentorList extends React.Component {
         console.log('Login successful')
         /* Get the API to start collecting data */
         return IPCortex.PBX.startFeed()
-      })
       .then(() => {
         // console.log(TAG, 'Live data feed started')
         that.filterMentors()
+        console.log('about to enable chat')
         // sets up room for video chat to be sent over
         IPCortex.PBX.enableChat((room) => {
           // rob says decide if mentee shows their video????
+          console.log('chat enabled')
           currentRoom = room
           this.setState({room})
           if (typeof room !== 'object') {
@@ -104,16 +105,13 @@ class MentorList extends React.Component {
             av.addListener('update', this.processFeed)
             this.processFeed(av, currentRoom)
           }, ['chat'])
-        },
-        () => {
-          console.log('Live data feed failed')
-        }
-      )
+        })
+      },
+      (e) => {
+        console.log('Start feed failed')
+        console.log(e)
       })
-      .catch((err) => {
-        console.log('Error: ')
-        throw err
-      })
+    })
   }
 
   processFeed (av) {

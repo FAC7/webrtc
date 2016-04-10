@@ -30,13 +30,13 @@ MentorsProfilePage.propTypes = {
 }
 
 MentorsProfilePage.defaultProps = {
-  firstname: 'Smelly',
-  lastname: 'Andrew',
-  age: 5,
-  gender: 'female',
-  profession: 'beingAndrew',
-  topics: ['Andrew', 'Andrews greatness', 'my glossy soft head of hair'],
-  aboutme: 'I am da Bomb'
+  firstname: 'Francesco',
+  lastname: 'Moro',
+  age: 26,
+  gender: 'male',
+  profession: 'software developer',
+  topics: ['javascript', 'helping people'],
+  aboutme: 'I\'m 26, originally from Rome and interesting in software and helping people',
 }
 
 export default MentorsProfilePage

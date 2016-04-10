@@ -24,7 +24,7 @@ export default class MenteeItem extends React.Component {
           <div>
             <Well>
               <p>
-                <b>Last conversation:</b>
+                <span>Last conversation: </span>
                 {(new Date(this.props.lastConversation)).toString().substr(0, 15)}
               </p>
               <p><b>About:</b> {this.props.about}</p>

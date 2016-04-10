@@ -13,11 +13,16 @@ export default (client, userType, username, payload, reply) => {
           .then((_result) => {
             payload.apiId = _result.newUserData.uname
             payload.apiPassword = _result.newUserData.password
-      return setUserProfile(client, userType, username, payload)
-    })
+            return setUserProfile(client, userType, username, payload)
+          })
           .then((_result) => {
             console.log(userType + ' user ' + username + ' added to DB with result: ' + _result)
-      reply({success: true, data: payload})
+            reply({success: true, data: payload})
+          })
+          .catch((err) => {
+            reply({success: false, data: err})
+          })
+      }
     })
     .catch((err) => {
       reply({success: false, data: err})

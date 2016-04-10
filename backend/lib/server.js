@@ -20,6 +20,7 @@ import scripts from './routes/Scripts.js'
 import twitterLogin from './routes/TwitterLogin.js'
 import notes from './routes/api/note/index.js'
 import profile from './routes/api/profile/index.js'
+import text from './routes/Text.js'
 
 // auth strategies
 import {TwitterCookie, TwitterOauth} from './authStrategies/twitterAuthStrategies.js'
@@ -42,6 +43,7 @@ export default (client) => {
     reactUrls,
     images,
     scripts,
+    text,
     twitterLogin(client),
     notes(client),
     profile(client)

@@ -4,9 +4,6 @@ import {Well, Collapse, Button} from 'react-bootstrap'
 import SubmitNotes from '../../components/SubmitNotes/SubmitNotes.js'
 import TabNotes from './TabNotes.js'
 
-const tropoToken = '527a57644f67546967487876524670556a4d6a48685a64456d62686b53' +
-'41554d467373584e4f4e705465566f'
-
 export default class MenteeItem extends React.Component {
   constructor () {
     super()
@@ -20,9 +17,7 @@ export default class MenteeItem extends React.Component {
         console.log('text message sent')
       }
     }
-    xhr.open('GET', 'https://api.tropo.com/1.0/sessions?action=create&token=' +
-    tropoToken + '&numberToDial=' + this.props.phoneNumber.substr(3) +
-    '&menteeName=' + this.props.menteeName)
+    xhr.open('GET', '/text')
     xhr.send()
   }
 

@@ -10,7 +10,7 @@ export default class MentorDashboard extends React.Component {
   constructor () {
     super()
     this.state = {
-      status: 'Offline',
+      status: 'Online',
       showViewModal: false,
       showEditModal: false
     }
@@ -92,49 +92,49 @@ MentorDashboard.defaultProps = {
       conversationLink: '/contact',
       feedbackNotes: [{
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
       prechatNotes: [{
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
       postchatNotes: [{
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
@@ -145,53 +145,53 @@ MentorDashboard.defaultProps = {
       'his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks,' +
       ' they signpost him to the mentoring platform.'
     },
-    {menteeName: 'Smelly Andrew',
+    {menteeName: 'Mireia Sangalo',
       conversationLink: '/contact',
       feedbackNotes: [{
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
       prechatNotes: [{
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
       postchatNotes: [{
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
@@ -206,49 +206,49 @@ MentorDashboard.defaultProps = {
       conversationLink: '/contact',
       feedbackNotes: [{
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
       prechatNotes: [{
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
       postchatNotes: [{
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
         note: 'I feel great right now',
-        mentorName: 'smellyAndrew',
+        mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
@@ -260,14 +260,14 @@ MentorDashboard.defaultProps = {
       ' they signpost him to the mentoring platform.'
     }],
   editProfile: {
-    username: 'theSmellyAndrew',
-    firstname: 'Smelly',
-    lastname: 'Andrew',
-    age: 5,
-    gender: 'female',
-    profession: 'beingAndrew',
-    topics: ['Andrew', 'Andrews greatness', 'my glossy soft head of hair'],
-    aboutme: 'I am da Bomb',
+    username: 'Andrew MacMurray',
+    firstname: 'Andrew',
+    lastname: 'MacMurray',
+    age: 27,
+    gender: 'male',
+    profession: 'software developer',
+    topics: ['software development', 'helping people'],
+    aboutme: 'Im Andrew originally from Manchester ',
     mobile: '07512345678'
   }
 }

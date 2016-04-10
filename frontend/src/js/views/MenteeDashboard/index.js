@@ -9,7 +9,7 @@ export default class MenteeDashboard extends React.Component {
   constructor () {
     super()
     this.state = {
-      status: 'Offline',
+      status: 'Online',
       showViewModal: false,
       showEditModal: false
     }

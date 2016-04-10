@@ -24,7 +24,7 @@ export default class Home extends React.Component {
                     Talk to someone right now?
                   </Button>
                 </Link>
-                <a href={'/auth/signup/mentor'}>
+                <a href={'/mentor-dashboard'}>
                   <Button
                     style={styles.button}
                     bsStyle='primary'
@@ -47,7 +47,7 @@ export default class Home extends React.Component {
           </Row>
           <Row>
             <Col xs={8} xsOffset={2}>
-              <a href={'/auth/signup/mentor'}>
+              <a href={'/mentee-dashboard'}>
                 <Button
                   style={styles.button}
                   bsStyle='primary'

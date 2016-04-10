@@ -226,7 +226,7 @@ class MentorList extends React.Component {
       topics: ['strings'],
       aboutme: 'string'
     }, {
-      username: 'Owen',
+      username: 'Andrew',
       apiId: 'fac20b',
       age: 22,
       firstName: 'mentor 3',

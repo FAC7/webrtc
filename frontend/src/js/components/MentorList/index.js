@@ -109,13 +109,10 @@ class MentorList extends React.Component {
           console.log('Live data feed failed')
         }
       )
-      },
-      (e) => {
-        console.log('Login failed')
-        throw e
       })
       .catch((err) => {
-        console.log('Error: ', err)
+        console.log('Error: ')
+        throw err
       })
   }
 

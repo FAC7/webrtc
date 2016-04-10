@@ -6,7 +6,6 @@ export default (client, userType, username, payload, reply) => {
     .then((result) => {
       if (result && Object.keys(result).length > 0) {
         console.log(userType + ' user ' + username + ' already exists')
-        console.log(result)
         reply({success: true, data: result})
       } else {
         console.log(userType + ' user ' + username + ' doesn\'t exists')

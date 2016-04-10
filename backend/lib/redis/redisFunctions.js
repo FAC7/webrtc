@@ -55,7 +55,7 @@ const insertNotes = (hashName) => {
 }
 
 export const getUserProfile = (client, userType, userName) => {
-  return client.hmgetAsync(userType, userName)
+  return client.hgetAsync(userType, userName)
     .then((result) => {
       let results
       if (result) {

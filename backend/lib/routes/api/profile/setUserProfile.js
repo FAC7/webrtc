@@ -1,14 +1,19 @@
-import {setUserProfile} from '../../../redis/redisFunctions.js'
+import {getUserProfile, setUserProfile} from '../../../redis/redisFunctions.js'
 import ipcAddUser from '../../../redis/ipcAddUser.js'
 
 export default (client, userType, username, payload, reply) => {
-  ipcAddUser(username, payload.firstName + payload.lastName)
+  getUserProfile(client, userType, username)
     .then((result) => {
-      payload.apiId = result.newUserData.uname
-      payload.apiPassword = result.newUserData.password
+      if (result) {
+        reply({success: true, data: result})
+      } else {
+        ipcAddUser(username, payload.firstName + payload.lastName)
+          .then((_result) => {
+            payload.apiId = _result.newUserData.uname
+            payload.apiPassword = _result.newUserData.password
       return setUserProfile(client, userType, username, payload)
     })
-    .then(() => {
+          .then((_result) => {
       reply({success: true, data: payload})
     })
     .catch((err) => {

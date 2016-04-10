@@ -1,13 +1,31 @@
+/* global XMLHttpRequest */
 import React from 'react'
-import {Well, Collapse} from 'react-bootstrap'
+import {Well, Collapse, Button} from 'react-bootstrap'
 import SubmitNotes from '../../components/SubmitNotes/SubmitNotes.js'
 import TabNotes from './TabNotes.js'
+
+const tropoToken = '527a57644f67546967487876524670556a4d6a48685a64456d62686b53' +
+'41554d467373584e4f4e705465566f'
 
 export default class MenteeItem extends React.Component {
   constructor () {
     super()
     this.state = {}
   }
+
+  sendReminder () {
+    const xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log('text message sent')
+      }
+    }
+    xhr.open('GET', 'https://api.tropo.com/1.0/sessions?action=create&token=' +
+    tropoToken + '&numberToDial=' + this.props.phoneNumber.substr(3) +
+    '&menteeName=' + this.props.menteeName)
+    xhr.send()
+  }
+
   render () {
     return (
       <div className='mentee-item'>
@@ -18,6 +36,7 @@ export default class MenteeItem extends React.Component {
             style={this.props.styles}
           >
             {this.props.menteeName}
+
           </li>
         </a>
         <Collapse in={this.state.open}>
@@ -34,6 +53,7 @@ export default class MenteeItem extends React.Component {
                 notesInstructions='Mentee notes'
                 mentorName={this.props.mentorName}
               />
+              <Button onClick={this.sendReminder.bind(this)}>Send reminder</Button>
             </Well>
           </div>
         </Collapse>
@@ -49,4 +69,7 @@ MenteeItem.propTypes = {
   menteeName: React.PropTypes.string,
   styles: React.PropTypes.object,
   about: React.PropTypes.string,
+  notes: React.PropTypes.string,
+  phoneNumber: React.PropTypes.string,
+  mentorUserame: React.PropTypes.string
 }

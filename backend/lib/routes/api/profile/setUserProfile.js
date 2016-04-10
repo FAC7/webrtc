@@ -4,8 +4,9 @@ import ipcAddUser from '../../../redis/ipcAddUser.js'
 export default (client, userType, username, payload, reply) => {
   getUserProfile(client, userType, username)
     .then((result) => {
-      if (result) {
+      if (result && Object.keys(result).length > 0) {
         console.log(userType + ' user ' + username + ' already exists')
+        console.log(result)
         reply({success: true, data: result})
       } else {
         console.log(userType + ' user ' + username + ' doesn\'t exists')
@@ -20,11 +21,13 @@ export default (client, userType, username, payload, reply) => {
             reply({success: true, data: payload})
           })
           .catch((err) => {
-            reply({success: false, data: err})
+            console.log('IPC/DB error has occurred: ', err)
+            reply({success: false, data: 'IPC/DB error', error: err})
           })
       }
     })
     .catch((err) => {
-      reply({success: false, data: err})
+      console.log('DB error has occurred: ', err)
+      reply({success: false, data: 'DB error', error: err})
     })
 }

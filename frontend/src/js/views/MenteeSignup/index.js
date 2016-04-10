@@ -27,14 +27,19 @@ export default class MenteeSignup extends React.Component {
       aboutme,
       mobile
     }).then((results) => {
-      console.log('RESULTS: ', results)
-      this.props.MUTATE_GLOBAL_STATE({ // eslint-disable-line
+      if (results.success) {
+        console.log('RESULTS: ', results)
+        this.props.MUTATE_GLOBAL_STATE({ // eslint-disable-line
           IPCId: results.data.data.apiId,
-        IPCPassword: results.data.data.apiPassword,
-        name: results.data.data.firstName,
-        isLoggedIn: true
-      })
-      this.props.history.push('/mentee-dashboard')
+          IPCPassword: results.data.data.apiPassword,
+          name: results.data.data.firstName,
+          isLoggedIn: true,
+          userType: 'mentee'
+        })
+        this.props.history.push('/mentee-dashboard')
+      } else {
+        console.log('Something went wrong')
+      }
     }).catch((err) => {
       console.log('[Error]: ' + err)
     })

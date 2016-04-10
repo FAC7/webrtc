@@ -29,14 +29,19 @@ export default class MentorSignup extends React.Component {
       topics,
       aboutme,
     }).then((results) => {
-      console.log('RESULTS: ', results)
-      this.props.MUTATE_GLOBAL_STATE({ //eslint-disable-line
+      if (results.success) {
+        console.log('RESULTS: ', results)
+        this.props.MUTATE_GLOBAL_STATE({ //eslint-disable-line
           IPCId: results.data.data.apiId,
-        IPCPassword: results.data.data.apiPassword,
-        name: results.data.data.firstName,
-        isLoggedIn: true
-      })
-      this.props.history.push('/mentor-dashboard')
+          IPCPassword: results.data.data.apiPassword,
+          name: results.data.data.firstName,
+          isLoggedIn: true,
+          userType: 'mentor'
+        })
+        this.props.history.push('/mentor-dashboard')
+      } else {
+        console.log('something went wrong')
+      }
     }).catch((err) => {
       console.log('[Error]: ' + err)
     })

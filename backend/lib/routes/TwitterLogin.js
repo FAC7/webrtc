@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+import getUserProfile from '../redis/redisFunctions.js'
 
 export default (client) => ({ // eslint-disable-line
   method: ['GET', 'POST'],
@@ -6,7 +7,6 @@ export default (client) => ({ // eslint-disable-line
   config: {
     auth: 'twitter',
     handler: (request, reply) => {
-      console.log(client)
       const mode = request.params.mode
       const type = request.params.usertype
       if (request.auth.isAuthenticated) {
@@ -30,13 +30,28 @@ export default (client) => ({ // eslint-disable-line
 
         if (mode === 'signup') {
           if (type === 'mentor') {
-            console.log('signed up as mentor')
-            // should redirect to mentor signup when it's complete
-            reply.redirect('/mentor-signup/#' + username)
+            getUserProfile(client, 'mentor', username)
+              .then((result) => {
+                if (result) {
+                  console.log('User ' + username + 'already exists')
+                  reply.redirect('/mentor-dashboard/#' + username)
+                } else {
+                  console.log('User ' + username + ' signed up as mentor')
+                  reply.redirect('/mentor-signup/#' + username)
+                }
+              })
+
           } else {
-            console.log('signed up as mentee')
-            // should redirect to mentee signup when it's complete
-            reply.redirect('/mentee-signup/#' + username)
+            getUserProfile(client, 'mentee', username)
+              .then((result) => {
+                if (result) {
+                  console.log('User ' + username + 'already exists')
+                  reply.redirect('/mentee-dashboard/#' + username)
+                } else {
+                  console.log('User ' + username + ' signed up as mentee')
+                  reply.redirect('/mentee-signup/#' + username)
+                }
+              })
           }
         }
       }

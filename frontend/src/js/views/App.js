@@ -13,7 +13,7 @@ export default class App extends React.Component {
   constructor (props) {
     super(props)
 
-    this.state = {test: 'im in view props!'}
+    this.state = {isLoggedIn: false}
 
     this.mapStateToChildren = this.mapStateToChildren.bind(this)
     this.MUTATE_GLOBAL_STATE = this.MUTATE_GLOBAL_STATE.bind(this)

@@ -11,9 +11,9 @@ export default class MenteeSignup extends React.Component {
   onSubmit (e) {
     e.preventDefault()
 
-    const username = window.location.href.split('#')[1] || 'unknown'
     const firstName = document.getElementById('firstname').value
     const lastName = document.getElementById('lastname').value
+    const username = firstName + '_' + lastName
     const gender = document.getElementById('gender').value
     const age = document.getElementById('age').value
     const aboutme = document.getElementById('aboutme').value
@@ -27,13 +27,19 @@ export default class MenteeSignup extends React.Component {
       aboutme,
       mobile
     }).then((results) => {
-      console.log('RESULTS: ', results)
-      this.props.MUTATE_GLOBAL_STATE({ // eslint-disable-line
-        IPCId: results.data.data.apidId,
-        IPCPassword: results.data.data.apiPassword,
-        name: results.data.data.firstName
-      })
-      this.props.history.push('/mentee-dashboard')
+      if (results.data.success) {
+        console.log('RESULTS: ', results)
+        this.props.MUTATE_GLOBAL_STATE({ // eslint-disable-line
+          IPCId: results.data.data.apiId,
+          IPCPassword: results.data.data.apiPassword,
+          name: results.data.data.firstName,
+          isLoggedIn: true,
+          userType: 'mentee'
+        })
+        this.props.history.push('/mentee-dashboard')
+      } else {
+        console.log('Something went wrong: ', results)
+      }
     }).catch((err) => {
       console.log('[Error]: ' + err)
     })

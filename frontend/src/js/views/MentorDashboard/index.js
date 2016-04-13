@@ -146,56 +146,41 @@ MentorDashboard.defaultProps = {
     },
     {menteeName: 'Mireia Sangalo',
       conversationLink: '/contact',
-      feedbackNotes: [{
-        note: 'I feel great right now',
+      prechatNotes: [{
+        note: 'Im feeling quite down today',
         mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
-        note: 'I feel great right now',
-        mentorName: 'Andrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
-      }, {
-        note: 'I feel great right now',
+        note: 'I feel not too bad today',
         mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
-      prechatNotes: [{
-        note: 'I feel great right now',
+      feedbackNotes: [{
+        note: 'Andrew was great today, he listened and understood me',
         mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
-        note: 'I feel great right now',
-        mentorName: 'Andrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
-      }, {
-        note: 'I feel great right now',
+        note: 'Andrew didnt quite understand me today but he listened',
         mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
       postchatNotes: [{
-        note: 'I feel great right now',
+        note: 'Mireia seems well today',
         mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }, {
-        note: 'I feel great right now',
-        mentorName: 'Andrew',
-        menteeName: 'sublimeOwen',
-        date: 'somestring'
-      }, {
-        note: 'I feel great right now',
+        note: 'Mireia seemed a bit down during our chat but said she felt better afterwards',
         mentorName: 'Andrew',
         menteeName: 'sublimeOwen',
         date: 'somestring'
       }],
       lastConversation: 1460028602793,
-      about: 'Sam is 17 and recently diagnosed with quite severe anxiety, particularly' +
+      about: 'Mireia is 17 and recently diagnosed with quite severe anxiety, particularly' +
       'school-related. He would like to start working towards his exams but needs some ' +
       'direction around what to expect, how to deal with it and some advice to help alleviate ' +
       'his anxiety. As he is on the waiting list at a service, which may be as long as 18 weeks,' +

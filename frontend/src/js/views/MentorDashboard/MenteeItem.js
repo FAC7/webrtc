@@ -1,5 +1,5 @@
 import React from 'react'
-import {Well, Collapse} from 'react-bootstrap'
+import {Well, Collapse, Button} from 'react-bootstrap'
 import SubmitNotes from '../../components/SubmitNotes/SubmitNotes.js'
 import TabNotes from './TabNotes.js'
 
@@ -8,6 +8,18 @@ export default class MenteeItem extends React.Component {
     super()
     this.state = {}
   }
+
+  sendReminder () {
+    const xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log('text message sent')
+      }
+    }
+    xhr.open('GET', '/text')
+    xhr.send()
+  }
+
   render () {
     return (
       <div className='mentee-item'>
@@ -34,6 +46,7 @@ export default class MenteeItem extends React.Component {
                 notesInstructions='Mentee notes'
                 mentorName={this.props.mentorName}
               />
+              <Button onClick={this.sendReminder.bind(this)}>Send reminder</Button>
             </Well>
           </div>
         </Collapse>

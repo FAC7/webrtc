@@ -2,11 +2,11 @@ import React from 'react'
 import {Tab, Tabs} from 'react-bootstrap'
 
 export default class TabNotes extends React.Component {
-  mapNotes (notes) {
+  mapNotes (notes, type) {
     return notes.map(note => {
       return (
         <div className='notes-item'>
-          <p>author: {note.mentorName}</p>
+          {type === 'post' ? <p>author: {note.mentorName}</p> : ''}
           <p>{note.note}</p>
         </div>
     )})
@@ -14,15 +14,15 @@ export default class TabNotes extends React.Component {
 
   render () {
     return (
-      <Tabs defaultActiveKey='2'>
+      <Tabs defaultActiveKey='1'>
         <Tab eventKey='1' title='Mentor Notes'>
-          {this.mapNotes(this.props.prechatNotes)}
+          {this.mapNotes(this.props.postchatNotes, 'post')}
         </Tab>
-        <Tab eventKey='2' title='Mentee Summaries'>
-        {this.mapNotes(this.props.postchatNotes)}
+        <Tab eventKey='2' title='Mentee Pre-Chat Notes'>
+        {this.mapNotes(this.props.prechatNotes, 'pre')}
         </Tab>
         <Tab eventKey='3' title='Mentee Feedback' >
-          {this.mapNotes(this.props.feedbackNotes)}
+          {this.mapNotes(this.props.feedbackNotes, 'feedback')}
         </Tab>
       </Tabs>
     )

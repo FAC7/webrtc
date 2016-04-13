@@ -1,19 +1,19 @@
 import React from 'react'
-import {Jumbotron, Grid, Col, Row, Button} from 'react-bootstrap'
+import {Grid, Col, Row, Button} from 'react-bootstrap'
 import Logo from '../../components/Logo/index.js'
 import {Link} from 'react-router'
 
 export default class Home extends React.Component {
   render () {
     return (
-      <div className='content-wrap' style={{marginBottom: '200px', marginTop:'100px', textAlign: 'center'}}>
+      <div className='content-wrap' style={{marginBottom: '200px', marginTop: '100px', textAlign: 'center'}}>
           <Grid>
             <Col xs={10} xsOffset={1}/>
             <Logo imgUrl='img/confidant-black.png' maxWidth='300px' />
             <p>A safe space to talk to a mentor</p>
             <Row style={{marginTop: '5em'}}>
               <Col xs={8} xsOffset={2}>
-                <Link to={'/mentor-dashboard'}>
+                <Link to={'/mentor-signup'}>
                   <Button
                     style={styles.button}
                     bsStyle='info'
@@ -23,7 +23,7 @@ export default class Home extends React.Component {
                     login as mentor
                   </Button>
                 </Link>
-                <a href={'/mentee-dashboard'}>
+                <a href={'/mentee-signup'}>
                   <Button
                     style={styles.button}
                     bsStyle='primary'
@@ -43,7 +43,7 @@ export default class Home extends React.Component {
 
 const styles = {
   header: {
-    textAlign: 'center',
+    textAlign: 'center'
   },
   button: {
     height: '4em'

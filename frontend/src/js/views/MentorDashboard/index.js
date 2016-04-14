@@ -5,7 +5,6 @@ import ProfileButtons from './ProfileButtons.js'
 import MentorsProfilePage from '../../components/Profile/MentorsProfilePage.js'
 import MentorsEditProfile from '../../components/MentorsSignup/MentorsEditProfile.js'
 import MentorList from '../../components/MentorList/index.js'
-import Schedule from '../../components/scheduleModal/scheduleModal.js'
 
 export default class MentorDashboard extends React.Component {
   constructor () {
@@ -80,7 +79,6 @@ export default class MentorDashboard extends React.Component {
             <Button onClick={this.toggleModal.bind(this, 'showEditModal')}>Close</Button>
           </Modal.Footer>
         </Modal>
-        <Schedule />
       </Grid>
     )
   }

@@ -1,6 +1,8 @@
 import React from 'react'
 import {Button, DropdownButton, MenuItem, ButtonGroup} from 'react-bootstrap'
 import Schedule from '../../components/scheduleModal/scheduleModal.js'
+import Resources from '../../components/resourcesModal/resourcesModal.js'
+
 
 export default (props) => {
   return (
@@ -16,6 +18,7 @@ export default (props) => {
         <MenuItem eventKey='2' onClick={props.changeStatus.bind(null, 'Offline')}>Offline</MenuItem>
       </DropdownButton>
       <Schedule />
+      <Resources />
     </ButtonGroup>
   )
 }

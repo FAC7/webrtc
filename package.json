@@ -59,6 +59,6 @@
     "react-bootstrap": "^0.28.4",
     "react-dom": "^0.14.8",
     "react-router": "^2.0.1",
-    "redis": "^2.6.0-0",
+    "redis": "^2.6.0-0"
   }
 }

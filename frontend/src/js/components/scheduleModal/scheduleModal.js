@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, Table } from 'react-bootstrap'
 
 class Schedule extends React.Component {
   constructor () {
@@ -20,14 +20,22 @@ class Schedule extends React.Component {
     this.setState({ showModal: true })
   }
 
+  sendReminder () {
+    const xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log('text message sent')
+      }
+    }
+    xhr.open('GET', '/text')
+    xhr.send()
+  }
+
   render () {
     return (
     <div>
       <Button className='schedule' bsStyle='primary' bsSize='large' onClick={this.open}>
         See Schedule
-      </Button>
-      <Button className='resources' bsStyle='primary' bsSize='large' onClick={this.open}>
-        See Resources
       </Button>
       <Modal show={this.state.showModal} onHide={this.close}>
         <Modal.Header closeButton>
@@ -36,9 +44,36 @@ class Schedule extends React.Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p> 19/04/16 9:00 am  Frank </p><br/>
-          <p> 23/04/16 11:00 am  James </p><br/>
-          <p> 24/04/16 2:00 pm  Nina </p><br/>
+          <Table striped bordered condensed hover>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Mentee</th>
+                <th>Reminder</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>18/04/16</td>
+                <td>9:00 am</td>
+                <td>Sam Houston</td>
+                <td><Button onClick={this.sendReminder.bind(this)}>Send reminder</Button></td>
+              </tr>
+              <tr>
+                <td>21/04/16</td>
+                <td>10:00 am</td>
+                <td>Mireia Sangalo</td>
+                <td><Button onClick={this.sendReminder.bind(this)}>Send reminder</Button></td>
+              </tr>
+              <tr>
+                <td>23/04/16</td>
+                <td>1:00 pm</td>
+                <td>Rob</td>
+                <td><Button onClick={this.sendReminder.bind(this)}>Send reminder</Button></td>
+              </tr>
+            </tbody>
+          </Table>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.close}>
